@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+
+    public function country()
+    {
+        return $this->belongsTo('App\Country');
+    }
+    //* Relación uno a muchos
+    public function entities()
+    {
+        return $this->hasMany('App\Models\Entity');
+    }
 }

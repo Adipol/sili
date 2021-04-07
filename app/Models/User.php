@@ -58,4 +58,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function entity()
+    {
+        return $this->belongsTo('App\Models\Entity');
+    }
 }

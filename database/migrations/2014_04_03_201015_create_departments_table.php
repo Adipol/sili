@@ -17,7 +17,7 @@ class CreateDepartmentsTable extends Migration
             $table->id();
 
             $table->string('name');
-            $table->string('abbreviation');
+            $table->string('abbreviation', 10);
 
             $table->foreignId('id_country');
             $table->foreign('id_country')->references('id')->on('countries');

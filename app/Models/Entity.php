@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Entity extends Model
 {
     use HasFactory;
+
+    public function department()
+    {
+        return $this->belongsTo('App\Models\Department');
+    }
+
+    public function users()
+    {
+        return $this->hasMany('App\Models\User');
+    }
 }

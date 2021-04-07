@@ -2,6 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Country;
+use App\Models\Department;
+use App\Models\Entity;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,6 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Country::factory(10)->create();
+        Department::factory(10)->create();
+        Entity::factory(10)->create();
+        $this->call(UserSeeder::class);
     }
 }
