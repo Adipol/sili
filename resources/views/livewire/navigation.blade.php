@@ -1,11 +1,11 @@
-<nav class="bg-gray-800" x-data="{open:false}">
+<nav class="bg-blue-900" x-data="{open:false}">
     <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
 
             <!-- Mobile menu button-->
             <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 <button x-on:click="open=true" type="button"
-                    class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
                     aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
 
@@ -25,27 +25,22 @@
 
             <div class="flex items-center justify-center flex-1 sm:items-stretch sm:justify-start">
                 <a href="/" class="flex items-center flex-shrink-0">
-                    <img class="block w-auto h-8 lg:hidden"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-                    <img class="hidden w-auto h-8 lg:block"
-                        src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                        alt="Workflow">
+                    <img class="hidden w-auto h-8 lg:block" src="{{ asset('img/home/logow.png') }}" alt="Workflow">
                 </a>
                 @auth
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="#" class="px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-md"
-                                aria-current="page">Dashboard</a>
 
                             <a href="#"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Team</a>
+                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas</a>
 
                             <a href="#"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a>
+                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Descargar
+                                Información</a>
 
                             <a href="#"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a>
+                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Cargar
+                                Información</a>
                         </div>
                     </div>
                 @endauth
@@ -85,8 +80,9 @@
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem" onclick="event.preventDefault();
-                                                                        this.closest('form').submit();">Salir</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
+                                    onclick="event.preventDefault();
+                                                                                                                                            this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>
@@ -94,7 +90,7 @@
             @else
                 <div>
                     <a href="{{ route('login') }}"
-                        class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Ingresar</a>
+                        class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Ingresar</a>
                 </div>
             @endauth
 
