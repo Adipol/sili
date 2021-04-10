@@ -1,8 +1,7 @@
 <?php
 
+use App\Http\Controllers\Supplier\ImportController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('import-export', function () {
-    return "Es donde estará las exportaciones";
-})->name('import-export.index');
+Route::get('import', [ImportController::class, 'index'])->name('import.index');

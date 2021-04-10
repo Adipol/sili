@@ -12,8 +12,8 @@ $nav_links = [
     ],
     [
         'name' => 'Cargar Información',
-        'route' => route('import-export.index'),
-        'active' => request()->routeIs('import-export.index'),
+        'route' => route('import.index'),
+        'active' => request()->routeIs('import.index'),
     ],
 ];
 @endphp
@@ -50,17 +50,12 @@ $nav_links = [
                 @auth
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
+                            @foreach ($nav_links as $nav_link)
+                                <a href="{{ $nav_link['route'] }}"
+                                    class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white"
+                                    :active="$nav_link['active']">{{ $nav_link['name'] }}</a>
 
-                            <a href="#"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas</a>
-
-                            <a href="#"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Descargar
-                                Información</a>
-
-                            <a href="#"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Cargar
-                                Información</a>
+                            @endforeach
                         </div>
                     </div>
                 @endauth
@@ -102,7 +97,7 @@ $nav_links = [
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>
@@ -121,18 +116,12 @@ $nav_links = [
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open=false">
         <div class="px-2 pt-2 pb-3 space-y-1">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
 
             @foreach ($nav_links as $nav_link)
-
-                <a href="{{ nav_link['route'] }}"
+                <a href="{{ $nav_link['route'] }}"
                     class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-                    aria-current="page">Dashboard</a>
+                    aria-current="page">{{ $nav_link['name'] }}</a>
             @endforeach
-
-
-
-
 
         </div>
     </div>
