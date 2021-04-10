@@ -1,3 +1,13 @@
+@php
+$nav_links = [
+    [
+        'name' => 'Cargar Información',
+        'route' => route('import-export.index'),
+        'active' => request()->routeIs('import-export.index'),
+    ],
+];
+@endphp
+
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">

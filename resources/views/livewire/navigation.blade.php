@@ -1,3 +1,23 @@
+@php
+$nav_links = [
+    [
+        'name' => 'Consultas',
+        'route' => '#',
+        'active' => false,
+    ],
+    [
+        'name' => 'Descargar Información',
+        'route' => '#',
+        'active' => false,
+    ],
+    [
+        'name' => 'Cargar Información',
+        'route' => route('import-export.index'),
+        'active' => request()->routeIs('import-export.index'),
+    ],
+];
+@endphp
+
 <nav class="bg-blue-900" x-data="{open:false}">
     <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
@@ -82,7 +102,7 @@
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                            this.closest('form').submit();">Salir</a>
+                                                                                                                                                                this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>
@@ -102,17 +122,18 @@
     <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open=false">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="block px-3 py-2 text-base font-medium text-white bg-gray-900 rounded-md"
-                aria-current="page">Dashboard</a>
 
-            <a href="#"
-                class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Team</a>
+            @foreach ($nav_links as $nav_link)
 
-            <a href="#"
-                class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Projects</a>
+                <a href="{{ nav_link['route'] }}"
+                    class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                    aria-current="page">Dashboard</a>
+            @endforeach
 
-            <a href="#"
-                class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white">Calendar</a>
+
+
+
+
         </div>
     </div>
 </nav>

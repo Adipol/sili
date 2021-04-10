@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="relative overflow-hidden bg-white">
-        <div class="mx-auto max-w-7xl">
+        <div class="w-full mx-auto max-w-7xl">
             <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                 <svg class="absolute inset-y-0 right-0 hidden w-48 h-full text-white transform translate-x-1/2 lg:block"
                     fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -19,7 +19,7 @@
                 <main class="px-4 mx-auto mt-5 max-w-7xl sm:mt-9 sm:px-6 md:mt-9 lg:mt-13 lg:px-8 xl:mt-13">
                     <div class="sm:text-center lg:text-left">
                         <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-                            <span class="block xl:inline">AMLC</span>
+                            <span class="block text-gray-500 xl:inline">AMLC</span>
                             <span class="block text-blue-900 xl:inline">Listas de Control</span>
                         </h1>
                         <p
