@@ -7,7 +7,7 @@
         </div>
     </header>
 
-    <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
+    {{-- <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
         <div class="px-4 py-5 sm:px-6">
             <h3 class="text-lg font-medium leading-6 text-gray-900">
                 Applicant Information
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -65,7 +65,9 @@
                 </div>
             </div>
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form action="#" method="POST">
+                <form action="{{ route('importExcel') }}" class="form-horizontal" method="post"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 space-y-6 bg-white sm:p-6">
 
@@ -73,6 +75,7 @@
                                 <label class="block text-sm font-medium text-gray-700">
                                     Cargar Archivo
                                 </label>
+
                                 <div
                                     class="flex justify-center px-6 pt-5 pb-6 mt-1 border-2 border-gray-300 border-dashed rounded-md">
                                     <div class="space-y-1 text-center">
@@ -86,7 +89,7 @@
                                             <label for="file-upload"
                                                 class="relative font-medium text-indigo-600 bg-white rounded-md cursor-pointer hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                 <span>Cargar un Archivo</span>
-                                                <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                <input id="file-upload" name="import_file" type="file" class="sr-only">
                                             </label>
                                             <p class="pl-1">o arrastrar y soltar</p>
                                         </div>
@@ -100,12 +103,19 @@
                         <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
                             <button type="submit"
                                 class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Save
+                                Importar Archivo
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
+            <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;"
+                action="{{ route('importExcel') }}" class="form-horizontal" method="post"
+                enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <input type="file" name="import_file" />
+                <button class="btn btn-primary">Import File</button>
+            </form>
         </div>
     </div>
 </x-app-layout>

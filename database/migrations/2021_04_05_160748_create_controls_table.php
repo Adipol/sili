@@ -19,9 +19,9 @@ class CreateControlsTable extends Migration
 
             $table->string('id_pep');
             $table->string('id_all')->nullable();
-            $table->enum('type', [Control::PEP, Control::LISTA]);
+            $table->enum('type', [1, 2]);
             $table->string('code', 20);
-            $table->string('name_one');
+            $table->string('name_one')->nullable();
             $table->string('name_two')->nullable();
             $table->string('last_name_one')->nullable();
             $table->string('last_name_two')->nullable();
@@ -46,7 +46,7 @@ class CreateControlsTable extends Migration
             $table->string('type_fam', 20)->nullable();
             $table->string('detail')->nullable();
             $table->string('profession')->nullable();
-            $table->bigInteger('id_register');
+            $table->bigInteger('id_register')->unique();
 
             $table->timestamps();
         });
