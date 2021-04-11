@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts
+class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, WithHeadingRow
 {
     /**
      * @param array $row
@@ -18,36 +18,36 @@ class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts
     public function model(array $row)
     {
         return new Control([
-            'id_pep'     => $row[0],
-            'id_all'    => $row[1],
-            'type'    => $row[2],
-            'code'    => $row[3],
-            'name_one'    => $row[4],
-            'name_two'    => $row[5],
-            'last_name_one'    => $row[6],
-            'last_name_two'    => $row[7],
-            'type_document'    => $row[8],
-            'nro_document'    => $row[9],
-            'extension'    => $row[10],
-            'country_abbreviation'    => $row[11],
-            'country'    => $row[12],
-            'department'    => $row[13],
-            'province'    => $row[14],
-            'type_pep'    => $row[15],
-            'position_country'    => $row[16],
-            'position'    => $row[17],
-            'entity'    => $row[18],
-            'management'    => $row[19],
-            'justification'    => $row[20],
-            'report_date'    => $row[21],
-            'management_all'    => $row[22],
-            'entity_all'    => $row[23],
-            'justification_all'    => $row[24],
-            'type_all'    => $row[25],
-            'type_fam'    => $row[26],
-            'detail'    => $row[27],
-            'profession'    => $row[28],
-            'id_register'    => $row[29]
+            'id_pep'     => $row['id_pep'],
+            'id_all'    => $row['id_all'],
+            'type'    => $row['tipo'],
+            'code'    => $row['codigo'],
+            'name_one'    => $row['nombre1'],
+            'name_two'    => $row['nombre2'],
+            'last_name_one'    => $row['apaterno'],
+            'last_name_two'    => $row['amaterno'],
+            'type_document'    => $row['tipodocumento'],
+            'nro_document'    => $row['nrodocumento'],
+            'extension'    => $row['lextension'],
+            'country_abbreviation'    => $row['abrevpais'],
+            'country'    => $row['pais'],
+            'department'    => $row['departamento'],
+            'province'    => $row['provincia'],
+            'type_pep'    => $row['tipopep'],
+            'position_country'    => $row['paiscargo'],
+            'position'    => $row['cargo'],
+            'entity'    => $row['entidad'],
+            'management'    => $row['gestion'],
+            'justification'    => $row['justificacion'],
+            'report_date'    => $row['fechareporte'],
+            'management_all'    => $row['cargoall'],
+            'entity_all'    => $row['entidadall'],
+            'justification_all'    => $row['justificacionall'],
+            'type_all'    => $row['tipoall'],
+            'type_fam'    => $row['tipofam'],
+            'detail'    => $row['detalleall'],
+            'profession'    => $row['profesion'],
+            'id_register'    => $row['id_registro']
         ]);
     }
 
