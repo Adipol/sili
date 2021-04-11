@@ -45,6 +45,6 @@ class Control extends Model
         'id_register'
     ];
 
-    //const PEP = 1;
-    //const LISTA = 2;
+    const PEP = 1;
+    const LISTA = 2;
 }

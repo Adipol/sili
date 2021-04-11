@@ -7,63 +7,62 @@
         </div>
     </header>
 
-    {{-- <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
-        <div class="px-4 py-5 sm:px-6">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">
-                Applicant Information
-            </h3>
-            <p class="max-w-2xl mt-1 text-sm text-gray-500">
-                Personal details and application.
-            </p>
-        </div>
-        <div class="border-t border-gray-200">
-            <div>
-                <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">
-                        Full name
-                    </dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        Margot Foster
-                    </dd>
-                </div>
-                <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">
-                        Application for
-                    </dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        Backend Developer
-                    </dd>
-                </div>
-                <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">
-                        Email address
-                    </dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        margotfoster@example.com
-                    </dd>
-                </div>
-                <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">
-                        Salary expectation
-                    </dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                        $120,000
-                    </dd>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="md:grid md:grid-cols-3 md:gap-6">
-            <div class="md:col-span-1">
-                <div class="px-4 sm:px-0">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
-                    <p class="mt-1 text-sm text-gray-600">
-                        This information will be displayed publicly so be careful what you share.
+
+            <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
+                <div class="px-4 py-5 sm:px-6">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">
+                        Listas de Control
+                    </h3>
+                    <p class="max-w-2xl mt-1 text-sm text-gray-500">
+                        Información de la importación
                     </p>
                 </div>
+                <div class="border-t border-gray-200">
+                    <div>
+                        <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Cantidad de registros
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ $amount }}
+                            </dd>
+                        </div>
+                        <div class="px-4 py-5 bg-white sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Fecha de registros
+                            </dt>
+                            @if ($records)
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    {{ $records->report_date }}
+                                </dd>
+                            @else
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    No disponible
+                                </dd>
+                            @endif
+
+                        </div>
+                        <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
+                                Fecha de importación
+                            </dt>
+                            @if ($records)
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    {{ $records->created_at }}
+                                </dd>
+                            @else
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    No disponible
+                                </dd>
+                            @endif
+
+                        </div>
+                    </div>
+                </div>
             </div>
+
             <div class="mt-5 md:mt-0 md:col-span-2">
                 <form action="{{ route('importExcel') }}" class="form-horizontal" method="post"
                     enctype="multipart/form-data">
@@ -109,13 +108,6 @@
                     </div>
                 </form>
             </div>
-            <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;"
-                action="{{ route('importExcel') }}" class="form-horizontal" method="post"
-                enctype="multipart/form-data">
-                {{ csrf_field() }}
-                <input type="file" name="import_file" />
-                <button class="btn btn-primary">Import File</button>
-            </form>
         </div>
     </div>
 </x-app-layout>

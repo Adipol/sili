@@ -19,7 +19,7 @@ class CreateControlsTable extends Migration
 
             $table->string('id_pep');
             $table->string('id_all')->nullable();
-            $table->enum('type', [1, 2]);
+            $table->enum('type', [Control::PEP, Control::LISTA]);
             $table->string('code', 20);
             $table->string('name_one')->nullable();
             $table->string('name_two')->nullable();
@@ -27,14 +27,14 @@ class CreateControlsTable extends Migration
             $table->string('last_name_two')->nullable();
             $table->string('type_document', 5)->nullable();
             $table->string('nro_document')->nullable();
-            $table->string('extension', 5)->nullable();
+            $table->string('extension', 20)->nullable();
             $table->string('country_abbreviation', 5)->nullable();
             $table->string('country', 100)->nullable();
             $table->string('department', 100)->nullable();
             $table->string('province', 100)->nullable();
             $table->string('type_pep', 50);
-            $table->string('position_country', 5)->nullable();
-            $table->string('position')->nullable();
+            $table->string('position_country', 50)->nullable();
+            $table->string('position', 500)->nullable();
             $table->string('entity')->nullable();
             $table->string('management')->nullable();
             $table->text('justification')->nullable();

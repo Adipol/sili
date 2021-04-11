@@ -6,13 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Exports\TransactionsExport;
 use App\Imports\TransactionsImport;
+use App\Models\Control;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends Controller
 {
     public function index()
     {
-        return view('supplier.import');
+        $amount = Control::count();
+        $records = Control::all()->last();
+
+
+        return view('supplier.import', compact('amount', 'records'));
     }
 
     public function exportExcel($type)

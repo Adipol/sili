@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class TransactionsImport implements ToModel
+class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts
 {
     /**
      * @param array $row
@@ -51,14 +51,14 @@ class TransactionsImport implements ToModel
         ]);
     }
 
-    // public function batchSize(): int
-    // {
-    //     return 200;
-    // }
+    public function batchSize(): int
+    {
+        return 200;
+    }
 
 
-    // public function uniqueBy()
-    // {
-    //     return 'id_register';
-    // }
+    public function uniqueBy()
+    {
+        return 'id_register';
+    }
 }
