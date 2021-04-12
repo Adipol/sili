@@ -132,7 +132,7 @@
                         </div>
                         <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
                             <button type="submit"
-                                class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-900 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 Importar Archivo
                             </button>
                         </div>
@@ -164,8 +164,9 @@
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
                                     Fecha Fin
                                 </th>
-                                <th scope="col" class="relative px-6 py-3">
-                                    <span class="sr-only">Descargar</span>
+                                <th scope="col"
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
+                                    Descargas
                                 </th>
                             </tr>
                         </thead>
@@ -185,10 +186,11 @@
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $import->description_final }}
                                     </td>
-                                    <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                        <a href="#" class="text-indigo-600 hover:text-indigo-900">Descargar</a>
+                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <a href="{{ route('exportExcel', 'csv') }}"
+                                            class="text-blue-900 hover:text-blue-700"><button
+                                                class="btn btn-primary">Descargar CSV</button></a>
                                     </td>
-
                                 </tr>
                             @endforeach
                         </tbody>
