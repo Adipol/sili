@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\Country;
 use App\Models\Department;
 use App\Models\Entity;
+use App\Models\Import;
+use App\Models\Month;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +22,7 @@ class DatabaseSeeder extends Seeder
         Department::factory(10)->create();
         Entity::factory(10)->create();
         $this->call(UserSeeder::class);
+        Month::factory(10)->create();
+        Import::factory(10)->create();
     }
 }

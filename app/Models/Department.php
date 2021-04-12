@@ -11,7 +11,7 @@ class Department extends Model
 
     public function country()
     {
-        return $this->belongsTo('App\Country');
+        return $this->belongsTo('App\Models\Country');
     }
     //* Relación uno a muchos
     public function entities()

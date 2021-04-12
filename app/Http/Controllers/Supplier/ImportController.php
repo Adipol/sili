@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Exports\TransactionsExport;
 use App\Imports\TransactionsImport;
 use App\Models\Control;
+use App\Models\Import;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Model\Months;
 
 class ImportController extends Controller
 {
@@ -15,9 +17,10 @@ class ImportController extends Controller
     {
         $amount = Control::count();
         $records = Control::all()->last();
+        $imports = Import::all()->take(3);
 
 
-        return view('supplier.import', compact('amount', 'records'));
+        return view('supplier.import', compact('amount', 'records', 'imports'));
     }
 
     public function exportExcel($type)
