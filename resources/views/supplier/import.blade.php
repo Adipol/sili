@@ -186,10 +186,16 @@
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $import->description_final }}
                                     </td>
+<<<<<<< HEAD
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         <a href="{{ route('exportExcel', 'csv') }}"
                                             class="text-blue-900 hover:text-blue-700"><button
                                                 class="btn btn-primary">Descargar CSV</button></a>
+=======
+                                    <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                        <a href="{{ route('exportExcel', 'csv') }}"><button
+                                                class="btn btn-success">Download CSV</button></a>
+>>>>>>> 0c5ef2b7e815a44fafb5b172fcfb37258c3ba970
                                     </td>
                                 </tr>
                             @endforeach
