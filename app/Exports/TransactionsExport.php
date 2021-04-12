@@ -9,12 +9,48 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class TransactionsExport implements FromQuery, WithHeadings
 {
+    public function __construct(int $fecha)
+    {
+        $this->fecha = $fecha;
+    }
+
     /**
      * @return \Illuminate\Support\Collection
      */
     public function query()
     {
-        return Control::query()->select('ID_PEP', 'ID_ALL', 'TIPO', 'CODIGO', 'NOMBRE1', 'NOMBRE2', 'APATERNO', 'AMATERNO', 'TIPODOCUMENTO', 'NRODOCUMENTO', 'LEXTENSION', 'ABREVPAIS', 'PAIS', 'DEPARTAMENTO', 'PROVINCIA', 'TIPOPEP', 'PAISCARGO', 'CARGO', 'ENTIDAD', 'GESTION', 'JUSTIFICACION', 'FECHAREPORTE', 'CARGOALL', 'ENTIDADALL', 'JUSTIFICACIONALL', 'TIPOALL', 'TIPOFAM', 'DETALLEALL', 'PROFESION', 'ID_REGISTRO');
+        return Control::query()->select(
+            'id_pep',
+            'id_all',
+            'type',
+            'code',
+            'name_one',
+            'name_two',
+            'last_name_one',
+            'last_name_two',
+            'type_document',
+            'nro_document',
+            'extension',
+            'country_abbreviation',
+            'country',
+            'department',
+            'province',
+            'type_pep',
+            'position_country',
+            'position',
+            'entity',
+            'management',
+            'justification',
+            'report_date',
+            'management_all',
+            'entity_all',
+            'justification_all',
+            'type_all',
+            'type_fam',
+            'detail',
+            'profession',
+            'id_register'
+        )->where('report_date', $this->fecha);
     }
 
     public function headings(): array
