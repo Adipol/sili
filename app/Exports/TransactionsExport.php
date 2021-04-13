@@ -3,15 +3,19 @@
 namespace App\Exports;
 
 use App\Models\Control;
+use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
 class TransactionsExport implements FromQuery, WithHeadings
 {
-    public function __construct(int $fecha)
+    use Exportable;
+
+    public function forYear($fecha)
     {
         $this->fecha = $fecha;
+        return $this;
     }
 
     /**
