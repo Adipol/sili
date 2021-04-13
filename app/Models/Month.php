@@ -9,6 +9,8 @@ class Month extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     public function import()
     {
         return $this->belongsTo('App\Model\Import');

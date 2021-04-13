@@ -10,6 +10,8 @@ class Import extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
     /** @return HasMany  */
     public function months()
     {
