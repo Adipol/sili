@@ -11,8 +11,8 @@ class Month extends Model
 
     protected $guarded = ['id'];
 
-    public function import()
+    public function imports()
     {
-        return $this->belongsTo('App\Model\Import');
+        return $this->hasMany(Import::class);
     }
 }

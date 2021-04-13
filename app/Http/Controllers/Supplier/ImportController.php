@@ -10,6 +10,7 @@ use App\Models\Control;
 use App\Models\Import;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Model\Months;
+use App\Models\Month;
 
 class ImportController extends Controller
 {
@@ -17,8 +18,7 @@ class ImportController extends Controller
     {
         $amount = Control::count();
         $records = Control::all()->last();
-        $imports = Import::all()->take(3);
-
+        $imports = Import::with('month')->orderBy('description_final', 'DESC')->take(5)->get();
 
         return view('supplier.import', compact('amount', 'records', 'imports'));
     }

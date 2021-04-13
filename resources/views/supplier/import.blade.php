@@ -182,7 +182,7 @@
                                         {{ $import->year }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{-- {{ $import->months()->name }} --}}
+                                        {{ $import->month->name }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $import->description_beginning }}

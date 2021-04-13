@@ -13,8 +13,8 @@ class Import extends Model
     protected $guarded = ['id'];
 
     /** @return HasMany  */
-    public function months()
+    public function month()
     {
-        return $this->hasMany('App\Models\Month');
+        return $this->belongsTo(Month::class, 'id_month');
     }
 }
