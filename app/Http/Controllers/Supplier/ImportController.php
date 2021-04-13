@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Supplier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Exports\TransactionsExport;
+use App\Http\Requests\ImportStoreRequest;
 use App\Imports\TransactionsImport;
 use App\Models\Control;
 use App\Models\Import;
@@ -18,9 +19,22 @@ class ImportController extends Controller
     {
         $amount = Control::count();
         $records = Control::all()->last();
-        $imports = Import::with('month')->orderBy('description_final', 'DESC')->take(5)->get();
+        $imports = Import::with('month')->orderBy('description_final', 'desc')->take(5)->get();
+        $months = Month::all();
 
-        return view('supplier.import', compact('amount', 'records', 'imports'));
+        return view('supplier.import', compact('amount', 'records', 'imports', 'months'));
+    }
+
+    public function store(Request $request)
+    {
+        $import = new Import();
+        $import->year = $request->get('year');
+        $import->id_month = $request->get('id_month');
+        $import->description_beginning = $request->get('description_beginning');
+        $import->description_final = $request->get('description_final');
+        $import->save();
+
+        return back();
     }
 
     public function exportExcel($fecha)
@@ -38,12 +52,20 @@ class ImportController extends Controller
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function importExcel(Request $request)
+    public function importExcel(ImportStoreRequest $request)
     {
+        $import = new Import();
+        $import->year = $request->get('year');
+        $import->id_month = $request->get('id_month');
+        $import->description_beginning = $request->get('description_beginning');
+        $import->description_final = $request->get('description_final');
+        $import->save();
+
         Excel::import(new TransactionsImport, $request->import_file);
 
         \Session::put('success', 'Your file is imported successfully in database.');
 
         return back();
+        //return redirect()->route('supplier.import')->with('notification', 'Registro ingresado exitosamente.');
     }
 }

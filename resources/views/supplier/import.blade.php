@@ -72,31 +72,36 @@
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="first_name" class="block text-sm font-medium text-gray-700">Año</label>
-                                    <input type="text" name="first_name" id="first_name" autocomplete="given-name"
+                                    <input type="text" name="year" id="year" autocomplete="given-name"
+                                        value="{{ old('year') }}" required="required"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="country" class="block text-sm font-medium text-gray-700">Mes</label>
-                                    <select id="country" name="country" autocomplete="country"
+                                    <select id="month" name="id_month" autocomplete="month" required
                                         class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        <option>Enero</option>
-                                        <option>Febrero</option>
-                                        <option>Marzo</option>
+                                        <option disabled selected hidden>Seleccione un mes</option>
+                                        @foreach ($months as $month)
+                                            <option {{ (int) old('id_month') === $month->id ? 'selected' : '' }}
+                                                value="{{ $month->id }}">{{ $month->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="first_name" class="block text-sm font-medium text-gray-700">Fecha de
                                         Inicio</label>
-                                    <input type="date" name="first_name" id="first_name" autocomplete="given-name"
+                                    <input type="date" name="description_beginning" id="description_beginning"
+                                        autocomplete="given-name" required="required"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="last_name" class="block text-sm font-medium text-gray-700">Fecha de
                                         Final</label>
-                                    <input type="date" name="last_name" id="last_name" autocomplete="family-name"
+                                    <input type="date" name="description_final" id="description_final"
+                                        autocomplete="family-name" required="required"
                                         class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                 </div>
                                 <div class="col-span-6">
@@ -118,7 +123,7 @@
                                                     class="relative font-medium text-indigo-600 bg-white rounded-md cursor-pointer hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                                     <span>Cargar un Archivo</span>
                                                     <input id="file-upload" name="import_file" type="file"
-                                                        class="sr-only">
+                                                        class="sr-only" required="required">
                                                 </label>
                                                 <p class="pl-1">o arrastrar y soltar</p>
                                             </div>
@@ -141,10 +146,20 @@
             </div>
         </div>
     </div>
+
     <div class="flex flex-col px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -170,7 +185,7 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Descargas XLSX
+                                    Opciones
                                 </th>
                             </tr>
                         </thead>
@@ -190,13 +205,12 @@
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $import->description_final }}
                                     </td>
-                                    <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                    <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <a href="{{ route('exportExcel', $import->description_final) }}"><button
                                                 class="btn btn-success">Download CSV</button></a>
                                     </td>
-                                    <td class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                        <a href="{{ route('exportXlsx', $import->description_final) }}"><button
-                                                class="btn btn-success">Download XLSX</button></a>
+                                    <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
+                                        Eliminar
                                     </td>
                                 </tr>
                             @endforeach

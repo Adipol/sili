@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         Department::factory(10)->create();
         Entity::factory(10)->create();
         $this->call(UserSeeder::class);
-        Month::factory(10)->create();
+        $this->call(MonthSeeder::class);
         Import::factory(10)->create();
     }
 }
