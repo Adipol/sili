@@ -6,7 +6,23 @@
             </h1>
         </div>
     </header>
+    <div class="alert-custom">
+        @if (session('notification'))
+            <div class="alert alert-success">
+                {{ session('notification') }}
+            </div>
+        @endif
 
+        @if (count($errors) > 0)
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+    </div>
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="md:grid md:grid-cols-3 md:gap-6">
 
@@ -78,13 +94,25 @@
                                 </div>
 
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="country" class="block text-sm font-medium text-gray-700">Mes</label>
+                                    <label for="month" class="block text-sm font-medium text-gray-700">Mes</label>
                                     <select id="month" name="id_month" autocomplete="month" required
                                         class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                                         <option disabled selected hidden>Seleccione un mes</option>
                                         @foreach ($months as $month)
                                             <option {{ (int) old('id_month') === $month->id ? 'selected' : '' }}
                                                 value="{{ $month->id }}">{{ $month->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="detail" class="block text-sm font-medium text-gray-700">Detalle de
+                                        carga</label>
+                                    <select id="detail" name="id_detail" autocomplete="detail" required
+                                        class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <option disabled selected hidden>Seleccione el tipo de carga</option>
+                                        @foreach ($details as $detail)
+                                            <option {{ (int) old('id_detail') === $detail->id ? 'selected' : '' }}
+                                                value="{{ $detail->id }}">{{ $detail->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -151,15 +179,6 @@
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
                 <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-50">
                             <tr>
@@ -173,12 +192,17 @@
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
+                                    Detalle de carga
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
                                     Desde
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
                                     Hasta
                                 </th>
+
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
                                     Descarga CSV
@@ -200,6 +224,9 @@
                                         {{ $import->month->name }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        {{ $import->detail->name }}
+                                    </td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $import->description_beginning }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
@@ -210,7 +237,11 @@
                                                 class="btn btn-success">Download CSV</button></a>
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
-                                        Eliminar
+                                        <form action="{{ route('import.destroy', $import->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

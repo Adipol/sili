@@ -47,4 +47,9 @@ class Control extends Model
 
     const PEP = 1;
     const LISTA = 2;
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->name_one} {$this->name_two} {$this->last_name_one} {$this->last_name_two}";
+    }
 }

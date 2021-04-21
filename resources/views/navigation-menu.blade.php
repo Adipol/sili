@@ -3,7 +3,12 @@ $nav_links = [
     [
         'name' => 'Cargar Información',
         'route' => route('import-export.index'),
-        'active' => request()->routeIs('import-export.index'),
+        //'active' => request()->routeIs('import-export.index'),
+    ],
+    [
+        'name' => 'Consultas',
+        'route' => route('consults.index'),
+        //active
     ],
 ];
 @endphp

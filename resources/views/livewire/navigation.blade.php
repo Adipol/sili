@@ -2,8 +2,7 @@
 $nav_links = [
     [
         'name' => 'Consultas',
-        'route' => '#',
-        'active' => false,
+        'route' => route('consults.index'),
     ],
     [
         'name' => 'Descargar Información',
@@ -13,7 +12,7 @@ $nav_links = [
     [
         'name' => 'Cargar Información',
         'route' => route('import.index'),
-        'active' => request()->routeIs('import.index'),
+        //'active' => request()->routeIs('import.index'),
     ],
 ];
 @endphp
@@ -97,7 +96,7 @@ $nav_links = [
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>

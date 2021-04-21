@@ -10,7 +10,7 @@ use App\Imports\TransactionsImport;
 use App\Models\Control;
 use App\Models\Import;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Model\Months;
+use App\Models\Detail;
 use App\Models\Month;
 
 class ImportController extends Controller
@@ -21,20 +21,9 @@ class ImportController extends Controller
         $records = Control::all()->last();
         $imports = Import::with('month')->orderBy('description_final', 'desc')->take(5)->get();
         $months = Month::all();
+        $details = Detail::all();
 
-        return view('supplier.import', compact('amount', 'records', 'imports', 'months'));
-    }
-
-    public function store(Request $request)
-    {
-        $import = new Import();
-        $import->year = $request->get('year');
-        $import->id_month = $request->get('id_month');
-        $import->description_beginning = $request->get('description_beginning');
-        $import->description_final = $request->get('description_final');
-        $import->save();
-
-        return back();
+        return view('supplier.import', compact('amount', 'records', 'imports', 'months', 'details'));
     }
 
     public function exportExcel($fecha)
@@ -57,15 +46,26 @@ class ImportController extends Controller
         $import = new Import();
         $import->year = $request->get('year');
         $import->id_month = $request->get('id_month');
+        $import->id_detail = $request->get('id_detail');
         $import->description_beginning = $request->get('description_beginning');
         $import->description_final = $request->get('description_final');
-        $import->save();
+        if ($request->get('description_final') >= $request->get('description_beginning')) {
+            $import->save();
 
-        Excel::import(new TransactionsImport, $request->import_file);
+            Excel::import(new TransactionsImport, $request->import_file);
 
-        \Session::put('success', 'Your file is imported successfully in database.');
+            \Session::put('success', 'Your file is imported successfully in database.');
 
-        return back();
-        //return redirect()->route('supplier.import')->with('notification', 'Registro ingresado exitosamente.');
+            return back();
+        } else {
+            return back()->with('danger', 'fecha incorrecta.');
+        }
+    }
+
+    public function destroy($id)
+    {
+        Import::findOrFail($id)->delete();
+
+        return back()->with('info', 'El registro se elimino con éxito');
     }
 }

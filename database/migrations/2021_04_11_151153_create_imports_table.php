@@ -21,8 +21,11 @@ class CreateImportsTable extends Migration
             $table->foreignId('id_month');
             $table->foreign('id_month')->references('id')->on('months');
 
-            $table->date('description_beginning');
-            $table->date('description_final');
+            $table->foreignId('id_detail');
+            $table->foreign('id_detail')->references('id')->on('details');
+
+            $table->date('description_beginning')->unique();
+            $table->date('description_final')->unique();
 
             $table->timestamps();
         });

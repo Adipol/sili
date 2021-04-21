@@ -17,4 +17,9 @@ class Import extends Model
     {
         return $this->belongsTo(Month::class, 'id_month');
     }
+
+    public function detail()
+    {
+        return $this->belongsTo(Detail::class, 'id_detail');
+    }
 }
