@@ -14,7 +14,7 @@ class ShowConsult extends Component
 
     public function render()
     {
-        $peps = Control::Where(DB::raw('CONCAT_WS(" ",name_one, name_two, last_name_one, last_name_two, nro_document)'), 'like', '%' . $this->search . '%')
+        $peps = Control::Where(DB::raw('CONCAT_WS(" ",name_one, name_two, last_name_one, last_name_two)'), 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->get();
 
