@@ -13,6 +13,7 @@
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
+
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
@@ -22,6 +23,7 @@
                                 <a class="btn btn-primary" href="{{ route('admin.users.edit', $user) }}">Editar</a>
                             </td>
                         </tr>
+
                     @endforeach
                 </tbody>
             </table>

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'siri',
             'email' => 'siri@email.com',
             'password' => bcrypt('siri123456'),
-            'id_entity' => '1'
+            'entity_id' => '1'
         ]);
         User::factory(15)->create();
     }
