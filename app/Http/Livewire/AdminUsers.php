@@ -12,6 +12,7 @@ class AdminUsers extends Component
     {
         $users = User::paginate(8);
 
+
         return view('livewire.admin-users', compact('users'));
     }
 }
