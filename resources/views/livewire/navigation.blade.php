@@ -17,7 +17,7 @@ $nav_links = [
 ];
 @endphp
 
-<nav class="bg-blue-900" x-data="{open:false}">
+<nav class="bg-blue-900 " x-data="{open:false}">
     <div class="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
 
@@ -75,7 +75,7 @@ $nav_links = [
                     </button>
 
                     <!-- Profile dropdown -->
-                    <div class="relative ml-3" x-data="{open: false}">
+                    <div class="relative inline ml-3 display:inline" x-data="{open: false}">
                         <div>
                             <button x-on:click=" open=true " type="button"
                                 class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
@@ -96,7 +96,7 @@ $nav_links = [
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>

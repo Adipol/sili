@@ -31,7 +31,7 @@ class PermissionSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'Listas rol'
+            'name' => 'Listar rol'
         ]);
 
         Permission::create([

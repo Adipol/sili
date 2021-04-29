@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="relative overflow-hidden bg-white">
+    <div class="relative overflow-hidden bg-white ">
         <div class="w-full mx-auto max-w-7xl">
             <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
                 <svg class="absolute inset-y-0 right-0 hidden w-48 h-full text-white transform translate-x-1/2 lg:block"
