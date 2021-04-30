@@ -254,16 +254,12 @@ return [
             'can'  => 'Leer usuarios',
             'active' => ['admin/users*']
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'SEGUIMIENTO'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Usuarios',
+            'url'  => 'admin.trackings.index',
+            'icon' => 'fas fa-fw fa-address-book',
+            'active' => ['admin/trackings*']
         ],
         [
             'text'    => 'multilevel',
