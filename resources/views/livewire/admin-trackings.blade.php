@@ -1,40 +1,44 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <input class="form-control w-100" placeholder="Escriba un nombre">
+            <input class="form-control w-100" placeholder="Escriba el usuario a buscar">
         </div>
-        {{-- @if ($users->count()) --}}
-        <div class="card-body">
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>device type</th>
-                        <th>Email</th>
-                        <th>Entidad</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($devices as $device)
-
+        @if ($devices->count())
+            <div class="card-body table-responsive">
+                <table class="table table-striped">
+                    <thead>
                         <tr>
-                            <td>1</td>
-                            <td>{{ $device->device_type }}</td>
-                            <td>2</td>
-                            <td>3</td>
+                            <th>ID</th>
+                            <th>Usuario</th>
+                            <th>Ip</th>
+                            <th>Navegador</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de actualización</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($devices as $device)
 
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        {{-- <div class="card-footer">
-                {{ $users->links() }}
+                            <tr>
+                                <td>2</td>
+                                <td>{{ $device->name }}</td>
+                                <td>{{ $device->ip }}</td>
+                                <td>{{ $device->device_type }}</td>
+                                <td>{{ $device->created_at }}</td>
+                                <td>{{ $device->updated_at }}</td>
+                            </tr>
+
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{-- <div class="row justify-content-center">
+                {{ $devices->links() }}
             </div> --}}
-        {{-- @else
+        @else
             <div class="card-body">
                 <strong>No hay registros</strong>
             </div>
-        @endif --}}
+        @endif
     </div>
 </div>

@@ -6,7 +6,7 @@ $nav_links = [
     ],
     [
         'name' => 'Descargar Información',
-        'route' => '#',
+        'route' => route('client.index'),
         'active' => false,
     ],
     [
