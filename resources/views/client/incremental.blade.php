@@ -13,10 +13,11 @@
         <article class="mb-6 card">
             <div class="card-body bh-gray-100">
                 <header>
-                    <h1 class="cursor-pointer"><strong>Año: </strong>{{ $import->year }}</h1>
+                    <h1 class="cursor-pointer"><strong>Fecha: </strong>{{ $import->description_beginning }}
+                        <strong>al </strong>{{ $import->description_final }}
+                    </h1>
                 </header>
             </div>
-
         </article>
     @endforeach
 </x-client-layout>
