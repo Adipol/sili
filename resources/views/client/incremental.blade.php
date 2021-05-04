@@ -14,8 +14,11 @@
             <div class="card-body bh-gray-100">
                 <header>
                     <h1 class="cursor-pointer"><strong>Fecha: </strong>{{ $import->description_beginning }}
-                        <strong>al </strong>{{ $import->description_final }}
+                        <strong>al </strong>{{ $import->description_final->format('d/m/Y') }}
                     </h1>
+                    <div>
+                        {{ $import->created_at->format('d/m/Y') }}
+                    </div>
                 </header>
             </div>
         </article>
