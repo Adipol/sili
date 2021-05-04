@@ -16,7 +16,7 @@ class ShowConsult extends Component
     {
         $peps = Control::Where(DB::raw('CONCAT_WS(" ",name_one, name_two, last_name_one, last_name_two)'), 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
-            ->get();
+            ->paginate(8);
 
         return view('livewire.show-consult', compact('peps'));
     }
