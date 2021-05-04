@@ -41,7 +41,7 @@
                     </li>
                 </ul>
             </aside>
-            <div class="col-span-4 bg-white shadow card">
+            <div class="col-span-4 card">
                 <main class="card-body">
                     {{ $slot }}
                 </main>
