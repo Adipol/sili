@@ -12,6 +12,11 @@ class Import extends Model
 
     protected $guarded = ['id'];
 
+    protected $dates = [
+        'description_beginning',
+        'description_final'
+    ];
+
     /** @return HasMany  */
     public function month()
     {

@@ -24,8 +24,8 @@ class CreateImportsTable extends Migration
             $table->foreignId('id_detail');
             $table->foreign('id_detail')->references('id')->on('details');
 
-            $table->datetime('description_beginning')->unique();
-            $table->datetime('description_final')->unique();
+            $table->date('description_beginning')->unique();
+            $table->date('description_final')->unique();
 
             $table->timestamps();
         });
