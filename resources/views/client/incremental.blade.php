@@ -15,8 +15,8 @@
                 <header class="flex items-center justify-between">
                     <h1 x-on:click="open=!open" class="cursor-pointer"> <i class="far fa-calendar-alt"></i>
                         <strong>Fecha:
-                        </strong>{{ $item->description_beginning->format('d/m/Y') }}
-                        <strong>al </strong>{{ $item->description_final->format('d/m/Y') }}
+                        </strong>{{ $item->description_beginning->formatLocalized('%d %B %Y') }}
+                        <strong>al </strong>{{ $item->description_final->formatLocalized('%d %B %Y') }}
                     </h1>
                     <div>
                         <strong>Cargado:
@@ -26,6 +26,13 @@
                 <div x-show="open">
                     @livewire('incremental',['import'=>$item],key($item->id))
                 </div>
+                <div class="flex items-center justify-end">
+                    <a href="{{ route('exportExcel', $item->description_final) }}"><button
+                            class="mt-4 mr-2 btn btn-blue">Descarga
+                            CSV</button></a>
+                    <button class="mt-4 btn btn-green">Descarga XLSX</button>
+                </div>
+
             </div>
         </article>
     @endforeach

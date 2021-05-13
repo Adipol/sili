@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'logo' => '<b>Sitio de </b>LISTAS',
+    'logo' => '<b>Listas',
     'logo_img' => 'img/home/logow.png',
     'logo_img_class' => 'brand-image  elevation-3',
     'logo_img_xl' => null,

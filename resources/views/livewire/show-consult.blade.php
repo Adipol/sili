@@ -1,12 +1,25 @@
 <div>
-    {{ $search }}
-
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <x-table>
             <div class="px-6 py-4">
-                <label for="price" class="block text-sm font-medium text-gray-700">Nombre o Nro. de documento</label>
-                <x-jet-input class="w-full mt-1" placeholder="Escriba el dato de búsqueda" type="text"
-                    wire:model="search" />
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="price" class="block text-sm font-medium text-gray-700">Nombre</label>
+                        <x-jet-input class="w-full mt-1" placeholder="Escriba el nombre de persona" type="text"
+                            wire:model="search" />
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="price" class="block text-sm font-medium text-gray-700">Apellido</label>
+                        <x-jet-input class="w-full mt-1" placeholder="Escriba el apellido de la persona" type="text"
+                            wire:model="search1" />
+                    </div>
+                    <div class="col-span-6 sm:col-span-3">
+                        <label for="price" class="block text-sm font-medium text-gray-700">Nro. de documento</label>
+                        <x-jet-input class="w-full mt-1" placeholder="Escriba el numero de documento" type="text"
+                            wire:model="search2" />
+                    </div>
+                </div>
+
             </div>
             @if ($peps->count())
                 <table class="min-w-full divide-y divide-gray-200">
@@ -33,31 +46,11 @@
                                 wire:click="order('type_document')">
                                 Documento
 
-                                @if ($sort == 'type_document')
-                                    @if ($direction == 'asc')
-                                        <i class="float-right mt-1 fas fa-sort-alpha-down"></i>
-                                    @else
-                                        <i class="float-right mt-1 fas fa-sort-alpha-up"></i>
-                                    @endif
-                                @else
-                                    <i class="float-right mt-1 fas fa-sort"></i>
-                                @endif
-
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                                 wire:click="order('nro_document')">
                                 Nro. de Documento
-
-                                @if ($sort == 'nro_document')
-                                    @if ($direction == 'asc')
-                                        <i class="float-right mt-1 fas fa-sort-numeric-down"></i>
-                                    @else
-                                        <i class="float-right mt-1 fas fa-sort-numeric-up"></i>
-                                    @endif
-                                @else
-                                    <i class="float-right mt-1 fas fa-sort"></i>
-                                @endif
 
                             </th>
                             <th scope="col"
@@ -65,31 +58,11 @@
                                 wire:click="order('code')">
                                 Tipo
 
-                                @if ($sort == 'code')
-                                    @if ($direction == 'asc')
-                                        <i class="float-right mt-1 fas fa-sort-alpha-down"></i>
-                                    @else
-                                        <i class="float-right mt-1 fas fa-sort-alpha-up"></i>
-                                    @endif
-                                @else
-                                    <i class="float-right mt-1 fas fa-sort"></i>
-                                @endif
-
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                                 wire:click="order('position_country')">
                                 País
-
-                                @if ($sort == 'position_country')
-                                    @if ($direction == 'asc')
-                                        <i class="float-right mt-1 fas fa-sort-alpha-down"></i>
-                                    @else
-                                        <i class="float-right mt-1 fas fa-sort-alpha-up"></i>
-                                    @endif
-                                @else
-                                    <i class="float-right mt-1 fas fa-sort"></i>
-                                @endif
 
                             </th>
                             <th scope="col"
@@ -97,31 +70,11 @@
                                 wire:click="order('position')">
                                 cargo
 
-                                @if ($sort == 'position')
-                                    @if ($direction == 'asc')
-                                        <i class="float-right mt-1 fas fa-sort-alpha-down"></i>
-                                    @else
-                                        <i class="float-right mt-1 fas fa-sort-alpha-up"></i>
-                                    @endif
-                                @else
-                                    <i class="float-right mt-1 fas fa-sort"></i>
-                                @endif
-
                             </th>
                             <th scope="col"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                                 wire:click="order('management')">
                                 Gestión
-
-                                @if ($sort == 'management')
-                                    @if ($direction == 'asc')
-                                        <i class="float-right mt-1 fas fa-sort-numeric-down"></i>
-                                    @else
-                                        <i class="float-right mt-1 fas fa-sort-numeric-up"></i>
-                                    @endif
-                                @else
-                                    <i class="float-right mt-1 fas fa-sort"></i>
-                                @endif
 
                             </th>
                             <th scope="col"

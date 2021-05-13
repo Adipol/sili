@@ -12,6 +12,7 @@ use App\Models\Import;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Detail;
 use App\Models\Month;
+use Carbon\Carbon;
 
 class ImportController extends Controller
 {
@@ -28,8 +29,15 @@ class ImportController extends Controller
 
     public function exportExcel($fecha)
     {
+        $trans = strtotime($fecha);
+        $trans1 = date('d-m-Y', $trans);
+
         // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
-        return (new TransactionsExport)->forYear($fecha)->download('invoices.csv');
+        // return (new TransactionsExport)->forYear($fecha)->download('invoices.csv');
+        //return (new TransactionsExport)->forYear($fecha)->download('AGREGADOS_HASTA_' . $trans) . '.csv';
+        // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
+        // return (new TransactionsExport)->forYear($fecha)->download('invoices.csv');
+        return (new TransactionsExport)->forYear($fecha)->download('AGREGADOS_HASTA_' . $trans1 . '.csv');
     }
 
     public function exportXlsx($fecha)
