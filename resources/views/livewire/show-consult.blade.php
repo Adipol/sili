@@ -4,19 +4,16 @@
             <div class="px-6 py-4">
                 <div class="grid grid-cols-6 gap-6">
                     <div class="col-span-6 sm:col-span-3">
-                        <label for="price" class="block text-sm font-medium text-gray-700">Nombre</label>
-                        <x-jet-input class="w-full mt-1" placeholder="Escriba el nombre de persona" type="text"
+                        <label for="price" class="block text-sm font-medium text-gray-700">Nombre o numero de
+                            documento</label>
+                        <x-jet-input class="w-full mt-1"
+                            placeholder="Escriba el nombre de persona o su numero de documento" type="text"
                             wire:model="search" />
                     </div>
                     <div class="col-span-6 sm:col-span-3">
                         <label for="price" class="block text-sm font-medium text-gray-700">Apellido</label>
                         <x-jet-input class="w-full mt-1" placeholder="Escriba el apellido de la persona" type="text"
                             wire:model="search1" />
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="price" class="block text-sm font-medium text-gray-700">Nro. de documento</label>
-                        <x-jet-input class="w-full mt-1" placeholder="Escriba el numero de documento" type="text"
-                            wire:model="search2" />
                     </div>
                 </div>
 
