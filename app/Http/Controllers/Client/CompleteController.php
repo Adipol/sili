@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CompleteController extends Controller
 {
     public function index()
     {
-        return view('client.complete');
+        $control_one = DB::table('controls')->orderBy('report_date')->first();
+        $control_two = DB::table('controls')->orderBy('report_date')->get();
+        $control_three = $control_two->last();
+
+        return view('client.complete', compact('control_one', 'control_three'));
     }
 }

@@ -74,7 +74,7 @@
                                 Gestión
 
                             </th>
-                            <th scope="col"
+                            <th scope="col" colspan="2"
                                 class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                 Opciones
                             </th>
@@ -105,8 +105,13 @@
                                 <td class="px-6 py-4 text-xs font-medium">
                                     {{ $pep->management }}
                                 </td>
-                                <td class="px-6 py-4 text-sm font-medium">
+                                <td class="text-sm font-medium " title="Detalle de la persona">
                                     @livewire('show-pep',['pep' => $pep], key($pep->id))
+                                </td>
+                                <td class="text-sm font-medium " title="Detalle de allegados">
+                                    <a class="btn btn-green">
+                                        <i class="fas far fa-people-arrows"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach
