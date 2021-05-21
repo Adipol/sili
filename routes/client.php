@@ -17,3 +17,6 @@ Route::get('exportExcel/{fecha}', [IncrementalController::class, 'exportExcel'])
 Route::get('consults', [ConsultController::class, 'index'])->name('consults.index');
 
 Route::get('all/{id}', [AllController::class, 'show'])->name('all.show');
+
+
+Route::get('exportCsv', [CompleteController::class, 'exportCsv'])->name('complete.exportCsv');

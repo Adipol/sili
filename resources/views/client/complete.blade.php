@@ -1,11 +1,5 @@
 <x-client-layout>
-    {{-- <header class="mb-6 bg-white shadow">
-        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold text-gray-900">
-                Descarga
-            </h1>
-        </div>
-    </header> --}}
+
     <h1 class="text-2xl font-bold">Información de la lista completa</h1>
     <hr class="mt-2 mb-6">
 
@@ -25,13 +19,14 @@
             {{-- <div x-show="open">
                     @livewire('incremental',['import'=>$item],key($item->id))
                 </div> --}}
-            <div class="flex items-center justify-end">
-                {{-- <a href="{{ route('exportExcel', $item->description_final) }}"><button
-                        class="mt-4 mr-2 btn btn-blue">Descarga
-                        CSV</button></a> --}}
-                <button class="mt-4 btn btn-green">Descarga XLSX</button>
+            <div class="flex items-center justify-between">
+                <div>
+                    <strong>Cantidad total de registros:
+                    </strong> {{ $controls }}
+                </div>
+                <a href="{{ route('complete.exportCsv') }}"><button class="mt-4 mr-2 btn btn-blue">Descarga
+                        CSV</button></a>
             </div>
-
         </div>
     </article>
 </x-client-layout>
