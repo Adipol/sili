@@ -32,18 +32,15 @@ class ImportController extends Controller
         $trans = strtotime($fecha);
         $trans1 = date('d-m-Y', $trans);
 
-        // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
-        // return (new TransactionsExport)->forYear($fecha)->download('invoices.csv');
-        //return (new TransactionsExport)->forYear($fecha)->download('AGREGADOS_HASTA_' . $trans) . '.csv';
-        // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
-        // return (new TransactionsExport)->forYear($fecha)->download('invoices.csv');
-        return (new TransactionsExport)->forYear($fecha)->download('AGREGADOS_HASTA_' . $trans1 . '.csv');
+        return (new TransactionsExport)->forYear($fecha)->download('CSV_AGREGADOS_HASTA_EL_' . $trans1 . '.csv');
     }
 
     public function exportXlsx($fecha)
     {
-        // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
-        return (new TransactionsExport)->forYear($fecha)->download('invoices.xlsx');
+        $trans = strtotime($fecha);
+        $trans1 = date('d-m-Y', $trans);
+
+        return (new TransactionsExport)->forYear($fecha)->download('XLSX_AGREGADOS_HASTA_EL_' . $trans1 . '.xlsx');
     }
 
     /**

@@ -205,7 +205,7 @@
 
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Descarga CSV
+                                    Descarga
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
@@ -234,13 +234,17 @@
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <a href="{{ route('exportExcel', $import->description_final) }}"><button
-                                                class="btn btn-success">Download CSV</button></a>
+                                                class="mt-4 mr-2 btn btn-blue">Descarga
+                                                CSV</button></a>
+                                        <a href="{{ route('exportXlsx', $import->description_final) }}"><button
+                                                class="mt-4 mr-2 btn btn-green">Descarga
+                                                XLSX</button></a>
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <form action="{{ route('import.destroy', $import->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button class="mt-4 mr-2 btn btn-red">Eliminar</button>
                                         </form>
                                     </td>
                                 </tr>
