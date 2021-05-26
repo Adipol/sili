@@ -9,8 +9,8 @@
                 <header class="flex items-center justify-between">
                     <h1 x-on:click="open=!open" class="cursor-pointer"> <i class="far fa-calendar-alt"></i>
                         <strong>Fecha:
-                        </strong>{{ $import->description_beginning }}
-                        <strong>al </strong>{{ $import->description_final }}
+                        </strong>{{ $import->description_beginning->formatLocalized('%d %B %Y') }}
+                        <strong>al </strong>{{ $import->description_final->formatLocalized('%d %B %Y') }}
                     </h1>
                     <div>
                         <strong>Cargado:

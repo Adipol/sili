@@ -5,27 +5,47 @@
         <div class="card-body bh-gray-100">
             <header class="flex items-center justify-between">
                 <h1> <i class="far fa-calendar-alt"></i>
-                    <strong>Fecha:
-                    </strong>{{ $control_one->report_date }}
-                    <strong>al </strong>{{ $control_three->report_date }}
+                    <strong>Fecha: </strong>
+                    @if ($control_one->report_date)
+                        {{ $control_one->report_date->formatLocalized('%d %B %Y') }}
+                    @else
+                        Sin registros
+                    @endif
+
+                    <strong>al </strong>
+                    @if ($control_three->report_date)
+                        {{ $control_three->report_date->formatLocalized('%d %B %Y') }}
+                    @else
+                        Sin registros
+                    @endif
+
+
                 </h1>
                 <div>
-                    <strong>actualizado:
-                    </strong> {{ $control_three->created_at }}
+                    <strong>Actualizado: </strong>
+                    @if ($control_three->created_at)
+                        {{ $control_three->created_at->diffForHumans() }}
+                    @else
+                        Sin registros
+                    @endif
+
                 </div>
             </header>
-            {{-- <div x-show="open">
-                    @livewire('incremental',['import'=>$item],key($item->id))
-                </div> --}}
-            <div class="flex items-center justify-end">
-                <a href="{{ route('complete.exportCsv', $control_three->report_date) }}"><button
-                        class="mt-4 mr-2 btn btn-blue">Descarga
-                        CSV</button></a>
-                <a href="{{ route('complete.exportXlsx', $control_three->report_date) }}"><button
-                        class="mt-4 mr-2 btn btn-green">Descarga
-                        XLSX</button></a>
-            </div>
 
+            <div class="flex items-center justify-between">
+                <div>
+                    <strong>Cantidad total de registros:
+                    </strong> {{ $control_two->count() }}
+                </div>
+                <div>
+                    <a href="{{ route('complete.exportCsv', $control_three->report_date) }}"><button
+                            class="mt-4 mr-2 btn btn-blue">Descarga
+                            CSV</button></a>
+                    <a href="{{ route('complete.exportXlsx', $control_three->report_date) }}"><button
+                            class="mt-4 mr-2 btn btn-green">Descarga
+                            XLSX</button></a>
+                </div>
+            </div>
         </div>
     </article>
 </x-client-layout>

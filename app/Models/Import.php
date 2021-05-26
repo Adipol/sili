@@ -12,7 +12,7 @@ class Import extends Model
 
     protected $guarded = ['id'];
 
-    protected $date = [
+    protected $dates = [
         'description_beginning',
         'description_final'
     ];

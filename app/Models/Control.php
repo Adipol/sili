@@ -12,6 +12,8 @@ class Control extends Model
     protected $table = 'controls';
     protected $guarded = array();
 
+    protected $dates = ['report_date'];
+
     protected $fillable = [
         'id_pep',
         'id_all',

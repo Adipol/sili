@@ -6,13 +6,15 @@ use App\Exports\TransactionsExport;
 use App\Http\Controllers\Controller;
 use App\Models\Import;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class IncrementalController extends Controller
 {
     public function index()
     {
-        // $imports = Import::latest()->take(20)->get();
-        $imports = Import::all();
+        $imports = Import::latest()->take(5)->get();
+
+        //$imports = Import::all();
 
         return view('client.incremental', compact('imports'));
     }
