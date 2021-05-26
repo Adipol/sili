@@ -10,7 +10,7 @@ class IncrementalController extends Controller
 {
     public function index()
     {
-        $imports = Import::latest()
+        $imports = Import::oldest()
             ->take(3)
             ->get();
 
