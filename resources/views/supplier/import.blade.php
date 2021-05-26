@@ -205,7 +205,7 @@
 
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Descarga CSV
+                                    Descarga
                                 </th>
                                 <th scope="col"
                                     class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
@@ -216,7 +216,6 @@
                         <tbody class="bg-white divide-y divide-gray-200">
                             @foreach ($imports as $import)
                                 <tr>
-
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                         {{ $import->year }}
                                     </td>
@@ -233,8 +232,10 @@
                                         {{ $import->description_final }}
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
-                                        <a href="{{ route('exportExcel', $import->description_final) }}"><button
+                                        <a href="{{ route('exportCsv', $import->description_final) }}"><button
                                                 class="btn btn-success">Download CSV</button></a>
+                                        <a href="{{ route('exportXlsx', $import->description_final) }}"><button
+                                                class="btn btn-success">Download XLSX</button></a>
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <form action="{{ route('import.destroy', $import->id) }}" method="POST">

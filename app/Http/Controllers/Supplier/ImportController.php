@@ -26,15 +26,13 @@ class ImportController extends Controller
         return view('supplier.import', compact('amount', 'records', 'imports', 'months', 'details'));
     }
 
-    public function exportExcel($fecha)
+    public function exportCsv($fecha)
     {
-        // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
         return (new TransactionsExport)->forYear($fecha)->download('invoices.csv');
     }
 
     public function exportXlsx($fecha)
     {
-        // return Excel::download(new TransactionsExport, 'transactions.' . 'csv')->forYear($fecha);
         return (new TransactionsExport)->forYear($fecha)->download('invoices.xlsx');
     }
 
