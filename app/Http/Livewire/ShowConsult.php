@@ -20,8 +20,7 @@ class ShowConsult extends Component
             ->where(function ($query) {
                 $query->Where(DB::raw('CONCAT_WS(" ",last_name_one, last_name_two)'), 'like', '%' . $this->search1 . '%');
             })
-            ->orWhere('nro_document', $this->search2)
-            //->orWhere(DB::raw('CONCAT_WS(" ",last_name_one, last_name_two)'), 'like', '%' . $this->search1 . '%')
+            ->orWhere('nro_document', $this->search)
             ->orderBy($this->sort, $this->direction)
             ->paginate(18);
 
