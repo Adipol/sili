@@ -1,6 +1,6 @@
 <div>
     <a class="btn btn-blue" wire:click="$set('open',true)">
-        <i class="fas far fa-binoculars"></i>
+        <i class="fas far fa-binoculars"> </i>
     </a>
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">

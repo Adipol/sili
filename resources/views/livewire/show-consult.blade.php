@@ -101,12 +101,12 @@
                         <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->management }}
                         </td>
-                        <td class="px-6 py-4 text-sm font-medium" title="Detalle de la persona">
+                        <td class="px-1 py-4 text-sm font-medium" title="Detalle de la persona">
                             @livewire('show-pep',['pep' => $pep], key($pep->id))
                         </td>
-                        <td class="text-sm font-medium " title="Detalle de allegados">
+                        <td class="px-1 font-medium py-4text-sm " title="Detalle de allegados">
                             <a class="btn btn-green" href="{{ route('all.show', $pep->id_pep) }}">
-                                <i class="fas far fa-people-arrows"></i>
+                                <i class="fas far fa-people-arrows"> </i>
                             </a>
                         </td>
                     </tr>
