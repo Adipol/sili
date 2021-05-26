@@ -10,9 +10,7 @@ class IncrementalController extends Controller
 {
     public function index()
     {
-        $imports = Import::oldest()
-            ->take(3)
-            ->get();
+        $imports = Import::all();
 
         return view('client.incremental', compact('imports'));
     }
