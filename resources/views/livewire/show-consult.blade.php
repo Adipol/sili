@@ -105,7 +105,7 @@
                             @livewire('show-pep',['pep' => $pep], key($pep->id))
                         </td>
                         <td class="text-sm font-medium " title="Detalle de allegados">
-                            <a class="btn btn-green">
+                            <a class="btn btn-green" href="{{ route('all.show', $pep->id) }}">
                                 <i class="fas far fa-people-arrows"></i>
                             </a>
                         </td>
