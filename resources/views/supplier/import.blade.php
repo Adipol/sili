@@ -147,10 +147,10 @@
                                                     <input id="file-upload" name="import_file" type="file"
                                                         class="sr-only" required="required">
                                                 </label>
-                                                <p class="pl-1">o arrastrar y soltar</p>
+                                                {{-- <p class="pl-1">o arrastrar y soltar</p> --}}
                                             </div>
                                             <p class="text-xs text-gray-500">
-                                                CSV con separador pipe
+                                                CSV UTF-8 con separador ;
                                             </p>
                                         </div>
                                     </div>
@@ -227,9 +227,9 @@
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <a href="{{ route('exportCsv', $import->description_final) }}"><button
-                                                class="btn btn-success">Download CSV</button></a>
+                                                class="mt-4 mr-2 btn btn-blue">Download CSV</button></a>
                                         <a href="{{ route('exportXlsx', $import->description_final) }}"><button
-                                                class="btn btn-success">Download XLSX</button></a>
+                                                class="mt-4 mr-2 btn btn-green">Download XLSX</button></a>
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <form action="{{ route('import.destroy', $import->id) }}" method="POST">
