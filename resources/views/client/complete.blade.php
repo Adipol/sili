@@ -18,10 +18,12 @@
                     @livewire('incremental',['import'=>$item],key($item->id))
                 </div> --}}
             <div class="flex items-center justify-end">
-                {{-- <a href="{{ route('exportExcel', $item->description_final) }}"><button
+                <a href="{{ route('complete.exportCsv', $control_three->report_date) }}"><button
                         class="mt-4 mr-2 btn btn-blue">Descarga
-                        CSV</button></a> --}}
-                <button class="mt-4 btn btn-green">Descarga XLSX</button>
+                        CSV</button></a>
+                <a href="{{ route('complete.exportXlsx', $control_three->report_date) }}"><button
+                        class="mt-4 mr-2 btn btn-green">Descarga
+                        XLSX</button></a>
             </div>
 
         </div>

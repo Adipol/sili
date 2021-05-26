@@ -18,3 +18,7 @@ Route::get('incremental/exportCsv/{fecha}', [IncrementalController::class, 'expo
 Route::get('incremental/exportXlsx/{fecha}', [IncrementalController::class, 'exportXlsx'])->name('incremental.exportXlsx');
 
 Route::get('all/{id}', [AllController::class, 'show'])->name('all.show');
+
+Route::get('complete/exportCsv/{fecha}', [CompleteController::class, 'exportCsv'])->name('complete.exportCsv');
+
+Route::get('complete/exportXlsx/{fecha}', [CompleteController::class, 'exportXlsx'])->name('complete.exportXlsx');
