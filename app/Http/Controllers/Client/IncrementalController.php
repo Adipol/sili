@@ -19,11 +19,17 @@ class IncrementalController extends Controller
 
     public function exportCsv($fecha)
     {
-        return (new TransactionsExport)->forYear($fecha)->download('CSV_LISTA_INCREMENTAL' . '.csv');
+        $trans = strtotime($fecha);
+        $trans1 = date('d-m-Y', $trans);
+
+        return (new TransactionsExport)->forYear($fecha)->download('CSV_LISTA_INCREMENTAL_AL_' . $trans1 .  '.csv');
     }
 
     public function exportXlsx($fecha)
     {
-        return (new TransactionsExport)->forYear($fecha)->download('XLSX_LISTA_INCREMENTAL' . '.xlsx');
+        $trans = strtotime($fecha);
+        $trans1 = date('d-m-Y', $trans);
+
+        return (new TransactionsExport)->forYear($fecha)->download('XLSX_LISTA_INCREMENTAL_AL_' . $trans1 .  '.xlsx');
     }
 }
