@@ -1,10 +1,10 @@
 <div>
     <a class="btn btn-blue" wire:click="$set('open',true)">
-        <i class="fas far fa-eye"></i>
+        <i class="fas far fa-binoculars"></i>
     </a>
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
-            Información de la persona
+            Detalle de la persona
         </x-slot>
         <x-slot name="content">
             <div class="grid grid-cols-2 gap-4 mb-4">
@@ -60,7 +60,7 @@
                 </div>
                 <div>
                     <x-jet-label value="Justificación" />
-                    <textarea wire:model="pep.justification" class="w-full form-control readonly" rows="6"></textarea>
+                    <textarea wire:model="pep.justification" class="w-full form-control readonly" rows="3"></textarea>
                 </div>
             </div>
         </x-slot>
