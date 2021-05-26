@@ -13,8 +13,15 @@ class ShowPep extends Component
     protected $rules = [
         'pep.name_one' => 'required',
         'pep.name_two' => 'required',
-        'pep.first_name_one' => 'required',
-        'pep.first_name_two' => 'required'
+        'pep.last_name_one' => 'required',
+        'pep.last_name_two' => 'required',
+        'pep.type_document' => 'required',
+        'pep.nro_document' => 'required',
+        'pep.code' => 'required',
+        'pep.position' => 'required',
+        'pep.entity' => 'required',
+        'pep.management' => 'required',
+        'pep.justification' => 'required',
     ];
 
     public function mount(Control $pep)
