@@ -17,6 +17,14 @@
                         </strong> {{ $import->created_at->diffForHumans() }}
                     </div>
                 </header>
+                <div class="flex items-center justify-end">
+                    <a href="{{ route('incremental.exportCsv', $import->description_final) }}"><button
+                            class="mt-4 mr-2 btn btn-blue">Descarga
+                            CSV</button></a>
+                    <a href="{{ route('incremental.exportXlsx', $import->description_final) }}"><button
+                            class="mt-4 mr-2 btn btn-green">Descarga
+                            XLSX</button></a>
+                </div>
             </div>
 
         </article>
