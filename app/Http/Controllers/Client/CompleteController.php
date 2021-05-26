@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class IncrementalController extends Controller
+class CompleteController extends Controller
 {
     public function index()
     {
-        return view('client.incremental');
+        return view('client.complete');
     }
 }

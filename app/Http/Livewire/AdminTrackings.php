@@ -9,7 +9,7 @@ class AdminTrackings extends Component
 {
     public function render()
     {
-        $devices = db::table('device_user')
+        $devices = DB::table('device_user')
             ->join('devices', 'device_user.device_id', '=', 'devices.id')
             ->join('users', 'device_user.user_id', '=', 'users.id')
             ->select('users.name', 'devices.*')
