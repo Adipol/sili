@@ -12,10 +12,6 @@ class CompleteController extends Controller
 {
     public function index()
     {
-        //$control_one = DB::table('controls')->orderBy('report_date')->first();
-        //$control_two = DB::table('controls')->orderBy('report_date')->get();
-        // $control_three = $control_two->last();
-
         $control_one = Control::orderBy('report_date')->first();
         $control_two = Control::orderBy('report_date')->get();
         $control_three = $control_two->last();

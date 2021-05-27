@@ -110,11 +110,13 @@
                         <td class="px-1 py-4 text-sm font-medium" title="Detalle de la persona">
                             @livewire('show-pep',['pep' => $pep], key($pep->id))
                         </td>
-                        <td class="px-1 font-medium py-4text-sm " title="Detalle de allegados">
-                            <a class="btn btn-green" href="{{ route('all.show', $pep->id_pep) }}">
-                                <i class="fas far fa-people-arrows"> </i>
-                            </a>
-                        </td>
+                        @if ($pep->type == 1)
+                            <td class="px-1 font-medium py-4text-sm " title="Detalle de allegados">
+                                <a class="btn btn-green" href="{{ route('all.show', $pep->id_pep) }}">
+                                    <i class="fas far fa-people-arrows"> </i>
+                                </a>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
             </tbody>
