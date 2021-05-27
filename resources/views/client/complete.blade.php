@@ -6,29 +6,13 @@
             <header class="flex items-center justify-between">
                 <h1> <i class="far fa-calendar-alt"></i>
                     <strong>Fecha: </strong>
-                    @if ($control_one->report_date)
-                        {{ $control_one->report_date->formatLocalized('%d %B %Y') }}
-                    @else
-                        Sin registros
-                    @endif
-
+                    {{ $inicio1 }}
                     <strong>al </strong>
-                    @if ($control_three->report_date)
-                        {{ $control_three->report_date->formatLocalized('%d %B %Y') }}
-                    @else
-                        Sin registros
-                    @endif
-
-
+                    {{ $fin1 }}
                 </h1>
                 <div>
                     <strong>Actualizado: </strong>
-                    @if ($control_three->created_at)
-                        {{ $control_three->created_at->diffForHumans() }}
-                    @else
-                        Sin registros
-                    @endif
-
+                    {{ $control_three->created_at->diffForHumans() }}
                 </div>
             </header>
 
