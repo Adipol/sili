@@ -17,6 +17,7 @@ class ShowPep extends Component
         'pep.last_name_two' => 'required',
         'pep.type_document' => 'required',
         'pep.nro_document' => 'required',
+        'pep.extension' => 'required',
         'pep.code' => 'required',
         'pep.position' => 'required',
         'pep.entity' => 'required',

@@ -5,12 +5,14 @@ namespace App\Http\Livewire;
 use App\Models\Control;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ShowConsult extends Component
 {
+    use WithPagination;
+
     public $search;
     public $search1;
-    public $search2;
     public $sort = 'name_one';
     public $direction = 'asc';
 
@@ -22,7 +24,7 @@ class ShowConsult extends Component
             })
             ->orWhere('nro_document', $this->search)
             ->orderBy($this->sort, $this->direction)
-            ->paginate(18);
+            ->paginate(10);
 
         return view('livewire.show-consult', compact('peps'));
     }
@@ -39,5 +41,15 @@ class ShowConsult extends Component
             $this->sort = $sort;
             $this->direction = 'asc';
         }
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSearch1()
+    {
+        $this->resetPage();
     }
 }

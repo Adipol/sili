@@ -1,6 +1,4 @@
 <div>
-    {{ $search }}
-
     <div class="px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <x-table>
             <div class="px-6 py-4">
@@ -52,6 +50,11 @@
                     </th>
                     <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
+                        wire:click="order('extension')">
+                        Extension
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('code')">
                         Tipo
                     </th>
@@ -89,6 +92,9 @@
                             {{ $pep->nro_document }}
                         </td>
                         <td class="px-6 py-4 text-xs font-medium">
+                            {{ $pep->extension }}
+                        </td>
+                        <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->code }}</>
                         </td>
                         <td class="px-6 py-4 text-xs font-medium">
@@ -116,6 +122,12 @@
     @else
         <div class="px-6 py-4 text-center">
             No existe ningún registro que coincida
+        </div>
+    @endif
+
+    @if ($peps->hasPages())
+        <div class="px-6 py-3">
+            {{ $peps->links() }}
         </div>
     @endif
 
