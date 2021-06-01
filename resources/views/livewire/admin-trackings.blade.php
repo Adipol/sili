@@ -1,15 +1,18 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <input class="form-control w-100" placeholder="Escriba el usuario a buscar">
+
+            <input class="form-control w-100" placeholder="Escriba el usuario o email" type="text"
+                wire:model="search" />
+
         </div>
 
         <div class="card-body table-responsive">
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Usuario</th>
+                        <th>Email</th>
                         <th>Ip</th>
                         <th>Navegador</th>
                         <th>Fecha de inicio</th>
@@ -19,8 +22,8 @@
                 <tbody>
                     @foreach ($devices as $device)
                         <tr>
-                            <td>2</td>
                             <td>{{ $device->name }}</td>
+                            <td>{{ $device->email }}</td>
                             <td>{{ $device->ip }}</td>
                             <td>{{ $device->device_type }}</td>
                             <td>{{ $device->created_at }}</td>

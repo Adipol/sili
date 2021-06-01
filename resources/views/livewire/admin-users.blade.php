@@ -1,15 +1,13 @@
 <div>
     <div class="card">
         <div class="card-header">
-            <input wire:keydown="limpiar_page" wire:model="search" class="form-control w-100"
-                placeholder="Escriba un nombre">
+            <input wire:model="search" class="form-control w-100" placeholder="Escriba el usuario o email">
         </div>
         @if ($users->count())
             <div class="card-body">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Nombre</th>
                             <th>Email</th>
                             <th>Entidad</th>
@@ -20,7 +18,6 @@
                         @foreach ($users as $user)
 
                             <tr>
-                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->entity->name }}</td>
