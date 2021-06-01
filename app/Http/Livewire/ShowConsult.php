@@ -11,7 +11,7 @@ class ShowConsult extends Component
 {
     use WithPagination;
 
-    public $search;
+    public $search = "";
     public $search1;
     public $sort = 'name_one';
     public $direction = 'asc';
