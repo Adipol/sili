@@ -89,12 +89,15 @@ $nav_links = [
                             <a href="{{ route('profile.show') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Tu
                                 Perfil</a>
+                            <a href="{{ route('admin.home') }}"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                role="menuitem">Administrador</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                                                    this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                                                                this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>

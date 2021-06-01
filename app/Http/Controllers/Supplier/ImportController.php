@@ -18,12 +18,17 @@ class ImportController extends Controller
     public function index()
     {
         $amount = Control::count();
-        $records = Control::all()->last();
+
+        $control_two = Control::orderBy('report_date')->get();
+        $control_three = $control_two->last();
+        // $fin = strtotime($control_three);
+        // $fin1 = date('d-m-Y', $fin);
+
         $imports = Import::with('month')->orderBy('description_final', 'desc')->take(5)->get();
         $months = Month::all();
         $details = Detail::all();
 
-        return view('supplier.import', compact('amount', 'records', 'imports', 'months', 'details'));
+        return view('supplier.import', compact('amount', 'control_three', 'imports', 'months', 'details'));
     }
 
     public function exportCsv($fecha)

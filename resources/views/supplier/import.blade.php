@@ -43,9 +43,9 @@
                             <dt class="text-sm font-medium text-gray-500">
                                 Fecha de registros
                             </dt>
-                            @if ($records)
+                            @if ($control_three)
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    {{ $records->report_date }}
+                                    {{ $control_three->report_date }}
                                 </dd>
                             @else
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -58,9 +58,9 @@
                             <dt class="text-sm font-medium text-gray-500">
                                 Fecha de importación
                             </dt>
-                            @if ($records)
+                            @if ($control_three)
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    {{ $records->created_at }}
+                                    {{ $control_three->created_at }}
                                 </dd>
                             @else
                                 <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -220,10 +220,10 @@
                                         {{ $import->detail->name }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->description_beginning }}
+                                        {{ $import->description_beginning->format('d-m-Y') }}
                                     </td>
                                     <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->description_final }}
+                                        {{ $import->description_final->format('d-m-Y') }}
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <a href="{{ route('exportCsv', $import->description_final) }}"><button
