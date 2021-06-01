@@ -1,22 +1,5 @@
 <x-app-layout>
 
-    <div class="alert-custom">
-        @if (session('notification'))
-            <div class="alert alert-success">
-                {{ session('notification') }}
-            </div>
-        @endif
-
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="md:grid md:grid-cols-3 md:gap-6">
 
@@ -29,7 +12,7 @@
                         Información de la importación
                     </p>
                 </div>
-                <div class="border-t border-gray-500">
+                <div class="border-t border-yellow-500">
                     <div>
                         <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">
@@ -227,15 +210,15 @@
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <a href="{{ route('exportCsv', $import->description_final) }}"><button
-                                                class="mt-4 mr-2 btn btn-blue">Download CSV</button></a>
+                                                class="mt-4 mr-2 btn btn-blue">Archivo Csv</button></a>
                                         <a href="{{ route('exportXlsx', $import->description_final) }}"><button
-                                                class="mt-4 mr-2 btn btn-green">Download XLSX</button></a>
+                                                class="mt-4 mr-2 btn btn-green">Archivo Xlsx</button></a>
                                     </td>
                                     <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
                                         <form action="{{ route('import.destroy', $import->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                            <button type="submit" class="mt-4 mr-2 btn btn-red">Eliminar</button>
                                         </form>
                                     </td>
                                 </tr>

@@ -33,11 +33,11 @@
                 <h1 class="mb-4 text-lg font-bold">Listas</h1>
                 <ul class="text-sm text-gray-600">
                     <li
-                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('incremental.index')border-indigo-400 @else border-transparent @endif">
+                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('incremental.index')border-yellow-500 @else border-transparent @endif">
                         <a href="{{ route('incremental.index') }}">Incremental</a>
                     </li>
                     <li
-                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('complete.index')border-indigo-400 @else border-transparent @endif">
+                    class="pl-2 mb-1 leading-7 border-l-4 @routeIs('complete.index')border-yellow-500 @else border-transparent @endif">
                         <a href="{{ route('complete.index') }}">Completa</a>
                     </li>
                 </ul>

@@ -1,6 +1,6 @@
 <x-client-layout>
     <h1 class="text-2xl font-bold">Información de la lista completa</h1>
-    <hr class="mt-2 mb-6 border-2 border-indigo-500">
+    <hr class="mt-2 mb-6 border-2 border-yellow-500">
 
     <article class="mb-6 card">
         <div class="text-sm text-justify text-gray-500 card-body bh-gray-100">
