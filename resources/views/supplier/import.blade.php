@@ -29,7 +29,7 @@
                         Información de la importación
                     </p>
                 </div>
-                <div class="border-t border-gray-200">
+                <div class="border-t border-gray-500">
                     <div>
                         <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">
@@ -160,7 +160,7 @@
                         <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
                             <button type="submit"
                                 class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-900 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Importar Archivo
+                                Importar
                             </button>
                         </div>
                     </div>

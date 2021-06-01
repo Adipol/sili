@@ -18,7 +18,7 @@ class CompleteController extends Controller
 
         $control_two = Control::orderBy('report_date')->get();
         $control_three = $control_two->last();
-        $fin = strtotime($control_three);
+        $fin = strtotime($control_three->report_date);
         $fin1 = date('d-m-Y', $fin);
 
         return view('client.complete', compact('inicio1', 'control_two', 'fin1', 'control_three'));

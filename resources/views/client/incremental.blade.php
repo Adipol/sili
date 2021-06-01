@@ -1,7 +1,7 @@
 <x-client-layout>
 
-    <h1 class="text-2xl font-bold">Información de la lista</h1>
-    <hr class="mt-2 mb-6 bg-red">
+    <h1 class="text-2xl font-bold">Información de la lista incremental</h1>
+    <hr class="mt-2 mb-6 border-2 border-indigo-500">
 
     <article class="mb-6 card">
         <div class="text-sm text-justify text-gray-500 card-body bh-gray-100">
@@ -14,10 +14,10 @@
     @foreach ($imports as $import)
         <article class="mb-6 card">
             <div class="card-body bh-gray-100">
-                <header class="flex items-center justify-between">
-                    <h1 x-on:click="open=!open" class="cursor-pointer"> <i class="far fa-calendar-alt"></i>
+                <header class="flex items-center justify-between text-sm">
+                    <h1> <i class="far fa-calendar-alt"></i>
                         <strong>Fecha:
-                        </strong>{{ $import->description_beginning }}
+                        </strong> {{ $import->description_beginning->format('d-m-Y') }}
                         <strong>al </strong>{{ $import->description_final->format('d-m-Y') }}
                     </h1>
                     <div>
