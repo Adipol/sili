@@ -5,6 +5,7 @@
     <x-jet-dialog-modal wire:model="open">
         <x-slot name="title">
             Detalle de la persona
+            <hr class="border-t border-yellow-500">
         </x-slot>
         <x-slot name="content">
             <div class="grid grid-cols-2 gap-4 mb-4">
