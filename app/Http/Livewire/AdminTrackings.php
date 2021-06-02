@@ -16,7 +16,7 @@ class AdminTrackings extends Component
         $devices = DB::table('device_user')
             ->join('devices', 'device_user.device_id', '=', 'devices.id')
             ->join('users', 'device_user.user_id', '=', 'users.id')
-            ->select('users.name', 'users.email', 'devices.*')
+            ->select('users.name', 'users.email', 'devices.created_at', 'devices.updated_at', 'devices.device_type', 'devices.ip')
             ->Where('users.name', 'like', '%' . $this->search . '%')
             ->orWhere('users.email', 'like', '%' . $this->search . '%')
             ->paginate(10);

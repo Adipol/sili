@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Sistema de Listas')
+@section('title', 'AMLC')
 
 @section('content_header')
     <h1>Crear nuevo rol</h1>

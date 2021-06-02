@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Sistema de Listas')
+@section('title', 'AMLC')
 
 @section('content_header')
-    <h1>Sitio de Listas</h1>
+    <h1>Roles</h1>
 @stop
 
 @section('content')
@@ -12,7 +12,6 @@
         <div class="alert alert-primary" role="alert">
             <strong>Éxito</strong>{{ session('info') }}
         </div>
-        1
     @endif
     <div class="card">
         <div class="card-header">

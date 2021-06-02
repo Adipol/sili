@@ -1,12 +1,15 @@
 @extends('adminlte::page')
 
-@section('title', 'Sistema de Listas')
+@section('title', 'AMLC')
 
 @section('content_header')
     <h1>Lista de usuarios</h1>
 @stop
 
 @section('content')
+    <div class="card-header">
+        <a href="{{ route('admin.users.create') }}">Crear usuario</a>
+    </div>
     @livewire('admin-users')
 @stop
 

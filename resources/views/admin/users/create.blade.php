@@ -1,13 +1,24 @@
 @extends('adminlte::page')
 
-@section('title', 'Sistema de Listas')
+@section('title', 'AMLC')
 
 @section('content_header')
-    <h1>Sistema de Listas</h1>
+    <h1>Crear nuevo usuario</h1>
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+    <div class="card">
+        <div class="card-body">
+            {!! Form::open(['route' => 'admin.users.store']) !!}
+
+            @include('admin.users.partials.form')
+
+            {!! Form::submit('Crear usuario', ['class' => 'btn btn-primary mt-2']) !!}
+
+            {!! Form::close() !!}
+        </div>
+    </div>
+
 @stop
 
 @section('css')

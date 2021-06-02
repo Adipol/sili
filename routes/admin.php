@@ -13,4 +13,4 @@ Route::resource('roles', RoleController::class)->names('roles');
 
 Route::resource('trackings', TrackingController::class)->names('trackings');
 
-Route::resource('users', UserController::class)->only('index', 'edit', 'update')->names('users');
+Route::resource('users', UserController::class)->names('users');

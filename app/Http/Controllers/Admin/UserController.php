@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Entity;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 //use Spatie\Permission\Models\Role;
@@ -34,7 +36,10 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        $entities = Entity::all()->pluck('name', 'id');
+
+        return view('admin.users.create', compact('roles', 'entities'));
     }
 
     /**
@@ -45,6 +50,25 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'entity' => 'required',
+        ]);
+
+        $user        = new User();
+        $user->name  = $request->get('name');
+        $user->email = $request->get('email');
+        $password    = "123";
+
+        if ($password) {
+            $user->password = bcrypt($password);
+        }
+
+        $user->entity_id = $request->get('entity');
+        $user->save();
+
+        return redirect()->route('admin.users.index')->with('info', 'El usuario se creo satisfactoriamente');
     }
 
     /**
