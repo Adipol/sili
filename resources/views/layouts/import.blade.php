@@ -37,7 +37,7 @@
                         <a href="{{ route('import.index') }}">Base de datos</a>
                     </li>
                     <li class="pl-2 mb-1 leading-7 border-l-4 ">
-                        <a href="">Incremental</a>
+                        <a href="{{ route('supplier.incremental.index') }}">Incremental</a>
                     </li>
                     <li class="pl-2 mb-1 leading-7 border-l-4">
                         <a href="">Completa</a>

@@ -17,10 +17,7 @@ class ImportController extends Controller
     {
         $amount = Control::count();
 
-        $control_two = Control::orderBy('report_date')->get();
-        $control_three = $control_two->last();
-
-        return view('supplier.import', compact('amount', 'control_three'));
+        return view('supplier.import', compact('amount'));
     }
 
     /**
