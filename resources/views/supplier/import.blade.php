@@ -1,5 +1,4 @@
-<x-app-layout>
-
+<x-import-layout>
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
 
         <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -37,21 +36,6 @@
                             @endif
 
                         </div>
-                        <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">
-                                Fecha de importación
-                            </dt>
-                            @if ($control_three)
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    {{ $control_three->created_at }}
-                                </dd>
-                            @else
-                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                    No disponible
-                                </dd>
-                            @endif
-
-                        </div>
                     </div>
                 </div>
             </div>
@@ -63,52 +47,7 @@
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 space-y-6 bg-white sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="first_name" class="block text-sm font-medium text-gray-700">Año</label>
-                                    <input type="text" name="year" id="year" autocomplete="given-name"
-                                        value="{{ old('year') }}" required="required"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                </div>
 
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="month" class="block text-sm font-medium text-gray-700">Mes</label>
-                                    <select id="month" name="id_month" autocomplete="month" required
-                                        class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        <option disabled selected hidden>Seleccione un mes</option>
-                                        @foreach ($months as $month)
-                                            <option {{ (int) old('id_month') === $month->id ? 'selected' : '' }}
-                                                value="{{ $month->id }}">{{ $month->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="detail" class="block text-sm font-medium text-gray-700">Detalle de
-                                        carga</label>
-                                    <select id="detail" name="id_detail" autocomplete="detail" required
-                                        class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                        <option disabled selected hidden>Seleccione el tipo de carga</option>
-                                        @foreach ($details as $detail)
-                                            <option {{ (int) old('id_detail') === $detail->id ? 'selected' : '' }}
-                                                value="{{ $detail->id }}">{{ $detail->name }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="first_name" class="block text-sm font-medium text-gray-700">Fecha de
-                                        Inicio</label>
-                                    <input type="date" name="description_beginning" id="description_beginning"
-                                        autocomplete="given-name" required="required"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                </div>
-
-                                <div class="col-span-6 sm:col-span-3">
-                                    <label for="last_name" class="block text-sm font-medium text-gray-700">Fecha de
-                                        Final</label>
-                                    <input type="date" name="description_final" id="description_final"
-                                        autocomplete="family-name" required="required"
-                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                </div>
                                 <div class="col-span-6">
                                     <label class="block text-sm font-medium text-gray-700">
                                         Cargar Archivo
@@ -152,82 +91,4 @@
         </div>
     </div>
 
-    <div class="flex flex-col px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
-                <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-gray-50">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Año
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Mes
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Detalle de carga
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Desde
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Hasta
-                                </th>
-
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Descarga
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 ">
-                                    Opciones
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($imports as $import)
-                                <tr>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->year }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->month->name }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->detail->name }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->description_beginning->format('d-m-Y') }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                        {{ $import->description_final->format('d-m-Y') }}
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
-                                        <a href="{{ route('exportCsv', $import->description_final) }}"><button
-                                                class="mt-4 mr-2 btn btn-blue">Archivo Csv</button></a>
-                                        <a href="{{ route('exportXlsx', $import->description_final) }}"><button
-                                                class="mt-4 mr-2 btn btn-green">Archivo Xlsx</button></a>
-                                    </td>
-                                    <td class="px-6 py-4 text-sm font-medium text-left whitespace-nowrap ">
-                                        <form action="{{ route('import.destroy', $import->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="mt-4 mr-2 btn btn-red">Eliminar</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</x-app-layout>
+</x-import-layout>

@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Supplier;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Exports\TransactionsExport;
 use App\Http\Requests\ImportStoreRequest;
 use App\Imports\TransactionsImport;
 use App\Models\Control;
 use App\Models\Import;
+use App\Exports\TransactionsExport;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\Detail;
-use App\Models\Month;
 
 class ImportController extends Controller
 {
@@ -21,30 +19,8 @@ class ImportController extends Controller
 
         $control_two = Control::orderBy('report_date')->get();
         $control_three = $control_two->last();
-        // $fin = strtotime($control_three);
-        // $fin1 = date('d-m-Y', $fin);
 
-        $imports = Import::with('month')->orderBy('description_final', 'desc')->take(5)->get();
-        $months = Month::all();
-        $details = Detail::all();
-
-        return view('supplier.import', compact('amount', 'control_three', 'imports', 'months', 'details'));
-    }
-
-    public function exportCsv($fecha)
-    {
-        $trans = strtotime($fecha);
-        $trans1 = date('d-m-Y', $trans);
-
-        return (new TransactionsExport)->forYear($fecha)->download('CSV_LISTA_INCREMENTAL_AL_' . $trans1 .  '.csv');
-    }
-
-    public function exportXlsx($fecha)
-    {
-        $trans = strtotime($fecha);
-        $trans1 = date('d-m-Y', $trans);
-
-        return (new TransactionsExport)->forYear($fecha)->download('XLSX_LISTA_INCREMENTAL_AL_' . $trans1 .  '.xlsx');
+        return view('supplier.import', compact('amount', 'control_three'));
     }
 
     /**
@@ -52,29 +28,10 @@ class ImportController extends Controller
      */
     public function importExcel(ImportStoreRequest $request)
     {
-        $import = new Import();
-        $import->year = $request->get('year');
-        $import->id_month = $request->get('id_month');
-        $import->id_detail = $request->get('id_detail');
-        $import->description_beginning = $request->get('description_beginning');
-        $import->description_final = $request->get('description_final');
-        if ($request->get('description_final') >= $request->get('description_beginning')) {
-            $import->save();
+        Excel::import(new TransactionsImport, $request->import_file);
 
-            Excel::import(new TransactionsImport, $request->import_file);
+        \Session::put('success', 'Your file is imported successfully in database.');
 
-            \Session::put('success', 'Your file is imported successfully in database.');
-
-            return back();
-        } else {
-            return back()->with('danger', 'fecha incorrecta.');
-        }
-    }
-
-    public function destroy($id)
-    {
-        Import::findOrFail($id)->delete();
-
-        return back()->with('info', 'El registro se elimino con éxito');
+        return back();
     }
 }

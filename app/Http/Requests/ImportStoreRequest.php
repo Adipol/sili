@@ -25,22 +25,14 @@ class ImportStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'year' => 'required',
-            'description_beginning' => 'required',
-            'description_final' => 'required',
             'import_file' => 'required|file',
-            'id_month' => ['required', Rule::exists('months', 'id')]
         ];
     }
 
     public function messages()
     {
         return [
-            'year.required' => 'Es necesario ingresar el nombre.',
-            'description_beginning.required' => 'Es necesario ingresar el la fecha de inicio.',
-            'description_final.required' => 'Es necesario ingresar el la fecha final.',
             'import_file.required' => 'Es necesario adjuntar el archivo',
-            'id_month.required' => 'Es necesario ingresar el mes'
         ];
     }
 }
