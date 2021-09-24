@@ -12,16 +12,15 @@
                     </p>
                 </div>
                 <div class="border-t border-yellow-500">
-                    <div>
-                        <div class="px-5 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                            <dt class="text-sm font-medium text-gray-500">
-                                Registros
-                            </dt>
-                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $amount }}
-                            </dd>
+
+                    <div class="px-5 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+
+                        <div class="text-gray-500">
+                            <p class="text-lg font-medium">Registros:</p>
+                            <p> {{ $amount }}</p>
                         </div>
                     </div>
+
                 </div>
             </div>
 
