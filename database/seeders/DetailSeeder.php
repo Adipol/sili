@@ -15,11 +15,11 @@ class DetailSeeder extends Seeder
     public function run()
     {
         Detail::Create([
-            'name' => 'Incremental',
+            'name' => 'Archivo XLSX',
         ]);
 
         Detail::Create([
-            'name' => 'Completa',
+            'name' => 'Archivo CSV',
         ]);
     }
 }

@@ -26,7 +26,8 @@ class ImportFactory extends Factory
             'id_month' => $this->faker->randomElement([1, 2, 3]),
             'id_detail' => $this->faker->randomElement([1, 2]),
             'description_beginning' => $this->faker->date,
-            'description_final' => $this->faker->date
+            'description_final' => $this->faker->date,
+            'link' => $this->faker->date
         ];
     }
 }
