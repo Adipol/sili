@@ -11,10 +11,6 @@ class Import_all extends Model
 
     protected $guarded = ['id'];
 
-    protected $dates = [
-        'description_beginning',
-        'description_final'
-    ];
 
     public function detail()
     {

@@ -12,15 +12,12 @@
                     </p>
                 </div>
                 <div class="border-t border-yellow-500">
-
                     <div class="px-5 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-
                         <div class="text-gray-500">
                             <p class="text-lg font-medium">Registros:</p>
                             <p> {{ $amount }}</p>
                         </div>
                     </div>
-
                 </div>
             </div>
 
