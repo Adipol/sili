@@ -9,8 +9,6 @@ class AllController extends Controller
 {
     public function index()
     {
-        $details = Detail::all();
-
-        return view('supplier.import_all', compact('details'));
+        return view('supplier.import_all');
     }
 }

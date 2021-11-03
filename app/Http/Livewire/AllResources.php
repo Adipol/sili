@@ -3,36 +3,46 @@
 namespace App\Http\Livewire;
 
 use App\Models\Detail;
-use App\Models\Import_all;
+use App\Models\whole;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AllResources extends Component
 {
     use WithFileUploads;
-    public $import_all, $file, $text, $select;
+    public $whole, $file, $text, $select;
 
-    public function mount(Import_all $import_all)
+    public function mount(Whole $whole)
     {
-        $this->import_all = $import_all;
+        $this->whole = $whole;
     }
 
     public function render()
     {
         $details = Detail::all();
+        $lists = Whole::all();
 
-        return view('livewire.all-resources', compact('details'));
+        return view('livewire.all-resources', compact('details', 'lists'));
     }
 
     public function save()
     {
         $this->validate(['text' => 'required', 'select' => 'required', 'file' => 'required']);
         $url = $this->file->store('resources');
-        Import_all::create([
-            'amount' => $this->text,
-            'id_detail' => $this->select,
-            'link' => $url
-        ]);
+        $lists = Whole::all();
+        if (count($lists) === 2) {
+            Whole::where("id_detail", $this->select)->update([
+                'amount' => $this->text,
+                'id_detail' => $this->select,
+                'link' => $url
+            ]);
+        } else {
+            Whole::create([
+                'amount' => $this->text,
+                'id_detail' => $this->select,
+                'link' => $url
+            ]);
+        }
     }
 
     // public function store()

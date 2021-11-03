@@ -8,7 +8,7 @@
                         Listas de Control
                     </h3>
                     <p class="max-w-2xl mt-1 text-sm text-gray-500">
-                        Información de la importación
+                        Información de la importaciónzsfgadfgsdf
                     </p>
                 </div>
                 <div class="border-t border-yellow-500">
@@ -18,7 +18,7 @@
                                 Registros
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ $amount }}
+
                             </dd>
                         </div>
                     </div>

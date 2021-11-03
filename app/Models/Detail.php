@@ -16,7 +16,7 @@ class Detail extends Model
         $this->hasMany(Import::class);
     }
 
-    public function import_all()
+    public function wholes()
     {
         $this->hasMany(Import::class);
     }

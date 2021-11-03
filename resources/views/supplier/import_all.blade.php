@@ -1,3 +1,4 @@
+{{-- es el archivo para cargar la lista completa no tocar --}}
 <x-import-layout>
     <h1 class="text-2xl font-bold">Importar la lista completa</h1>
     <hr class="mt-2 mb-6 border-2 border-yellow-500">

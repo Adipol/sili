@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImportAllTable extends Migration
+class CreateWholesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateImportAllTable extends Migration
      */
     public function up()
     {
-        Schema::create('import_all', function (Blueprint $table) {
+        Schema::create('wholes', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('id_detail');
@@ -32,6 +32,6 @@ class CreateImportAllTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('import_all');
+        Schema::dropIfExists('wholes');
     }
 }

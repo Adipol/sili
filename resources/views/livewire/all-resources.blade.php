@@ -26,7 +26,7 @@
                                     archivo</label>
                                 <select id="detail" name="id_detail" autocomplete="detail" required wire:model="select"
                                     class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                                    <option disabled selected hidden>Seleccione el tipo de carga</option>
+                                    <option selected hidden>Seleccione el tipo de carga</option>
                                     @foreach ($details as $detail)
                                         <option {{ (int) old('id_detail') === $detail->id ? 'selected' : '' }}
                                             value="{{ $detail->id }}">{{ $detail->name }}</option>
@@ -53,8 +53,17 @@
                                         <label for="file-upload"
                                             class="relative font-medium text-indigo-600 bg-white rounded-md cursor-pointer hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                                             <span>Cargar un Archivo</span>
-                                            <input wire:model="file" id="file-upload" name="import_file" type="file"
-                                                class="sr-only" required="required">
+                                            <div x-data="{ isUploading: false, progress: 0 }"
+                                                x-on:livewire-upload-start="isUploading = true"
+                                                x-on:livewire-upload-finish="isUploading = false"
+                                                x-on:livewire-upload-error="isUploading = false"
+                                                x-on:livewire-upload-progress="progress = $event.detail.progress">
+                                                <input wire:model="file" id="file-upload" name="import_file" type="file"
+                                                    class="sr-only" required="required">
+                                                <div x-show="isUploading">
+                                                    <progress max="100" x-bind:value="progress"></progress>
+                                                </div>
+                                            </div>
                                         </label>
                                     </div>
                                     <p class="text-xs text-gray-500">
@@ -63,9 +72,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="px-4 mt-3 font-bold text-blue" wire:loading wire:target="file">
-                        Cargando ...
                     </div>
                     @error('file')
                         <span class="text-xs text-red-500">{{ $message }}</span>
@@ -81,5 +87,56 @@
             </form>
         </div>
 
+    </article>
+
+    <article class="mb-6 card">
+        <div class="text-sm card-body bh-gray-100">
+            <header class="flex items-center justify-between">
+                <h1> <i class="far fa-calendar-alt"></i>
+                    <strong>Actualización</strong>
+                </h1>
+            </header>
+        </div>
+        <div class="flex flex-col">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                    <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Tipo de archivo
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Cantidad
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Fecha de carga
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($lists as $list)
+                                    <tr>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $list->detail->name }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $list->amount }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $list->updated_at }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </article>
 </div>

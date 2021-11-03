@@ -6,7 +6,6 @@ use App\Models\Country;
 use App\Models\Department;
 use App\Models\Detail;
 use App\Models\Entity;
-use App\Models\Import;
 use App\Models\Month;
 use Illuminate\Database\Seeder;
 
@@ -27,6 +26,5 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(DetailSeeder::class);
         $this->call(MonthSeeder::class);
-        Import::factory(10)->create();
     }
 }
