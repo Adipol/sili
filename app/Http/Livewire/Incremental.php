@@ -21,7 +21,10 @@ class Incremental extends Component
         $new_opi, $update_opi,
         $new_pep_ex, $update_pep_ex,
         $new_pep_nal, $update_pep_nal,
-        $new_pepu_ex, $update_pepu_ex;
+        $new_pepu_ex, $update_pepu_ex,
+        $new_pepu_nal, $update_pepu_nal,
+        $new_ue, $update_ue,
+        $description;
 
     public function render()
     {
@@ -66,6 +69,11 @@ class Incremental extends Component
             'pep_nal_upgrade' => $this->update_pep_nal,
             'pepu_ex_new' => $this->new_pepu_ex,
             'pepu_ex_upgrade' => $this->update_pepu_ex,
+            'pepu_nal_new' => $this->new_pepu_nal,
+            'pepu_nal_upgrade' => $this->update_pepu_nal,
+            'ue_new' => $this->new_ue,
+            'ue_upgrade' => $this->update_ue,
+            'description' => $this->description,
 
             'link' => $url
         ]);

@@ -50,6 +50,7 @@ class CreateImportsTable extends Migration
             $table->integer('pepu_ex_upgrade')->nullable();
             $table->integer('pepu_nal_upgrade')->nullable();
             $table->integer('ue_upgrade')->nullable();
+            $table->text('description')->nullable();
 
             $table->timestamps();
         });

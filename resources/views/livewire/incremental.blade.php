@@ -125,10 +125,10 @@
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="update_onu" class="block text-sm font-medium text-gray-700">Nuevo
+                                <label for="new_onu" class="block text-sm font-medium text-gray-700">Nuevo
                                     ONU</label>
-                                <input type="number" name="update_onu" id="update_onu" autocomplete="given-name"
-                                    wire:model="update_onu"
+                                <input type="number" name="new_onu" id="new_onu" autocomplete="given-name"
+                                    wire:model="new_onu"
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
@@ -197,28 +197,42 @@
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">Nuevo
+                                <label for="new_pepu_nal" class="block text-sm font-medium text-gray-700">Nuevo
                                     PEPU-NAL</label>
-                                <input type="number" name="first-name" id="first-name" autocomplete="given-name"
+                                <input type="number" name="new_pepu_nal" id="new_pepu_nal" autocomplete="given-name"
+                                    wire:model="new_pepu_nal"
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">Actualización
+                                <label for="update_pepu_nal"
+                                    class="block text-sm font-medium text-gray-700">Actualización
                                     PEPU-NAL</label>
-                                <input type="number" name="first-name" id="first-name" autocomplete="given-name"
+                                <input type="number" name="update_pepu_nal" id="update_pepu_nal"
+                                    autocomplete="given-name" wire:model="update_pepu_nal"
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">Nuevo
+                                <label for="new_ue" class="block text-sm font-medium text-gray-700">Nuevo
                                     UE</label>
-                                <input type="number" name="first-name" id="first-name" autocomplete="given-name"
+                                <input type="number" name="new_ue" id="new_ue" autocomplete="given-name"
+                                    wire:model="new_ue"
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">Actualización
+                                <label for="update_ue" class="block text-sm font-medium text-gray-700">Actualización
                                     UE</label>
-                                <input type="number" name="first-name" id="first-name" autocomplete="given-name" r
+                                <input type="number" name="update_ue" id="update_ue" autocomplete="given-name" r
+                                    wire:model="update_ue"
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+                        <div class="col-span-6 mt-5">
+                            <label for="about" class="block text-sm font-medium text-gray-700">
+                                Observaciones
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="description" name="description" rows="3" wire:model="description"
+                                    class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                             </div>
                         </div>
 
