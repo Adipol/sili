@@ -15,7 +15,7 @@
         <article class="mb-6 card">
             <div class="card-body bh-gray-100">
                 <header class="flex items-center justify-between text-sm">
-                    <h1> <i class="far fa-calendar-alt"></i>
+                    <h1 class="cursor-pointer"> <i class="far fa-calendar-alt"></i>
                         <strong>Fecha:
                         </strong> {{ $import->description_beginning->format('d-m-Y') }}
                         <strong>al </strong>{{ $import->description_final->format('d-m-Y') }}
@@ -24,14 +24,10 @@
                         <strong>Cargado:
                         </strong> {{ $import->created_at->diffForHumans() }}
                     </div>
+
                 </header>
-                <div class="flex items-center justify-end">
-                    <a href="{{ route('incremental.exportCsv', $import->description_final) }}"><button
-                            class="mt-4 mr-2 btn btn-blue">Descarga
-                            CSV</button></a>
-                    <a href="{{ route('incremental.exportXlsx', $import->description_final) }}"><button
-                            class="mt-4 mr-2 btn btn-green">Descarga
-                            XLSX</button></a>
+                <div>
+                    @livewire('client.incremental-download',['download'=>$import],key($import->id))
                 </div>
             </div>
 

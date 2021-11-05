@@ -44,9 +44,4 @@ class AllResources extends Component
             ]);
         }
     }
-
-    // public function store()
-    // {
-    //     $this->validate(['text' => 'required', 'select' => 'required']);
-    // }
 }

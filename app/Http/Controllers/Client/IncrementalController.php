@@ -12,7 +12,8 @@ class IncrementalController extends Controller
 {
     public function index()
     {
-        $imports = Import::latest('description_final')->take(4)->get();
+        $imports = Import::orderBy('id', 'desc')
+            ->get();
 
         return view('client.incremental', compact('imports'));
     }
