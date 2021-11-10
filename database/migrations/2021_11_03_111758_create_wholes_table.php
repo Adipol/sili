@@ -16,10 +16,9 @@ class CreateWholesTable extends Migration
         Schema::create('wholes', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('id_detail');
-            $table->foreign('id_detail')->references('id')->on('details');
             $table->integer('amount');
-            $table->string('link', 100);
+            $table->string('link_xlsx', 100)->nullable();
+            $table->string('link_csv', 100)->nullable();
 
             $table->timestamps();
         });

@@ -4,43 +4,40 @@ namespace App\Http\Livewire;
 
 use App\Models\Detail;
 use App\Models\whole;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 class AllResources extends Component
 {
     use WithFileUploads;
-    public $whole, $file, $text, $select;
 
-    public function mount(Whole $whole)
-    {
-        $this->whole = $whole;
-    }
+    public $text;
+
 
     public function render()
     {
-        $details = Detail::all();
         $lists = Whole::all();
 
-        return view('livewire.all-resources', compact('details', 'lists'));
+        return view('livewire.all-resources', compact('lists'));
     }
 
     public function save()
     {
-        $this->validate(['text' => 'required', 'select' => 'required', 'file' => 'required']);
-        $url = $this->file->store('resources');
-        $lists = Whole::all();
-        if (count($lists) === 2) {
-            Whole::where("id_detail", $this->select)->update([
+        $this->validate(['text' => 'required']);
+
+        $list = whole::first();
+        if ($list) {
+            Storage::delete($list->link_xlsx);
+            Storage::delete($list->link_csv);
+            Whole::where("id", 1)->update([
                 'amount' => $this->text,
-                'id_detail' => $this->select,
-                'link' => $url
+                'link_xlsx' => null,
+                'link_csv' => null,
             ]);
         } else {
             Whole::create([
-                'amount' => $this->text,
-                'id_detail' => $this->select,
-                'link' => $url
+                'amount' => $this->text
             ]);
         }
     }
