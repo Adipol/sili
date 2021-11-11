@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 class Incremental extends Component
 {
     use WithFileUploads;
-    public $file, $fecha_ini, $fecha_fin, $select,
+    public $fecha_ini, $fecha_fin,
         $new_aso_pep, $update_aso_pep,
         $new_fbi, $update_fbi,
         $new_f_pep, $update_f_pep,
@@ -28,9 +28,8 @@ class Incremental extends Component
 
     public function render()
     {
-        $details = Detail::all();
-
-        return view('livewire.incremental', compact('details'));
+        $controls = Import::all();
+        return view('livewire.incremental', compact('controls'));
     }
 
     public function save()
@@ -38,15 +37,11 @@ class Incremental extends Component
         $this->validate([
             'fecha_ini' => 'required',
             'fecha_fin' => 'required',
-            'select' => 'required',
-            'file' => 'required'
         ]);
-        $url = $this->file->store('resources');
 
         Import::create([
             'description_beginning' => $this->fecha_ini,
             'description_final' => $this->fecha_fin,
-            'id_detail' => $this->select,
             'aso_pep_new' => $this->new_aso_pep,
             'aso_pep_upgrade' => $this->update_aso_pep,
             'fbi_new' => $this->new_fbi,
@@ -73,9 +68,7 @@ class Incremental extends Component
             'pepu_nal_upgrade' => $this->update_pepu_nal,
             'ue_new' => $this->new_ue,
             'ue_upgrade' => $this->update_ue,
-            'description' => $this->description,
-
-            'link' => $url
+            'description' => $this->description
         ]);
     }
 }

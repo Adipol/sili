@@ -18,7 +18,7 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body class="font-sans antialiased">
@@ -36,6 +36,10 @@
     @stack('modals')
 
     @livewireScripts
+
+
+
+
 </body>
 
 </html>

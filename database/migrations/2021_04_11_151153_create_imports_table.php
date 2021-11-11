@@ -16,13 +16,10 @@ class CreateImportsTable extends Migration
         Schema::create('imports', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('id_detail');
-            $table->foreign('id_detail')->references('id')->on('details');
-
-            $table->date('description_beginning');
-            $table->date('description_final');
-            $table->string('link', 100);
-
+            $table->dateTime('description_beginning');
+            $table->dateTime('description_final');
+            $table->string('link_xlsx', 100)->nullable();;
+            $table->string('link_csv', 100)->nullable();
             $table->integer('aso_pep_new')->nullable();
             $table->integer('fbi_new')->nullable();
             $table->integer('f_pep_new')->nullable();
@@ -36,7 +33,6 @@ class CreateImportsTable extends Migration
             $table->integer('pepu_ex_new')->nullable();
             $table->integer('pepu_nal_new')->nullable();
             $table->integer('ue_new')->nullable();
-
             $table->integer('aso_pep_upgrade')->nullable();
             $table->integer('fbi_upgrade')->nullable();
             $table->integer('f_pep_upgrade')->nullable();
