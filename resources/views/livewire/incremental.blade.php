@@ -281,13 +281,14 @@
                                             {{ $control->description_final }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            @livewire('incremental-original-xlsx',['control'=>$control],key('user-profile-one-'.$control->id))
+                                            @livewire('incremental-original-xlsx',['control'=>$control],key('control-profile-one-'.$control->id))
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            @livewire('incremental-original-csv',['control'=>$control],key('user-profile-two-'.$control->id))
+                                            @livewire('incremental-original-csv',['control'=>$control],key('contro-profile-two-'.$control->id))
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            <a href="" class="btn btn-red"> <i class="far fa-trash-alt"></i></a>
+                                            <button href="" wire:click="destroy({{ $control->id }})"
+                                                class="btn btn-red"> <i class="far fa-trash-alt"></i></button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -298,7 +299,7 @@
             </div>
         </div>
     </article>
-    @push('scripts')
+    {{-- @push('scripts')
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             const swalWithBootstrapButtons = Swal.mixin({
@@ -336,6 +337,6 @@
                 }
             })
         </script>
-    @endpush
+    @endpush --}}
 
 </div>

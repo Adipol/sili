@@ -50,7 +50,7 @@ class IncrementalOriginalXlsx extends Component
 
     public function save_xlsx()
     {
-        $this->validate();
+        //$this->validate();
         if ($this->file) {
             Storage::delete($this->control->link_xlsx);
             $this->control->link_xlsx = $this->file->store('resources');
@@ -58,7 +58,7 @@ class IncrementalOriginalXlsx extends Component
         $this->control->save();
         $this->reset(['open', 'file']);
         $this->identificador = rand();
-        $this->emitTo('all-resources', 'render');
+        $this->emitTo('incremental', 'render');
         $this->emit('alert', 'El registro se actualizó satisfactoriamente');
     }
 

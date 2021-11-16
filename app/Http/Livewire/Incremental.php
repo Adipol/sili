@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Detail;
 use App\Models\Import;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -70,5 +71,18 @@ class Incremental extends Component
             'ue_upgrade' => $this->update_ue,
             'description' => $this->description
         ]);
+    }
+
+    public function destroy($id)
+    {
+        $control = Import::where('id', $id)->first();
+
+        if ($control->link_xlsx) {
+            Storage::delete($control->link_xlsx);
+        }
+        if ($control->link_csv) {
+            Storage::delete($control->link_csv);
+        }
+        Import::destroy($id);
     }
 }

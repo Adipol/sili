@@ -50,7 +50,7 @@ class IncrementalOriginalCsv extends Component
 
     public function save_csv()
     {
-        $this->validate();
+        //$this->validate();
         if ($this->file) {
             Storage::delete($this->control->link_csv);
             $this->control->link_csv = $this->file->store('resources');
@@ -58,7 +58,7 @@ class IncrementalOriginalCsv extends Component
         $this->control->save();
         $this->reset(['open', 'file']);
         $this->identificador = rand();
-        $this->emitTo('all-resources', 'render');
+        $this->emitTo('incremental', 'render');
         $this->emit('alert', 'El registro se actualizó satisfactoriamente');
     }
 

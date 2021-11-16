@@ -48,7 +48,6 @@
             <div class="col-span-4 card">
                 <main class="card-body">
                     {{ $slot }}
-                    //44
                 </main>
             </div>
         </div>

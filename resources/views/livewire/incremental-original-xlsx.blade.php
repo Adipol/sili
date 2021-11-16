@@ -1,7 +1,7 @@
 <div>
     <a class="btn btn-green" wire:click="$set('open',true)"><i class="fas fa-upload"></i></a>
     @if ($control->link_xlsx)
-        <a class="btn btn-red" wire:click="download_xlsx"><i class="fas fa-download"></i></a>
+        <a class="btn btn-blue" wire:click="download_xlsx"><i class="fas fa-download"></i></a>
     @endif
     <x-jet-dialog-modal wire:model="open">
         <x-slot name='title'>
