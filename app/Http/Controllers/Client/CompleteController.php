@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Exports\TransactionsExportAll;
 use App\Http\Controllers\Controller;
 use App\Models\Control;
+use App\Models\whole;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,16 +13,10 @@ class CompleteController extends Controller
 {
     public function index()
     {
-        $control_one = Control::orderBy('report_date')->pluck('report_date')->first();
-        $inicio = strtotime($control_one);
-        $inicio1 = date('d-m-Y', $inicio);
+        $complete = whole::all();
+        $lists = Control::all();
 
-        $control_two = Control::orderBy('report_date')->get();
-        $control_three = $control_two->last();
-        $fin = strtotime($control_three->report_date);
-        $fin1 = date('d-m-Y', $fin);
-
-        return view('client.complete', compact('inicio1', 'control_two', 'fin1', 'control_three'));
+        return view('client.complete', compact('complete', 'lists'));
     }
 
     public function exportCsv($fecha)

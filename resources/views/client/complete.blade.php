@@ -26,18 +26,7 @@
             </header>
 
             <div class="flex items-center justify-between">
-                <div>
-                    <strong>Cantidad total de registros:
-                    </strong> {{ $control_two->count() }}
-                </div>
-                <div>
-                    <a href="{{ route('complete.exportCsv', $control_three->report_date) }}"><button
-                            class="mt-4 mr-2 btn btn-blue">Descarga
-                            CSV</button></a>
-                    <a href="{{ route('complete.exportXlsx', $control_three->report_date) }}"><button
-                            class="mt-4 mr-2 btn btn-green">Descarga
-                            XLSX</button></a>
-                </div>
+                @livewire('client.all-download')
             </div>
         </div>
     </article>
