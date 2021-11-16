@@ -19,8 +19,19 @@ class IncrementalDownload extends Component
         return view('livewire.client.incremental-download');
     }
 
-    public function download()
+    public function download_xlsx()
     {
-        return  response()->download(storage_path('app/public/' . $this->download->link));
+        if ($this->download->link_xlsx) {
+            return  response()->download(storage_path('app/public/' . $this->download->link_xlsx));
+        } else {
+        }
+    }
+
+    public function download_csv()
+    {
+        if ($this->download->link_csv) {
+            return  response()->download(storage_path('app/public/' . $this->download->link_csv));
+        } else {
+        }
     }
 }
