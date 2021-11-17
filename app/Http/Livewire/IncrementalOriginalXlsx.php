@@ -58,7 +58,7 @@ class IncrementalOriginalXlsx extends Component
         $this->control->save();
         $this->reset(['open', 'file']);
         $this->identificador = rand();
-        $this->emitTo('incremental', 'render');
+        $this->emitTo('incrementalOriginalCsv', 'render');
         $this->emit('alert', 'El registro se actualizó satisfactoriamente');
     }
 

@@ -14,19 +14,27 @@
         <div class="text-sm card-body bh-gray-100">
             <header class="flex items-center justify-between">
                 <h1> <i class="far fa-calendar-alt"></i>
-                    <strong>Fecha: </strong>
-                    {{ $inicio1 }}
-                    <strong>al </strong>
-                    {{ $fin1 }}
+                    <strong>Fecha de carga: </strong>
+                    @if ($complete->updated_at)
+                        {{ $complete->updated_at->isoFormat('ll') }}
+                    @endif
                 </h1>
                 <div>
                     <strong>Actualizado: </strong>
-                    {{ $control_three->created_at->diffForHumans() }}
+                    @if ($complete->updated_at)
+                        {{ $complete->updated_at->diffForHumans() }}
+                    @endif
                 </div>
             </header>
 
-            <div class="flex items-center justify-between">
-                @livewire('client.all-download')
+            <div>
+                @livewire('client.all-download',['download_all'=>$complete],key($complete->id))
+            </div>
+            <div>
+                <strong>Cantidad total: </strong>
+                @if ($lists)
+                    {{ $lists }}
+                @endif
             </div>
         </div>
     </article>

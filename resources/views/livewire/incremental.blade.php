@@ -275,10 +275,10 @@
                                 @foreach ($controls as $control)
                                     <tr>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $control->description_beginning }}
+                                            {{ $control->description_beginning->isoFormat('ll') }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $control->description_final }}
+                                            {{ $control->description_final->isoFormat('ll') }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @livewire('incremental-original-xlsx',['control'=>$control],key('control-profile-one-'.$control->id))

@@ -13,25 +13,9 @@ class CompleteController extends Controller
 {
     public function index()
     {
-        $complete = whole::all();
-        $lists = Control::all();
+        $complete = whole::all()->first();
+        $lists = Control::count('id');
 
         return view('client.complete', compact('complete', 'lists'));
-    }
-
-    public function exportCsv($fecha)
-    {
-        $trans = strtotime($fecha);
-        $trans1 = date('d-m-Y', $trans);
-
-        return (new TransactionsExportAll)->download('CSV_LISTA_COMPLETA_AMLC_AL_' . $trans1 .  '.csv');
-    }
-
-    public function exportXlsx($fecha)
-    {
-        $trans = strtotime($fecha);
-        $trans1 = date('d-m-Y', $trans);
-
-        return (new TransactionsExportAll)->download('XLSX_LISTA_COMPLETA_AMLC_AL_' . $trans1 .  '.xlsx');
     }
 }

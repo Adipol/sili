@@ -73,7 +73,7 @@
                                 @foreach ($lists as $list)
                                     <tr>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $list->updated_at }}
+                                            {{ $list->updated_at->isoFormat('ll') }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $list->amount }}
