@@ -12,10 +12,8 @@ class IncrementalController extends Controller
 {
     public function index()
     {
-        $imports = Import::orderBy('id', 'desc')
-            ->get();
 
-        return view('client.incremental', compact('imports'));
+        return view('client.incremental');
     }
 
     public function exportCsv($fecha)

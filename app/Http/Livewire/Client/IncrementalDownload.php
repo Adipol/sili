@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class IncrementalDownload extends Component
 {
-    public $download;
+    public $link_xlsx, $link_csv;
 
     public function mount(Import $download)
     {
@@ -16,21 +16,28 @@ class IncrementalDownload extends Component
 
     public function render()
     {
-        return view('livewire.client.incremental-download');
+        $imports = Import::orderBy('id', 'desc')->get();
+
+        return view('livewire.client.incremental-download', compact('imports'));
     }
 
-    public function download_xlsx()
+    public function download_xlsx($id)
     {
-        if ($this->download->link_xlsx) {
-            return  response()->download(storage_path('app/public/' . $this->download->link_xlsx));
+        $import = Import::find($id);
+        $this->import = $import;
+        if ($this->import->link_xlsx) {
+            return  response()->download(storage_path('app/public/' . $this->import->link_xlsx));
         } else {
         }
     }
 
-    public function download_csv()
+    public function download_csv($id)
     {
-        if ($this->download->link_csv) {
-            return  response()->download(storage_path('app/public/' . $this->download->link_csv));
+
+        $import = Import::find($id);
+        $this->import = $import;
+        if ($this->import->link_csv) {
+            return  response()->download(storage_path('app/public/' . $this->import->link_csv));
         } else {
         }
     }
