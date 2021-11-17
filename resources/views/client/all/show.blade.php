@@ -4,7 +4,7 @@
         <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
             <div class="px-4 py-5 sm:px-6">
                 <h3 class="text-lg font-medium leading-6 text-gray-900">
-                    Persona PEP
+                    Persona
                 </h3>
                 <p class="max-w-2xl mt-1 text-sm text-gray-500">
                     Información

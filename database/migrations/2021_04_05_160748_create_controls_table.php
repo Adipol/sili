@@ -17,7 +17,7 @@ class CreateControlsTable extends Migration
         Schema::create('controls', function (Blueprint $table) {
             $table->id();
 
-            $table->string('id_pep');
+            $table->bigInteger('id_pep');
             $table->string('id_all')->nullable();
             $table->enum('type', [Control::PEP, Control::LISTA]);
             $table->string('code', 20);

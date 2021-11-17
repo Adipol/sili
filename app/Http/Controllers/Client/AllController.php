@@ -10,7 +10,7 @@ class AllController extends Controller
 {
     public function show($id)
     {
-        $pep = DB::table('controls')->where('id_pep', $id)->first();
+        $pep = DB::table('controls')->where('id_pep', $id)->where('id_all', null)->first();
         $all = DB::table('controls')->where('id_pep', $id)
             ->where('type_pep', 'ALL')->get();
 
