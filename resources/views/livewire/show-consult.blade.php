@@ -108,15 +108,11 @@
                             {{ $pep->management }}
                         </td>
                         <td class="px-1 py-4 text-sm font-medium" title="Detalle de la persona">
-                            @livewire('show-pep',['pep' => $pep], key($pep->id))
+                            @livewire('show-pep',['pep' => $pep], key('consul-profile-one-'.$pep->id))
                         </td>
-                        @if ($pep->id_all)
-                            <td class="px-1 font-medium py-4text-sm " title="Detalle de allegados">
-                                <a class="btn btn-green" href="{{ route('all.show', $pep->id_pep) }}">
-                                    <i class="fas far fa-people-arrows"> </i>
-                                </a>
-                            </td>
-                        @endif
+                        <td>
+                            @livewire('allegado',['pep' => $pep], key('consul-profile-two-'.$pep->id))
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

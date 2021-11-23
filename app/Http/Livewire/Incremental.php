@@ -25,7 +25,7 @@ class Incremental extends Component
         $new_pepu_ex, $update_pepu_ex,
         $new_pepu_nal, $update_pepu_nal,
         $new_ue, $update_ue,
-        $description;
+        $description_one;
 
     public function render()
     {
@@ -69,7 +69,7 @@ class Incremental extends Component
             'pepu_nal_upgrade' => $this->update_pepu_nal,
             'ue_new' => $this->new_ue,
             'ue_upgrade' => $this->update_ue,
-            'description' => $this->description
+            'description' => $this->description_one
         ]);
     }
 

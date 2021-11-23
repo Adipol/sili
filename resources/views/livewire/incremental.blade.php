@@ -218,7 +218,8 @@
                                 Observaciones
                             </label>
                             <div class="mt-1">
-                                <textarea id="description" name="description" rows="3" wire:model="description"
+                                <textarea id="description_one" name="description_one" rows="2"
+                                    wire:model="description_one"
                                     class="block w-full mt-1 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
                             </div>
                         </div>
