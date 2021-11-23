@@ -20,4 +20,9 @@ class Detail extends Model
     {
         $this->hasMany(Import::class);
     }
+
+    public function expenses()
+    {
+        $this->hasMany(Expense::class);
+    }
 }

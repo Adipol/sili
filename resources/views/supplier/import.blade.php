@@ -29,10 +29,29 @@
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 space-y-6 bg-white sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="month" class="block text-sm font-medium text-gray-700">Fecha de
+                                        carga</label>
+                                    <input type="date" name="date" id="date" autocomplete="given-name"
+                                        required="required"
+                                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="month" class="block text-sm font-medium text-gray-700">Detalle de
+                                        carga</label>
+                                    <select id="detail" name="detail" autocomplete="detail" required
+                                        class="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <option disabled selected hidden>Seleccione fecha</option>
+                                        @foreach ($details as $detail)
+                                            <option {{ (int) old('detail') === $detail->id ? 'selected' : '' }}
+                                                value="{{ $detail->id }}">{{ $detail->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <div class="col-span-6">
                                     <label class="block text-sm font-medium text-gray-700">
-                                        Cargar Archivo
+                                        Archivo
                                     </label>
 
                                     <div
@@ -47,7 +66,7 @@
                                             <div class="flex text-sm text-gray-600">
                                                 <label for="file-upload"
                                                     class="relative font-medium text-indigo-600 bg-white rounded-md cursor-pointer hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                                    <span>Cargar un Archivo</span>
+                                                    <span>Seleccione un Archivo</span>
                                                     <input id="file-upload" name="import_file" type="file"
                                                         class="sr-only" required="required">
                                                 </label>
@@ -64,7 +83,7 @@
                         <div class="px-4 py-3 text-right bg-gray-50 sm:px-6">
                             <button type="submit"
                                 class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-blue-900 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                Importar
+                                Cargar archivo
                             </button>
                         </div>
                     </div>
@@ -73,4 +92,54 @@
         </div>
     </div>
 
+    <article class="mb-6 card px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="text-sm card-body bh-gray-100">
+            <header class="flex items-center justify-between">
+                <h1> <i class="far fa-calendar-alt"></i>
+                    <strong>Datos de Carga</strong>
+                </h1>
+            </header>
+        </div>
+        <div class="flex flex-col">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+                    <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Fecha de carga
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Detalle de carga
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                {{-- @foreach ($lists as $list)
+                                    <tr>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $list->updated_at->isoFormat('ll') }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $list->amount }}
+                                        </td>
+                                        <td class="flex px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            @livewire('incremental-xlsx',['list'=>$list],key('user-profile-one-'.$list->id))
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            @livewire('incremental-csv',['list'=>$list],key('user-profile-two-'.$list->id))
+                                        </td>
+                                    </tr>
+                                @endforeach --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
 </x-import-layout>
