@@ -111,8 +111,14 @@
                             @livewire('show-pep',['pep' => $pep], key('consul-profile-one-'.$pep->id))
                         </td>
                         <td>
+                            <a class="btn btn-red" href="{{ route('download-pdf') }}">
+                                <i class="far fa-file-pdf"></i>
+                            </a>
+                        </td>
+                        <td>
                             @livewire('allegado',['pep' => $pep], key('consul-profile-two-'.$pep->id))
                         </td>
+
                     </tr>
                 @endforeach
             </tbody>

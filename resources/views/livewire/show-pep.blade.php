@@ -69,9 +69,6 @@
             <x-jet-secondary-button wire:click="$set('open',false)">
                 Cancelar
             </x-jet-secondary-button>
-            <x-jet-secondary-button>
-                Reporte
-            </x-jet-secondary-button>
         </x-slot>
     </x-jet-dialog-modal>
 </div>
