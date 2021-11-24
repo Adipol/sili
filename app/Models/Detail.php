@@ -11,18 +11,21 @@ class Detail extends Model
 
     protected $guarded = ['id'];
 
+
+
+
     public function imports()
     {
-        $this->hasMany(Import::class);
+        return $this->hasMany(Import::class);
     }
 
     public function wholes()
     {
-        $this->hasMany(Import::class);
+        return $this->hasMany(Import::class);
     }
 
     public function expenses()
     {
-        $this->hasMany(Expense::class);
+        return $this->hasMany(Expense::class);
     }
 }

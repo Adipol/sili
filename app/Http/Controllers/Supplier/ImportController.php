@@ -18,9 +18,9 @@ class ImportController extends Controller
     {
         $amount = Control::count();
         $details = Detail::select('id', 'name')->get();
-        //$expenses = Expense::select('date')->with('detail:name')->get();
+        $expenses = Expense::all();
 
-        return view('supplier.import', compact('amount', 'details'));
+        return view('supplier.import', compact('amount', 'details', 'expenses'));
     }
 
     /**

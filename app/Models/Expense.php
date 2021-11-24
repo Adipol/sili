@@ -9,8 +9,14 @@ class Expense extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
+    protected $dates = [
+        'date'
+    ];
+
     public function detail()
     {
-        $this->belongsTo(Detail::class);
+        return $this->belongsTo(Detail::class);
     }
 }
