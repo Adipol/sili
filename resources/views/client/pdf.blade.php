@@ -13,28 +13,69 @@
             box-sizing: border-box;
         }
 
-        p,
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+
+            html,
+            body {
+                width: 210mm;
+                height: 297mm;
+
+            }
+
+            .page {
+                margin: 0;
+                border: initial;
+                border-radius: initial;
+                width: initial;
+                min-height: initial;
+                box-shadow: initial;
+                background: initial;
+                page-break-after: always;
+            }
+        }
+
         label,
         span,
         table {
             font-family: 'BrixSansRegular';
-            font-size: 9pt;
+            font-size: 10pt;
+
         }
 
         .h2 {
             font-family: 'BrixSansBlack';
             font-size: 16pt;
+            color: #FFF;
         }
 
         .h3 {
             font-family: 'BrixSansBlack';
             font-size: 12pt;
             display: block;
-            background: #0a4661;
+            background: #1E3A8A;
             color: #FFF;
             text-align: center;
             padding: 3px;
             margin-bottom: 5px;
+        }
+
+        .h4 {
+            font-family: 'BrixSansBlack';
+            font-size: 11pt;
+            display: block;
+            color: #FFF;
+            text-align: center;
+            padding: 3px;
+            margin-bottom: 5px;
+        }
+
+        img {
+            width: 150px
         }
 
         #page_pdf {
@@ -43,10 +84,38 @@
         }
 
         #factura_head,
-        #factura_cliente,
         #factura_detalle {
             width: 100%;
             margin-bottom: 10px;
+        }
+
+
+        #pep {
+            margin-bottom: 50px;
+
+        }
+
+        #pep td {
+            padding: 2px 0;
+            width: 10%;
+
+        }
+
+        #factura_head {
+            font-family: 'BrixSansBlack';
+            background: #1E3A8A;
+            height: 90px;
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom: 2px solid #0a4661;
+            border-top: 1px solid #0a4661;
+
+            padding: 35px 20px;
+            opacity: .9;
+
         }
 
         .logo_factura {
@@ -60,43 +129,32 @@
 
         .info_factura {
             width: 25%;
+
         }
 
         .info_cliente {
             width: 100%;
+            table-layout: auto;
         }
 
         .datos_cliente {
-            width: 100%;
+            table-layout: auto;
+
         }
 
         .datos_cliente tr td {
-            width: 50%;
+            width: 100%;
+
         }
 
         .datos_cliente {
             padding: 10px 10px 0 10px;
+            table-layout: auto;
         }
 
         .datos_cliente label {
             width: 75px;
-            display: inline-block;
-        }
 
-        .datos_cliente p {
-            display: inline-block;
-        }
-
-        .textright {
-            text-align: right;
-        }
-
-        .textleft {
-            text-align: left;
-        }
-
-        .textcenter {
-            text-align: center;
         }
 
         .round {
@@ -104,47 +162,26 @@
             border: 1px solid #0a4661;
             overflow: hidden;
             padding-bottom: 15px;
+            background-color: #FFF;
+
         }
 
-        .round p {
+        .round1 {
+            border-radius: 10px;
+            border: 1px solid #0a4661;
+            overflow: hidden;
+            padding-bottom: 15px;
+            background-color: #E0E0E0E0;
+
+        }
+
+        .round1 input {
             padding: 0 15px;
-        }
-
-        #factura_detalle {
-            border-collapse: collapse;
-        }
-
-        #factura_detalle thead th {
-            background: #058167;
-            color: #FFF;
-            padding: 5px;
-        }
-
-        #detalle_productos tr:nth-child(even) {
-            background: #ededed;
-        }
-
-        #detalle_totales span {
-            font-family: 'BrixSansBlack';
+            width: 100%;
         }
 
         .nota {
             font-size: 8pt;
-        }
-
-        .label_gracias {
-            font-family: verdana;
-            font-weight: bold;
-            font-style: italic;
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .anulada {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translateX(-50%) translateY(-50%);
         }
 
     </style>
@@ -156,124 +193,82 @@
             <tr>
                 <td class="logo_factura">
                     <div>
-                        <img src="{{ asset('img/home/logow.png') }}">
+                        {{-- <img src="{{ asset('img/home/logow.png') }}"> --}}
                     </div>
                 </td>
                 <td class="info_empresa">
                     <div>
                         <span class="h2">AMLC - Listas de control</span>
-                        <p>REPORTE DE CONSULTA</p>
+                        <span class="h4">REPORTE DE CONSULTA</span>
                     </div>
                 </td>
                 <td class="info_factura">
                     <div class="round">
-                        <span class="h3">Detalle</span>
-                        <p>Fecha: 20/01/2019</p>
-                        <p>Hora: 10:30am</p>
-                        <p>Usuario: Jorge Pérez Hernández Cabrera</p>
+                        <p>Fecha: {{ $date->format('d-m-Y') }}</p>
+                        <p>Hora: {{ $date->format('H:i') }}</p>
+                        <p>Usuario: {{ Auth::user()->name }}</p>
                     </div>
                 </td>
             </tr>
         </table>
-        <table id="factura_cliente">
+        <table id="pep">
             <tr>
                 <td class="info_cliente">
-                    <div class="round">
-                        <span class="h3">DATOS CONSULTADOS</span>
+                    <div class="round1">
+                        <span class="h3">Datos consultados</span>
                         <table class="datos_cliente">
                             <tr>
-                                <td><label>Nit:</label>
-                                    <p>54895468</p>
-                                </td>
-                                <td><label>Teléfono:</label>
-                                    <p>7854526</p>
-                                </td>
+
+                                <td><label>Primer Nombre: </label></td>
+                                <td colspan="3"> <input type="text" name="" value="{{ $pep->name_one }}"></input></td>
+
                             </tr>
                             <tr>
-                                <td><label>Nombre:</label>
-                                    <p>Angel Arana Cabrera</p>
-                                </td>
-                                <td><label>Dirección:</label>
-                                    <p>Calzada Buena Vista</p>
+                                <td><label>Segundo Nombre: </label></td>
+                                <td> <input type="text" name="" value="{{ $pep->name_two }}"></input></td>
+                                <td> <label>Primer Apellido: </label></td>
+                                <td><input type="text" name="" value="{{ $pep->last_name_one }}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>Segundo Apellido: </label></td>
+                                <td> <input type="text" name="" value="{{ $pep->last_name_two }}"></input></td>
+                                <td><label>Tipo de Documento: </label> </td>
+                                <td> <input type="text" name="" value="{{ $pep->type_document }}"></input></td>
+
+                            </tr>
+                            <tr>
+                                <td><label>Numero de Documento: </label></td>
+                                <td><input type="text" name="" value="{{ $pep->nro_document }}"></input></td>
+                                <td><label>Tipo de Lista: </label> </td>
+                                <td><input type="text" name="" value="{{ $pep->code }}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>Cargo: </label></td>
+                                <td colspan="3"><input type="text" name="" value="{{ $pep->position }}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>Entidad: </label></td>
+                                <td colspan="3"><input type="text" name="" value="{{ $pep->entity }}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>Gestión: </label></td>
+                                <td><input type="text" name="" value="{{ $pep->management }}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>Justificacion: </label></td>
+                                <td colspan="3"><textarea type="text" name="" cols="70"
+                                        rows="5">{{ $pep->justification }}</textarea>
                                 </td>
                             </tr>
                         </table>
                     </div>
                 </td>
-
             </tr>
         </table>
-
-        <table id="factura_detalle">
-            <thead>
-                <tr>
-                    <th width="50px">Cant.</th>
-                    <th class="textleft">Descripción</th>
-                    <th class="textright" width="150px">Precio Unitario.</th>
-                    <th class="textright" width="150px"> Precio Total</th>
-                </tr>
-            </thead>
-            <tbody id="detalle_productos">
-                <tr>
-                    <td class="textcenter">1</td>
-                    <td>Plancha</td>
-                    <td class="textright">516.67</td>
-                    <td class="textright">516.67</td>
-                </tr>
-                <tr>
-                    <td class="textcenter">1</td>
-                    <td>Plancha</td>
-                    <td class="textright">516.67</td>
-                    <td class="textright">516.67</td>
-                </tr>
-                <tr>
-                    <td class="textcenter">1</td>
-                    <td>Plancha</td>
-                    <td class="textright">516.67</td>
-                    <td class="textright">516.67</td>
-                </tr>
-                <tr>
-                    <td class="textcenter">1</td>
-                    <td>Plancha</td>
-                    <td class="textright">516.67</td>
-                    <td class="textright">516.67</td>
-                </tr>
-                <tr>
-                    <td class="textcenter">1</td>
-                    <td>Plancha</td>
-                    <td class="textright">516.67</td>
-                    <td class="textright">516.67</td>
-                </tr>
-                <tr>
-                    <td class="textcenter">1</td>
-                    <td>Plancha</td>
-                    <td class="textright">516.67</td>
-                    <td class="textright">516.67</td>
-                </tr>
-            </tbody>
-            <tfoot id="detalle_totales">
-                <tr>
-                    <td colspan="3" class="textright"><span>SUBTOTAL Q.</span></td>
-                    <td class="textright"><span>516.67</span></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="textright"><span>IVA (12%)</span></td>
-                    <td class="textright"><span>516.67</span></td>
-                </tr>
-                <tr>
-                    <td colspan="3" class="textright"><span>TOTAL Q.</span></td>
-                    <td class="textright"><span>516.67</span></td>
-                </tr>
-            </tfoot>
-        </table>
         <div>
-            <p class="nota">Si usted tiene preguntas sobre esta factura, <br>pongase en contacto con nombre,
-                teléfono y Email</p>
-            <h4 class="label_gracias">¡Gracias por su compra!</h4>
+            <p class="nota">powered by <br>AMLC</p>
         </div>
-
     </div>
-
 </body>
 
 </html>
