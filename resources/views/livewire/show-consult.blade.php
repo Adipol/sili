@@ -48,11 +48,11 @@
                         wire:click="order('nro_document')">
                         Nro. de Documento
                     </th>
-                    <th scope="col"
+                    {{-- <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('extension')">
                         Extension
-                    </th>
+                    </th> --}}
                     <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('code')">
@@ -73,7 +73,7 @@
                         wire:click="order('management')">
                         Gestión
                     </th>
-                    <th scope="col" colspan="2"
+                    <th scope="col" colspan="3"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                         Opciones
                     </th>
@@ -91,9 +91,9 @@
                         <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->nro_document }}
                         </td>
-                        <td class="px-6 py-4 text-xs font-medium">
+                        {{-- <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->extension }}
-                        </td>
+                        </td> --}}
                         <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->code }}</>
                         </td>
@@ -104,20 +104,20 @@
                             <div class="text-sm text-gray-900">{{ $pep->position }}</div>
                             <div class="text-sm text-gray-500">{{ $pep->entity }}</div>
                         </td>
-                        <td class="px-6 py-4 text-xs font-medium">
+                        <td>
                             {{ $pep->management }}
                         </td>
-                        <td class="px-1 py-4 text-sm font-medium" title="Detalle de la persona">
+                        <td title="Detalle de la persona">
                             @livewire('show-pep',['pep' => $pep], key('consul-profile-one-'.$pep->id))
                         </td>
                         <td>
-                            <a class="btn btn-red" href="{{ route('download-pdf') }}">
+                            <a class="btn btn-red" href="{{ route('get-all-pep') }}">
                                 <i class="far fa-file-pdf"></i>
                             </a>
                         </td>
-                        <td>
+                        {{-- <td>
                             @livewire('allegado',['pep' => $pep], key('consul-profile-two-'.$pep->id))
-                        </td>
+                        </td> --}}
 
                     </tr>
                 @endforeach

@@ -9,6 +9,11 @@ use Barryvdh\DomPDF\Facade as PDF;
 
 class PdfController extends Controller
 {
+    public function getAllpep()
+    {
+        return view('client.pdf');
+    }
+
     public function downloadPDF()
     {
         $pdf = PDF::loadView('client.pdf');

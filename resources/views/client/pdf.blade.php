@@ -5,254 +5,275 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exportar a PDF</title>
+    <title>AMLC - Listas de control</title>
     <style type="text/css" media="all">
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 20px;
-            padding: 0;
-            background-color: #FAFAFA;
-            font: 12pt "Tahoma";
-        }
-
         * {
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-        }
-
-
-
-        @page {
-            size: A4;
             margin: 0;
-        }
-
-        @media print {
-
-            html,
-            body {
-                width: 210mm;
-                height: 297mm;
-            }
-
-            .page {
-                margin: 0;
-                border: initial;
-                border-radius: initial;
-                width: initial;
-                min-height: initial;
-                box-shadow: initial;
-                background: initial;
-                page-break-after: always;
-            }
-        }
-
-        * {
+            padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            margin-top: 80px;
-
-
-            font-family: "HelveticaNeue-CondensedBold", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        p,
+        label,
+        span,
+        table {
+            font-family: 'BrixSansRegular';
+            font-size: 9pt;
         }
 
-
-        .card {
-            height: 877px;
-            width: 620px;
-            margin: 0 auto;
-            background: #ECECEC;
-            border-radius: 4px;
+        .h2 {
+            font-family: 'BrixSansBlack';
+            font-size: 16pt;
         }
 
+        .h3 {
+            font-family: 'BrixSansBlack';
+            font-size: 12pt;
+            display: block;
+            background: #0a4661;
+            color: #FFF;
+            text-align: center;
+            padding: 3px;
+            margin-bottom: 5px;
+        }
 
-        .card header {
-            background: #1E3A8A;
-            height: 90px;
+        #page_pdf {
+            width: 95%;
+            margin: 15px auto 10px auto;
+        }
+
+        #factura_head,
+        #factura_cliente,
+        #factura_detalle {
             width: 100%;
-            border-top-left-radius: 4px;
-            border-top-right-radius: 4px;
-            border-bottom: 2px solid rgba(180, 80, 80, .5);
-            border-top: 1px solid rgba(221, 108, 108, .8);
-
-            padding: 35px 20px;
-            opacity: .9;
+            margin-bottom: 10px;
         }
 
-
-
-        .card header h1 {
-            color: #fff;
-            line-height: 90%;
-            font-size: 20px;
-            margin: 0;
-            text-shadow: -1px -1px 1px rgba(0, 0, 0, .5);
+        .logo_factura {
+            width: 25%;
         }
 
-        .card article {
-            padding: 20px;
+        .info_empresa {
+            width: 50%;
+            text-align: center;
         }
 
-        .card article img {
-
-            float: left;
-            margin-right: 30px;
-            width: 130px;
-            height: 177px;
-            transition: all .3s ease-in-out;
+        .info_factura {
+            width: 25%;
         }
 
-        .card article h2 {
-            color: #515355;
-            float: left;
-            margin: 0 5px 15px 0;
-            font-weight: normal;
-            padding: 0 0 8px 0;
-            width: 250px;
+        .info_cliente {
+            width: 100%;
         }
 
-        .card article .area {
-            height: 170px;
-            width: 440px;
+        .datos_cliente {
+            width: 100%;
         }
 
-        .card article .area h3 {
-            margin: 0;
-            color: #5F6163;
-            font-size: 20px
+        .datos_cliente tr td {
+            width: 50%;
         }
 
-        .card article .area ul {
-            margin: 5px 0 30px 0;
-            padding: 0;
-            list-style: none;
+        .datos_cliente {
+            padding: 10px 10px 0 10px;
         }
 
-        .card article .area ul li {
-            margin: 5px 0 0 0;
-            font-size: 16px;
-            color: #94957F;
-            text-shadow: 0 0 1px rgba(0, 0, 0, .3);
-        }
-
-        .card article .area ul li .bar {
-            width: 280px;
-            height: 15px;
+        .datos_cliente label {
+            width: 75px;
             display: inline-block;
-            border-radius: 50px;
-            float: right;
-            margin: 0 15px 0 0;
-
-            opacity: .9;
-
-            background-color: #CACACA;
-            box-shadow: inset 0 2px 2px rgba(0, 0, 0, .35);
         }
 
-        .card article .area ul li .bar:before {
-
-            left: 0;
-            width: 0;
-            height: 15px;
-            background: rgb(254, 213, 121);
-
-            box-shadow:
-                inset 0 4px 4px rgba(255, 255, 255, .3),
-                inset 0 -2px 3px rgba(0, 0, 0, .05),
-                0 1px 0 0px #D29D40;
+        .datos_cliente p {
             display: inline-block;
-            border-radius: 50px;
-            content: '';
-            z-index: -1;
         }
 
-        .card article .area ul li .bar.percent-100:before {
-            width: 280px;
+        .textright {
+            text-align: right;
         }
 
-        .card article .area ul li .bar.percent-90:before {
-            width: 260px;
+        .textleft {
+            text-align: left;
         }
 
-        .card article .area ul li .bar.percent-80:before {
-            width: 240px;
+        .textcenter {
+            text-align: center;
         }
 
-        .card article .area ul li .bar.percent-70:before {
-            width: 220px;
+        .round {
+            border-radius: 10px;
+            border: 1px solid #0a4661;
+            overflow: hidden;
+            padding-bottom: 15px;
         }
 
-        .card article .area ul li .bar.percent-60:before {
-            width: 200px;
+        .round p {
+            padding: 0 15px;
         }
 
-        .card article .area ul li .bar.percent-50:before {
-            width: 180px;
+        #factura_detalle {
+            border-collapse: collapse;
         }
 
-        .card article .area ul li:before {
-            /* content: '05'; */
-            margin-right: 5px;
+        #factura_detalle thead th {
+            background: #058167;
+            color: #FFF;
+            padding: 5px;
         }
 
-        .card article .area::-webkit-scrollbar {
-            width: 10px;
+        #detalle_productos tr:nth-child(even) {
+            background: #ededed;
         }
 
-        .card article .area::-webkit-scrollbar-track {
-            background-color: rgba(217, 217, 217, .5);
-            border-radius: 50px;
+        #detalle_totales span {
+            font-family: 'BrixSansBlack';
         }
 
-        .card article .area::-webkit-scrollbar-thumb {
-            background: rgba(184, 184, 184, .5);
-            box-shadow:
-                inset 1px 1px 0 rgba(0, 0, 0, 0.10),
-                inset 0 -1px 0 rgba(0, 0, 0, 0.07);
-            border-radius: 50px;
+        .nota {
+            font-size: 8pt;
+        }
+
+        .label_gracias {
+            font-family: verdana;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .anulada {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
         }
 
     </style>
 </head>
 
 <body>
-    <div class='card'>
-        <header>
-            <h1 class="text-center">Bright Group Tuition</h1>
-        </header>
-        <br>
-        <article>
-            <img alt='My Pic' id='thumb' src='https://s.cdpn.io/1202/timpietrusky_on_rampage_small_1.jpg'>
-            <h2>Tim Pietrusky</h2>
-            <div class='area'>
-                <ul>
-                    <li>
-                        Std: 10th
-                    </li>
-                    <li>
-                        Batch: B1
-                    </li>
-                    <li>
-                        DOB: 12/12/12
-                    </li>
-                    <li>
-                        Academic Year: 2020-2020
-                    </li>
-                    <li>
-                        Contact Number: 8390790935
-                    </li>
-                    <li>
-                        Address: 911B,Baker Street
-                    </li>
-                </ul>
+    <div id="page_pdf">
+        <table id="factura_head">
+            <tr>
+                <td class="logo_factura">
+                    <div>
+                        <img src="{{ asset('img/home/logow.png') }}">
+                    </div>
+                </td>
+                <td class="info_empresa">
+                    <div>
+                        <span class="h2">AMLC - Listas de control</span>
+                        <p>REPORTE DE CONSULTA</p>
+                    </div>
+                </td>
+                <td class="info_factura">
+                    <div class="round">
+                        <span class="h3">Detalle</span>
+                        <p>Fecha: 20/01/2019</p>
+                        <p>Hora: 10:30am</p>
+                        <p>Usuario: Jorge Pérez Hernández Cabrera</p>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table id="factura_cliente">
+            <tr>
+                <td class="info_cliente">
+                    <div class="round">
+                        <span class="h3">DATOS CONSULTADOS</span>
+                        <table class="datos_cliente">
+                            <tr>
+                                <td><label>Nit:</label>
+                                    <p>54895468</p>
+                                </td>
+                                <td><label>Teléfono:</label>
+                                    <p>7854526</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Nombre:</label>
+                                    <p>Angel Arana Cabrera</p>
+                                </td>
+                                <td><label>Dirección:</label>
+                                    <p>Calzada Buena Vista</p>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
 
+            </tr>
+        </table>
 
-            </div>
-        </article>
+        <table id="factura_detalle">
+            <thead>
+                <tr>
+                    <th width="50px">Cant.</th>
+                    <th class="textleft">Descripción</th>
+                    <th class="textright" width="150px">Precio Unitario.</th>
+                    <th class="textright" width="150px"> Precio Total</th>
+                </tr>
+            </thead>
+            <tbody id="detalle_productos">
+                <tr>
+                    <td class="textcenter">1</td>
+                    <td>Plancha</td>
+                    <td class="textright">516.67</td>
+                    <td class="textright">516.67</td>
+                </tr>
+                <tr>
+                    <td class="textcenter">1</td>
+                    <td>Plancha</td>
+                    <td class="textright">516.67</td>
+                    <td class="textright">516.67</td>
+                </tr>
+                <tr>
+                    <td class="textcenter">1</td>
+                    <td>Plancha</td>
+                    <td class="textright">516.67</td>
+                    <td class="textright">516.67</td>
+                </tr>
+                <tr>
+                    <td class="textcenter">1</td>
+                    <td>Plancha</td>
+                    <td class="textright">516.67</td>
+                    <td class="textright">516.67</td>
+                </tr>
+                <tr>
+                    <td class="textcenter">1</td>
+                    <td>Plancha</td>
+                    <td class="textright">516.67</td>
+                    <td class="textright">516.67</td>
+                </tr>
+                <tr>
+                    <td class="textcenter">1</td>
+                    <td>Plancha</td>
+                    <td class="textright">516.67</td>
+                    <td class="textright">516.67</td>
+                </tr>
+            </tbody>
+            <tfoot id="detalle_totales">
+                <tr>
+                    <td colspan="3" class="textright"><span>SUBTOTAL Q.</span></td>
+                    <td class="textright"><span>516.67</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="textright"><span>IVA (12%)</span></td>
+                    <td class="textright"><span>516.67</span></td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="textright"><span>TOTAL Q.</span></td>
+                    <td class="textright"><span>516.67</span></td>
+                </tr>
+            </tfoot>
+        </table>
+        <div>
+            <p class="nota">Si usted tiene preguntas sobre esta factura, <br>pongase en contacto con nombre,
+                teléfono y Email</p>
+            <h4 class="label_gracias">¡Gracias por su compra!</h4>
+        </div>
+
     </div>
+
 </body>
 
 </html>
