@@ -10,15 +10,19 @@ use Carbon\Carbon;
 
 class PdfController extends Controller
 {
-    public function downloadPDF()
+    public function downloadPDF($id)
     {
-        $pdf = PDF::loadView('client.pdf');
+        $pep = Control::where('id_register', $id)->first();
+        $date = Carbon::now();
+
+        $pdf = PDF::loadView('client.pdf', compact('pep', 'date'));
+
         return $pdf->stream('AMLC_Pep.pdf');
     }
 
     public function getAllpep($id)
     {
-        $pep = Control::where('id_pep', $id)->first();
+        $pep = Control::where('id_register', $id)->first();
         $date = Carbon::now();
 
         return view('client.pdf', compact('pep', 'date'));

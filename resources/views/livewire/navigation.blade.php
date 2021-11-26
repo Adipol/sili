@@ -47,12 +47,20 @@ $nav_links = [
                 @auth
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            @foreach ($nav_links as $nav_link)
-                                <a href="{{ $nav_link['route'] }}"
-                                    class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white"
-                                    :active="$nav_link['active']">{{ $nav_link['name'] }}</a>
 
-                            @endforeach
+                            <a href="{{ route('consults.index') }}"
+                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas</a>
+
+                            <a href="{{ route('incremental.index') }}"
+                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Descargar
+                                Información</a>
+                            @can('Cargas listas')
+                                <a href="{{ route('import.index') }}"
+                                    class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Cargar
+                                    Información</a>
+                            @endcan
+
+
                         </div>
                     </div>
                 @endauth
@@ -89,15 +97,19 @@ $nav_links = [
                             <a href="{{ route('profile.show') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Tu
                                 Perfil</a>
-                            <a href="{{ route('admin.home') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                                role="menuitem">Administrador</a>
+                            @can('Ver admin')
+                                <a href="{{ route('admin.home') }}"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                                    role="menuitem">Administrador</a>
+                            @endcan
+
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>

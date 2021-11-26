@@ -14,6 +14,6 @@ Route::get('/livewire-charts', function () {
     return view('home');
 });
 
-Route::get('/download-pdf', [PdfController::class, 'downloadPDF'])->name('download-pdf');
+Route::get('/download-pdf/{id}', [PdfController::class, 'downloadPDF'])->name('download-pdf');
 
 Route::get('/get-all-pep/{id}', [PdfController::class, 'getAllpep'])->name('get-all-pep');

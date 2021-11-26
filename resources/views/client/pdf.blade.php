@@ -13,32 +13,6 @@
             box-sizing: border-box;
         }
 
-        @page {
-            size: A4;
-            margin: 0;
-        }
-
-        @media print {
-
-            html,
-            body {
-                width: 210mm;
-                height: 297mm;
-
-            }
-
-            .page {
-                margin: 0;
-                border: initial;
-                border-radius: initial;
-                width: initial;
-                min-height: initial;
-                box-shadow: initial;
-                background: initial;
-                page-break-after: always;
-            }
-        }
-
         label,
         span,
         table {
@@ -91,20 +65,19 @@
 
 
         #pep {
-            margin-bottom: 50px;
+            height: 50px;
+            width: 100%;
 
         }
 
-        #pep td {
+        {{-- #pep td {
             padding: 2px 0;
             width: 10%;
 
-        }
-
-        #factura_head {
+        } --}} #factura_head {
             font-family: 'BrixSansBlack';
             background: #1E3A8A;
-            height: 90px;
+            height: 50px;
             width: 100%;
             border-top-left-radius: 10px;
             border-top-right-radius: 10px;
@@ -112,9 +85,7 @@
             border-bottom-right-radius: 10px;
             border-bottom: 2px solid #0a4661;
             border-top: 1px solid #0a4661;
-
             padding: 35px 20px;
-            opacity: .9;
 
         }
 
@@ -128,33 +99,41 @@
         }
 
         .info_factura {
-            width: 25%;
+            width: 20%;
 
         }
 
         .info_cliente {
-            width: 100%;
-            table-layout: auto;
-        }
-
-        .datos_cliente {
-            table-layout: auto;
-
-        }
-
-        .datos_cliente tr td {
+            height: 50px;
             width: 100%;
 
         }
 
+
         .datos_cliente {
-            padding: 10px 10px 0 10px;
-            table-layout: auto;
+            padding: 10px 50px 0 20px;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 10px 10px;
+
+        }
+
+        .datos_cliente td:empty {
+            width: 500px;
+        }
+
+        .first-child {
+            width: 70%;
+            text-align: left;
+        }
+
+        .second-child {
+            width: 20%;
+            text-align: left;
         }
 
         .datos_cliente label {
             width: 75px;
-
         }
 
         .round {
@@ -163,7 +142,8 @@
             overflow: hidden;
             padding-bottom: 15px;
             background-color: #FFF;
-
+            padding: 0 15px;
+            width: 90%;
         }
 
         .round1 {
@@ -176,6 +156,11 @@
         }
 
         .round1 input {
+            padding: 0 15px;
+            width: 100%;
+        }
+
+        .round1 textarea {
             padding: 0 15px;
             width: 100%;
         }
@@ -193,7 +178,7 @@
             <tr>
                 <td class="logo_factura">
                     <div>
-                        {{-- <img src="{{ asset('img/home/logow.png') }}"> --}}
+                        {{-- <img alt='My Pic' id='thumb' src='https://s.cdpn.io/1202/timpietrusky_on_rampage_small_1.jpg'> --}}
                     </div>
                 </td>
                 <td class="info_empresa">
@@ -211,6 +196,7 @@
                 </td>
             </tr>
         </table>
+
         <table id="pep">
             <tr>
                 <td class="info_cliente">
@@ -219,36 +205,46 @@
                         <table class="datos_cliente">
                             <tr>
 
-                                <td><label>Primer Nombre: </label></td>
-                                <td colspan="3"> <input type="text" name="" value="{{ $pep->name_one }}"></input></td>
+                                <td class="first_child"><label>Primer Nombre: </label></td>
+                                <td class="second_child"> <input type="text" name=""
+                                        value="{{ $pep->name_one }}"></input></td>
 
                             </tr>
                             <tr>
                                 <td><label>Segundo Nombre: </label></td>
                                 <td> <input type="text" name="" value="{{ $pep->name_two }}"></input></td>
+                            </tr>
+                            <tr>
                                 <td> <label>Primer Apellido: </label></td>
                                 <td><input type="text" name="" value="{{ $pep->last_name_one }}"></input></td>
                             </tr>
                             <tr>
                                 <td><label>Segundo Apellido: </label></td>
                                 <td> <input type="text" name="" value="{{ $pep->last_name_two }}"></input></td>
+                            </tr>
+                            <tr>
                                 <td><label>Tipo de Documento: </label> </td>
                                 <td> <input type="text" name="" value="{{ $pep->type_document }}"></input></td>
-
                             </tr>
                             <tr>
                                 <td><label>Numero de Documento: </label></td>
                                 <td><input type="text" name="" value="{{ $pep->nro_document }}"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>Extensión: </label></td>
+                                <td><input type="text" name="" value="{{ $pep->extension }}"></input></td>
+                            </tr>
+                            <tr>
                                 <td><label>Tipo de Lista: </label> </td>
                                 <td><input type="text" name="" value="{{ $pep->code }}"></input></td>
                             </tr>
                             <tr>
                                 <td><label>Cargo: </label></td>
-                                <td colspan="3"><input type="text" name="" value="{{ $pep->position }}"></input></td>
+                                <td><input type="text" name="" value="{{ $pep->position }}"></input></td>
                             </tr>
                             <tr>
                                 <td><label>Entidad: </label></td>
-                                <td colspan="3"><input type="text" name="" value="{{ $pep->entity }}"></input></td>
+                                <td><input type="text" name="" value="{{ $pep->entity }}"></input></td>
                             </tr>
                             <tr>
                                 <td><label>Gestión: </label></td>
@@ -256,8 +252,7 @@
                             </tr>
                             <tr>
                                 <td><label>Justificacion: </label></td>
-                                <td colspan="3"><textarea type="text" name="" cols="70"
-                                        rows="5">{{ $pep->justification }}</textarea>
+                                <td><textarea type="text" name="" rows="5">{{ $pep->justification }}</textarea>
                                 </td>
                             </tr>
                         </table>

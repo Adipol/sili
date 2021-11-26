@@ -19,7 +19,7 @@
             </div>
     </div>
     @if ($peps->count())
-        <table class="min-w-full divide-y divide-gray-200">
+        <table class="min-w-full  divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
@@ -48,21 +48,21 @@
                         wire:click="order('nro_document')">
                         Nro. de Documento
                     </th>
-                    {{-- <th scope="col"
+                    <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('extension')">
                         Extension
-                    </th> --}}
+                    </th>
                     <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('code')">
                         Tipo
                     </th>
-                    <th scope="col"
+                    {{-- <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('position_country')">
                         País
-                    </th>
+                    </th> --}}
                     <th scope="col"
                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase cursor-pointer"
                         wire:click="order('position')">
@@ -73,10 +73,10 @@
                         wire:click="order('management')">
                         Gestión
                     </th>
-                    <th scope="col" colspan="3"
-                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                    <th scope="col" colspan="3" class="text-xs font-medium text-left text-gray-500 uppercase">
                         Opciones
                     </th>
+
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -91,15 +91,15 @@
                         <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->nro_document }}
                         </td>
-                        {{-- <td class="px-6 py-4 text-xs font-medium">
+                        <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->extension }}
-                        </td> --}}
+                        </td>
                         <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->code }}</>
                         </td>
-                        <td class="px-6 py-4 text-xs font-medium">
+                        {{-- <td class="px-6 py-4 text-xs font-medium">
                             {{ $pep->position_country }}
-                        </td>
+                        </td> --}}
                         <td class="px-6 py-4 text-xs font-medium">
                             <div class="text-sm text-gray-900">{{ $pep->position }}</div>
                             <div class="text-sm text-gray-500">{{ $pep->entity }}</div>
@@ -107,18 +107,18 @@
                         <td>
                             {{ $pep->management }}
                         </td>
-                        <td title="Detalle de la persona">
-                            @livewire('show-pep',['pep' => $pep], key('consul-profile-one-'.$pep->id))
+                        <td title="Detalle de la persona" style="width:5%">
+
+                            @livewire('show-pep',['pep' => $pep], key('consul-profile-one-'.$pep->id_register))
                         </td>
-                        <td>
-                            <a class="btn btn-red" href="{{ route('get-all-pep') }}">
+                        <td style="width:5%" title="Imprimir detalle">
+                            <a class="btn btn-red" href="{{ route('download-pdf', $pep->id_register) }}">
                                 <i class="far fa-file-pdf"></i>
                             </a>
                         </td>
-                        {{-- <td>
+                        <td style="width:5%" title="Allegado">
                             @livewire('allegado',['pep' => $pep], key('consul-profile-two-'.$pep->id))
-                        </td> --}}
-
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
