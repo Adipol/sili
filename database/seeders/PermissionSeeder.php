@@ -53,5 +53,21 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'Editar usuarios'
         ]);
+
+        Permission::create([
+            'name' => 'Eliminar usuarios'
+        ]);
+
+        Permission::create([
+            'name' => 'Listar seguimiento'
+        ]);
+
+        Permission::create([
+            'name' => 'Cargar incremental'
+        ]);
+
+        Permission::create([
+            'name' => 'Cargar completa'
+        ]);
     }
 }

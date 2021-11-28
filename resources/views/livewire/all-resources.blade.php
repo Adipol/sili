@@ -14,10 +14,10 @@
                     <div class="px-4 py-5 bg-white sm:p-6">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-6 sm:col-span-3">
-                                <label for="first-name" class="block text-sm font-medium text-gray-700">Cantidad de
-                                    registros</label>
-                                <input type="text" name="first-name" id="first-name" autocomplete="given-name"
-                                    required="required" wire:model="text"
+                                <label for="first-name" class="block text-sm font-medium text-gray-700">Fecha de
+                                    carga</label>
+                                <input type="date" name="fecha-carga" id="fecha_carga" autocomplete="given-name"
+                                    required="required" wire:model="fecha_carga"
                                     class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                             </div>
                         </div>
@@ -57,10 +57,6 @@
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                        Cantidad
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Archivo XLSX
                                     </th>
                                     <th scope="col"
@@ -73,10 +69,7 @@
                                 @foreach ($lists as $list)
                                     <tr>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $list->updated_at->isoFormat('ll') }}
-                                        </td>
-                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            {{ $list->amount }}
+                                            {{ $list->date->isoFormat('ll') }}
                                         </td>
                                         <td class="flex px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @livewire('incremental-xlsx',['list'=>$list],key('user-profile-one-'.$list->id))

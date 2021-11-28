@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TrackingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('can:Listar seguimiento')->only('index');
+    }
     /**
      * Display a listing of the resource.
      *

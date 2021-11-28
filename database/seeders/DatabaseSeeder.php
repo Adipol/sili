@@ -25,6 +25,5 @@ class DatabaseSeeder extends Seeder
         Entity::factory(10)->create();
         $this->call(UserSeeder::class);
         $this->call(DetailSeeder::class);
-        $this->call(MonthSeeder::class);
     }
 }

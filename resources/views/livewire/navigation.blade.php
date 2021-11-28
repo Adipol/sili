@@ -48,17 +48,23 @@ $nav_links = [
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
 
-                            <a href="{{ route('consults.index') }}"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas</a>
+                            @can('Buscar')
+                                <a href="{{ route('consults.index') }}"
+                                    class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas</a>
+                            @endcan
 
-                            <a href="{{ route('incremental.index') }}"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Descargar
-                                Información</a>
-                            @can('Cargas listas')
+                            @can('Descargar listas')
+                                <a href="{{ route('incremental.index') }}"
+                                    class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Descargar
+                                    Información</a>
+                            @endcan
+
+                            @can('Cargar listas')
                                 <a href="{{ route('import.index') }}"
                                     class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Cargar
                                     Información</a>
                             @endcan
+
 
 
                         </div>
@@ -97,19 +103,19 @@ $nav_links = [
                             <a href="{{ route('profile.show') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Tu
                                 Perfil</a>
-                            @can('Ver admin')
+
+                            @can('Ver dashboard')
                                 <a href="{{ route('admin.home') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                     role="menuitem">Administrador</a>
                             @endcan
-
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                    this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>
@@ -129,11 +135,23 @@ $nav_links = [
     <div class="sm:hidden" id="mobile-menu" x-show="open" x-on:click.away="open=false">
         <div class="px-2 pt-2 pb-3 space-y-1">
 
-            @foreach ($nav_links as $nav_link)
-                <a href="{{ $nav_link['route'] }}"
+            @can('Buscar')
+                <a href="{{ route('consults.index') }}"
                     class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-                    aria-current="page">{{ $nav_link['name'] }}</a>
-            @endforeach
+                    aria-current="page">Consultas</a>
+            @endcan
+
+            @can('Descargar listas')
+                <a href="{{ route('incremental.index') }}"
+                    class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                    aria-current="page">Descargar información</a>
+            @endcan
+
+            @can('Cargar listas')
+                <a href="{{ route('import.index') }}"
+                    class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                    aria-current="page">Cargar información</a>
+            @endcan
 
         </div>
     </div>

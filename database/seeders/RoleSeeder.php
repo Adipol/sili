@@ -15,10 +15,10 @@ class RoleSeeder extends Seeder
     public function run()
     {
         $role = Role::create(['name' => 'Admin']);
-        $role->permissions()->attach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+        $role->permissions()->attach([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]);
 
         $role = Role::create(['name' => 'Proveedor']);
-        $role->syncPermissions(['Buscar', 'Cargar listas', 'Descargar listas', 'Crear usuario', 'Leer usuarios', 'Editar usuarios']);
+        $role->syncPermissions(['Buscar', 'Cargar listas', 'Descargar listas', 'Crear usuario', 'Leer usuarios', 'Editar usuarios', 'Cargar incremental', 'Cargar completa']);
 
         $role = Role::create(['name' => 'Cliente']);
         $role->syncPermissions(['Buscar', 'Descargar listas']);

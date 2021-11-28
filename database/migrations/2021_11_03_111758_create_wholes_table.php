@@ -16,7 +16,7 @@ class CreateWholesTable extends Migration
         Schema::create('wholes', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('amount');
+            $table->dateTime('date');
             $table->string('link_xlsx', 100)->nullable();
             $table->string('link_csv', 100)->nullable();
 

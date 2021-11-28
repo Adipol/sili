@@ -12,7 +12,7 @@ class AllResources extends Component
 {
     use WithFileUploads;
 
-    public $text;
+    public $fecha_carga;
 
 
     public function render()
@@ -24,20 +24,20 @@ class AllResources extends Component
 
     public function save()
     {
-        $this->validate(['text' => 'required']);
+        $this->validate(['fecha_carga' => 'required']);
 
         $list = whole::first();
         if ($list) {
             Storage::delete($list->link_xlsx);
             Storage::delete($list->link_csv);
             Whole::where("id", 1)->update([
-                'amount' => $this->text,
+                'date' => $this->fecha_carga,
                 'link_xlsx' => null,
                 'link_csv' => null,
             ]);
         } else {
             Whole::create([
-                'amount' => $this->text
+                'date' => $this->fecha_carga
             ]);
         }
     }

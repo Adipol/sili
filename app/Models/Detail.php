@@ -11,9 +11,6 @@ class Detail extends Model
 
     protected $guarded = ['id'];
 
-
-
-
     public function imports()
     {
         return $this->hasMany(Import::class);

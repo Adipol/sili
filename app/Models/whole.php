@@ -12,6 +12,10 @@ class whole extends Model
     protected $guarded = ['id'];
 
 
+    protected $dates = [
+        'date'
+    ];
+
     public function detail()
     {
         return $this->belongsTo(Detail::class, 'id_detail');
