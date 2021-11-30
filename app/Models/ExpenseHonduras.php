@@ -5,14 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Import extends Model
+class ExpenseHonduras extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
 
     protected $dates = [
-        'description_beginning',
-        'description_final'
+        'date'
     ];
+
+    public function detail()
+    {
+        return $this->belongsTo(Detail::class);
+    }
 }

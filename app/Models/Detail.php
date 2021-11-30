@@ -25,4 +25,9 @@ class Detail extends Model
     {
         return $this->hasMany(Expense::class);
     }
+
+    public function expenseshonduras()
+    {
+        return $this->hasMany(ExpenseHonduras::class);
+    }
 }
