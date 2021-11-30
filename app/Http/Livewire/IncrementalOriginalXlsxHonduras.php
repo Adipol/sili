@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Import;
+use App\Models\HondurasImport;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class IncrementalOriginalXlsx extends Component
+class IncrementalOriginalXlsxHonduras extends Component
 {
     use WithFileUploads;
 
@@ -42,7 +42,7 @@ class IncrementalOriginalXlsx extends Component
         'control.ue_upgrade' => 'required',
         'control.description' => 'required',
     ];
-    public function mount(Import $control)
+    public function mount(HondurasImport $control)
     {
         $this->control = $control;
         $this->identificador = rand();
@@ -58,7 +58,7 @@ class IncrementalOriginalXlsx extends Component
         $this->control->save();
         $this->reset(['open', 'file']);
         $this->identificador = rand();
-        $this->emitTo('Incremental', 'render');
+        $this->emitTo('IncrementalHonduras', 'render');
         $this->emit('alert', 'El registro se actualizó satisfactoriamente');
     }
 
@@ -69,6 +69,6 @@ class IncrementalOriginalXlsx extends Component
 
     public function render()
     {
-        return view('livewire.incremental-original-xlsx');
+        return view('livewire.incremental-original-xlsx-honduras');
     }
 }

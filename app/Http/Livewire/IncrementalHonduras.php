@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\ImportHonduras;
+use App\Models\HondurasImport;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -29,7 +29,8 @@ class IncrementalHonduras extends Component
 
     public function render()
     {
-        $controls = ImportHonduras::all();
+        $controls = HondurasImport::select('id', 'description_beginning', 'description_final', 'link_xlsx', 'link_csv')->get();
+
         return view('livewire.incremental-honduras', compact('controls'));
     }
 
@@ -40,7 +41,7 @@ class IncrementalHonduras extends Component
             'fecha_fin' => 'required',
         ]);
 
-        ImportHonduras::create([
+        HondurasImport::create([
             'description_beginning' => $this->fecha_ini,
             'description_final' => $this->fecha_fin,
             'aso_pep_new' => $this->new_aso_pep,
@@ -75,7 +76,7 @@ class IncrementalHonduras extends Component
 
     public function destroy($id)
     {
-        $control = ImportHonduras::where('id', $id)->first();
+        $control = HondurasImport::where('id', $id)->first();
 
         if ($control->link_xlsx) {
             Storage::delete($control->link_xlsx);
@@ -83,6 +84,6 @@ class IncrementalHonduras extends Component
         if ($control->link_csv) {
             Storage::delete($control->link_csv);
         }
-        ImportHonduras::destroy($id);
+        HondurasImport::destroy($id);
     }
 }

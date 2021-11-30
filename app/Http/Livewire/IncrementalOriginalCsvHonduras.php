@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Import;
+use App\Models\HondurasImport;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class IncrementalOriginalXlsx extends Component
+class IncrementalOriginalCsvHonduras extends Component
 {
     use WithFileUploads;
 
@@ -42,33 +42,32 @@ class IncrementalOriginalXlsx extends Component
         'control.ue_upgrade' => 'required',
         'control.description' => 'required',
     ];
-    public function mount(Import $control)
+    public function mount(HondurasImport $control)
     {
         $this->control = $control;
         $this->identificador = rand();
     }
 
-    public function save_xlsx()
+    public function save_csv()
     {
         //$this->validate();
         if ($this->file) {
-            Storage::delete($this->control->link_xlsx);
-            $this->control->link_xlsx = $this->file->store('resources');
+            Storage::delete($this->control->link_csv);
+            $this->control->link_csv = $this->file->store('resources');
         }
         $this->control->save();
         $this->reset(['open', 'file']);
         $this->identificador = rand();
-        $this->emitTo('Incremental', 'render');
+        $this->emitTo('incremental', 'render');
         $this->emit('alert', 'El registro se actualizó satisfactoriamente');
     }
 
-    public function download_xlsx()
+    public function download_csv()
     {
-        return response()->download(storage_path('app/public/' . $this->control->link_xlsx));
+        return response()->download(storage_path('app/public/' . $this->control->link_csv));
     }
-
     public function render()
     {
-        return view('livewire.incremental-original-xlsx');
+        return view('livewire.incremental-original-csv-honduras');
     }
 }

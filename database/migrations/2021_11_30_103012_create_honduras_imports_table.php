@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateImportHondurasTable extends Migration
+class CreateHondurasImportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateImportHondurasTable extends Migration
      */
     public function up()
     {
-        Schema::create('import_honduras', function (Blueprint $table) {
+        Schema::create('honduras_imports', function (Blueprint $table) {
             $table->id();
 
             $table->dateTime('description_beginning');
@@ -59,6 +59,6 @@ class CreateImportHondurasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('import_honduras');
+        Schema::dropIfExists('honduras_imports');
     }
 }

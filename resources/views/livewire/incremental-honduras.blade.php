@@ -230,7 +230,6 @@
                             </button>
                         </div>
                     </div>
-
             </form>
         </div>
 
@@ -282,10 +281,11 @@
                                             {{ $control->description_final->isoFormat('ll') }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            @livewire('incremental-original-xlsx',['control'=>$control],key('control-profile-one-'.$control->id))
+                                            @livewire('incremental-original-xlsx-honduras',['control'=>$control],key('control-profile-one-'.$control->id))
+
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
-                                            @livewire('incremental-original-csv',['control'=>$control],key('contro-profile-two-'.$control->id))
+                                            @livewire('incremental-original-csv-honduras',['control'=>$control],key('contro-profile-two-'.$control->id))
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             <button href="" wire:click="destroy({{ $control->id }})"
