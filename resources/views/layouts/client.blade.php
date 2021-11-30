@@ -44,6 +44,11 @@
                         class="pl-2 mb-1 leading-7 border-l-4 @routeIs('complete.index')border-yellow-500 @else border-transparent @endif">
                         <a href="{{ route('complete.index') }}">Completa</a>
                     </li>
+                    <li
+                        class="pl-2 mb-1 leading-7 border-l-4 @routeIs('complete.honduras.index')border-yellow-500 @else border-transparent @endif">
+                        <a href="{{ route('complete.honduras.index') }}">Completa (Honduras)</a>
+                    </li>
+
                 </ul>
             </aside>
             <div class="col-span-4 card">
