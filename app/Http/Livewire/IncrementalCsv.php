@@ -12,9 +12,9 @@ class IncrementalCsv extends Component
     use WithFileUploads;
     public $list, $open = false, $file, $identificador;
 
-    protected $rules = [
-        'list.amount' => 'required',
-    ];
+    // protected $rules = [
+    //     'list.amount' => 'required',
+    // ];
 
     public function mount(whole $list)
     {
@@ -24,7 +24,7 @@ class IncrementalCsv extends Component
 
     public function save_csv()
     {
-        $this->validate();
+        //$this->validate();
         if ($this->file) {
             Storage::delete($this->list->link_csv);
             $this->list->link_csv = $this->file->store('resources');

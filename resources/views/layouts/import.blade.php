@@ -53,6 +53,10 @@
                         class="pl-2 mb-1 leading-7 border-l-4 @routeIs('supplier.all.index')border-yellow-500 @else border-transparent @endif">
                         <a href="{{ route('supplier.all.index') }}">Completa</a>
                     </li>
+                    <li
+                        class="pl-2 mb-1 leading-7 border-l-4 @routeIs('supplier.honduras.all.index')border-yellow-500 @else border-transparent @endif">
+                        <a href="{{ route('supplier.honduras.all.index') }}">Completa (Honduras)</a>
+                    </li>
                 </ul>
             </aside>
             <div class="col-span-4 card">

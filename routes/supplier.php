@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AllController;
+use App\Http\Controllers\AllHondurasController;
 use App\Http\Controllers\Supplier\ImportController;
 use App\Http\Controllers\Supplier\ConsultController;
 use App\Http\Controllers\Supplier\IncrementalController;
@@ -27,3 +28,5 @@ Route::get('import-honduras', [ImportHondurasController::class, 'index'])->name(
 Route::post('importHondurasExcel', [ImportHondurasController::class, 'importExcel'])->name('importExcel.honduras');
 
 Route::get('incremental-honduras', [IncrementalHondurasController::class, 'index'])->name('supplier.incremental.honduras.index');
+
+Route::get('honduras-all', [AllHondurasController::class, 'index'])->name('supplier.honduras.all.index');

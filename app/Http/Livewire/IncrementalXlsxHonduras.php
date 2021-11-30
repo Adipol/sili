@@ -2,18 +2,17 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\whole;
+use App\Models\HondurasWhole;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class IncrementalXlsx extends Component
+class IncrementalXlsxHonduras extends Component
 {
     use WithFileUploads;
     public $list, $open = false, $file, $identificador;
 
-
-    public function mount(whole $list)
+    public function mount(HondurasWhole $list)
     {
         $this->list = $list;
         $this->identificador = rand();
@@ -21,7 +20,6 @@ class IncrementalXlsx extends Component
 
     public function save_xlsx()
     {
-
         if ($this->file) {
             Storage::delete($this->list->link_xlsx);
             $this->list->link_xlsx = $this->file->store('resources');
@@ -29,7 +27,7 @@ class IncrementalXlsx extends Component
         $this->list->save();
         $this->reset(['open', 'file']);
         $this->identificador = rand();
-        $this->emitTo('all-resources', 'render');
+        $this->emitTo('AllResourcesHonduras', 'render');
         $this->emit('alert', 'El registro se actualizó satisfactoriamente');
     }
 
@@ -40,6 +38,6 @@ class IncrementalXlsx extends Component
 
     public function render()
     {
-        return view('livewire.incremental-xlsx');
+        return view('livewire.incremental-xlsx-honduras');
     }
 }

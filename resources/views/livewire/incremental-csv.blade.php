@@ -12,10 +12,6 @@
                 <x-jet-label value="Tipo de archivo" />
                 <x-jet-input type="text" readonly class="w-full" value="Csv" />
             </div>
-            <div class="mb-4">
-                <x-jet-label value="Cantidad de registros" />
-                <x-jet-input wire:model="list.amount" type="text" class="block w-full" readonly />
-            </div>
             <div wire:loading wire:target="file" class="mb-4 bg-red-100 border border-red-400">
                 <strong class="font-bold">Archivo cargando!</strong>
                 <span class="block sm:inline">Espere un momento hasta que el archivo se haya procesado.</span>
