@@ -11,11 +11,6 @@ class Entity extends Model
 
     protected $guarded = ['id'];
 
-    public function department()
-    {
-        return $this->belongsTo('App\Models\Department');
-    }
-
     public function users()
     {
         return $this->hasMany('App\Models\User');

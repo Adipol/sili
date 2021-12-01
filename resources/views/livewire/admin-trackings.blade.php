@@ -2,8 +2,7 @@
     <div class="card">
         <div class="card-header">
 
-            <input class="form-control w-100" placeholder="Escriba el usuario o email" type="text"
-                wire:model="search" />
+            <input class="form-control w-100" placeholder="Escriba el usuario o email" type="text" wire:model="search" />
 
         </div>
 
@@ -13,9 +12,9 @@
                     <tr>
                         <th>Usuario</th>
                         <th>Email</th>
-                        <th>Ip</th>
-                        <th>Navegador</th>
-                        <th>Fecha de inicio</th>
+                        <th>IP</th>
+                        <th>S.O./Navegador</th>
+                        <th>Fecha de primer inicio</th>
                         <th>Fecha de actualización</th>
                     </tr>
                 </thead>
@@ -27,7 +26,7 @@
                             <td>{{ $device->ip }}</td>
                             <td>{{ $device->device_type }}</td>
                             <td>{{ $device->created_at }}</td>
-                            <td>{{ $device->updated_at }}</td>
+                            <td>{{ $device->updated_at->isoFormat('ll') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

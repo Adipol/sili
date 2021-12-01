@@ -23,7 +23,6 @@ class EntityFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
-            'id_department' => $this->faker->randomElement([1, 2, 3]),
         ];
     }
 }

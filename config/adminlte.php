@@ -254,6 +254,15 @@ return [
             'can'  => 'Leer usuarios',
             'active' => ['admin/users*']
         ],
+
+        [
+            'text'        => 'Entidades',
+            'route'         => 'admin.entities.index',
+            'icon'        => 'fas far fa-building',
+            'can'  => 'Listar entidades',
+            'active' => ['admin/entities*']
+        ],
+
         ['header' => 'SEGUIMIENTO'],
         [
             'text' => 'Usuarios',

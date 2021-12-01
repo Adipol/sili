@@ -15,10 +15,8 @@ class CreateEntitiesTable extends Migration
     {
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
 
-            $table->foreignId('id_department');
-            $table->foreign('id_department')->references('id')->on('departments');
+            $table->string('name');
 
             $table->timestamps();
         });

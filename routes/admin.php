@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\EntityController;
 use App\Http\Controllers\Admin\TrackingController;
 
 
@@ -14,3 +15,5 @@ Route::resource('roles', RoleController::class)->names('roles');
 Route::resource('trackings', TrackingController::class)->names('trackings');
 
 Route::resource('users', UserController::class)->names('users');
+
+Route::resource('entities', EntityController::class)->names('entities');

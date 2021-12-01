@@ -63,6 +63,10 @@ class PermissionSeeder extends Seeder
         ]);
 
         Permission::create([
+            'name' => 'Listar entidades'
+        ]);
+
+        Permission::create([
             'name' => 'Cargar incremental'
         ]);
 
