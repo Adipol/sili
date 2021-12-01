@@ -69,9 +69,27 @@ class PermissionSeeder extends Seeder
         Permission::create([
             'name' => 'Cargar completa'
         ]);
+
+        Permission::create([
+            'name' => 'Descargar incremental'
+        ]);
+
+        Permission::create([
+            'name' => 'Descargar completa'
+        ]);
+
+
         //Honduras
         Permission::create([
-            'name' => 'Cargar listas honduras'
+            'name' => 'Buscar honduras'
+        ]);
+
+        Permission::create([
+            'name' => 'Descargar incremental honduras'
+        ]);
+
+        Permission::create([
+            'name' => 'Descargar completa honduras'
         ]);
     }
 }

@@ -53,9 +53,12 @@ $nav_links = [
                                     class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas</a>
                             @endcan
 
-                            <a href="{{ route('consults.honduras.index') }}"
-                                class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas
-                                (Honduras)</a>
+                            @can('Buscar honduras')
+                                <a href="{{ route('consults.honduras.index') }}"
+                                    class="px-3 py-2 text-sm font-medium text-gray-300 rounded-md hover:bg-blue-700 hover:text-white">Consultas
+                                    (Honduras)</a>
+                            @endcan
+
 
                             @can('Descargar listas')
                                 <a href="{{ route('incremental.index') }}"
@@ -119,7 +122,7 @@ $nav_links = [
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>
@@ -145,9 +148,12 @@ $nav_links = [
                     aria-current="page">Consultas</a>
             @endcan
 
-            <a href="#"
-                class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
-                aria-current="page">Consultas (Honduras)</a>
+            @can('Buscar honduras')
+                <a href="{{ route('consults.honduras.index') }}"
+                    class="block px-3 py-2 text-base font-medium text-gray-300 rounded-md hover:bg-gray-700 hover:text-white"
+                    aria-current="page">Consultas (Honduras)</a>
+            @endcan
+
 
             @can('Descargar listas')
                 <a href="{{ route('incremental.index') }}"
