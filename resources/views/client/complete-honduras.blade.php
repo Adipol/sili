@@ -15,20 +15,22 @@
             <header class="flex items-center justify-between">
                 <h1> <i class="far fa-calendar-alt"></i>
                     <strong>Fecha de carga: </strong>
-                    @if ($complete->updated_at)
+                    @if ($complete)
                         {{ $complete->updated_at->isoFormat('ll') }}
                     @endif
                 </h1>
                 <div>
                     <strong>Actualizado: </strong>
-                    @if ($complete->updated_at)
+                    @if ($complete)
                         {{ $complete->updated_at->diffForHumans() }}
                     @endif
                 </div>
             </header>
 
             <div>
-                @livewire('client.all-download-honduras',['download_all'=>$complete],key($complete->id))
+                @if ($complete)
+                    @livewire('client.all-download-honduras',['download_all'=>$complete],key($complete->id))
+                @endif
             </div>
             <div>
                 <strong>Cantidad total: </strong>

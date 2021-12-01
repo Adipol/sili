@@ -16,8 +16,8 @@ class ImportHondurasController extends Controller
     public function index()
     {
         $amount = ControlHonduras::count();
-        $details = Detail::select('id', 'name')->get();
-        $expenses = ExpenseHonduras::all();
+        $details = Detail::select('id', 'name')->orderBy('name', 'asc')->get();
+        $expenses = ExpenseHonduras::orderBy('id', 'desc')->get();
 
         return view('supplier.import_honduras', compact('amount', 'details', 'expenses'));
     }

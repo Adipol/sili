@@ -118,6 +118,7 @@
 
                                 </tr>
                             </thead>
+
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($expenses as $expense)
                                     <tr>

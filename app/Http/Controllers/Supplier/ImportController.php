@@ -17,8 +17,8 @@ class ImportController extends Controller
     public function index()
     {
         $amount = Control::count();
-        $details = Detail::select('id', 'name')->get();
-        $expenses = Expense::all();
+        $details = Detail::select('id', 'name')->orderBy('name', 'asc')->get();
+        $expenses = Expense::orderBy('id', 'desc')->get();
 
         return view('supplier.import', compact('amount', 'details', 'expenses'));
     }
