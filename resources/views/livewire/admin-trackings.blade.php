@@ -14,8 +14,8 @@
                         <th>Email</th>
                         <th>IP</th>
                         <th>S.O./Navegador</th>
-                        <th>Fecha de primer inicio</th>
-                        <th>Fecha de actualización</th>
+                        <th>Fecha de primer acceso</th>
+                        <th>Nuevo ingreso</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +26,9 @@
                             <td>{{ $device->ip }}</td>
                             <td>{{ $device->device_type }}</td>
                             <td>{{ $device->created_at }}</td>
-                            <td>{{ $device->updated_at->isoFormat('ll') }}</td>
+
+                            <td>{{ $device->updated_at }}</td>
+
                         </tr>
                     @endforeach
                 </tbody>

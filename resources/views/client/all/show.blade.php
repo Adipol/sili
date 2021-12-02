@@ -1,5 +1,26 @@
 <x-app-layout>
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <nav class="
+    block
+    text-sm text-left text-gray-600
+    bg-gray-500 bg-opacity-10
+    border border-gray-400
+    h-12
+    flex
+    items-center
+    p-4
+    rounded-md
+    mb-6
+  "
+            role="alert">
+            <ol class="list-reset flex text-grey-dark">
+                <li><a href="/" class="font-bold"><i class="fas fa-home"></i></a></li>
+                <li><span class="mx-2">/</span></li>
+                <li><a href="{{ route('consults.index') }}" class="font-bold">Consultas</a></li>
+                <li><span class="mx-2">/</span></li>
+                <li>Allegados</li>
+            </ol>
+        </nav>
 
         <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
             <div class="px-4 py-5 sm:px-6">

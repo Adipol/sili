@@ -8,8 +8,7 @@
                 </svg>
 
                 <div class="relative px-4 pt-6 sm:px-6 lg:px-8">
-                    <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start"
-                        aria-label="Global">
+                    <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                         <div class="hidden md:block md:ml-10 md:pr-4 md:space-x-8">
 
                         </div>
@@ -31,7 +30,7 @@
                         </p>
                         <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                             <div class="rounded-md shadow">
-                                <a href="#"
+                                <a href="mailto:franco.rojas@grupoamlc.org"
                                     class="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-blue-900 border border-transparent rounded-md hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
                                     Solicitar Información
                                 </a>
@@ -47,5 +46,142 @@
                 alt="">
         </div>
     </div>
+    <footer class="text-gray-600 body-font">
+        <div
+            class="
+      container
+      px-5
+      py-24
+      mx-auto
+      flex
+      md:items-center
+      lg:items-start
+      md:flex-row md:flex-nowrap
+      flex-wrap flex-col
+    ">
+            <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">
+                <p
+                    class="
+          flex
+          title-font
+          font-medium
+          items-center
+          md:justify-start
+          justify-center
+          text-gray-900
+        ">
+                    <span class="ml-3 text-xl"> <img class="hidden w-auto h-8 lg:block"
+                            src="{{ asset('img/home/logo.png') }}" alt="Workflow"></span>
+                </p>
+                <p class="mt-2 text-sm text-gray-500 text-justify ">
+                    Grupo AMLC es una empresa orientada a brindar servicios de excelencia y a medida de las necesidades
+                    del cliente.
+                </p>
+            </div>
+            <div
+                class="
+        flex-grow flex flex-wrap
+        md:pl-20
+        -mb-10
+        md:mt-0
+        mt-10
+        md:text-left
+        text-center
+      ">
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2
+                        class="
+            title-font
+            font-medium
+            text-gray-900
+            tracking-widest
+            text-sm
+            mb-3
+          ">
+                        Dirección
+                    </h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <p class="text-gray-600 hover:text-gray-800 text-justify ">Av. Hernando Siles N°
+                                420
+                                esquina calle 3, zona Obrajes, Edificio Torre Titanium I Piso 4 of.401 </p>
+                        </li>
 
+                        <li>
+                            <p class="text-gray-600 hover:text-gray-800">La Paz-Bolivia</p>
+                        </li>
+                    </nav>
+                </div>
+
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2 class="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">
+                        Tefefono(s)
+                    </h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <p class="text-gray-600 hover:text-gray-800">(591) 2-2780233</p>
+                        </li>
+                        <li>
+                            <p class="text-gray-600 hover:text-gray-800">(591) 72079000</p>
+                        </li>
+                        <li>
+                            <p class="text-gray-600 hover:text-gray-800">(591) 72086000</p>
+                        </li>
+                    </nav>
+                </div>
+
+                <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <h2
+                        class="
+            title-font
+            font-medium
+            text-gray-900
+            tracking-widest
+            text-sm
+            mb-3
+          ">
+                        Correo(s)
+                    </h2>
+                    <nav class="list-none mb-10">
+                        <li>
+                            <a href="mailto:franco.rojas@grupoamlc.org"
+                                class="text-gray-600 hover:text-gray-800">franco.rojas@grupoamlc.org</a>
+                        </li>
+                        <li>
+                            <a href="mailto:arianeth.saavedrav@grupoamlc.org" class="text-gray-600 hover:text-gray-800">
+                                arianeth.saavedrav@grupoamlc.org</a>
+                        </li>
+                    </nav>
+                </div>
+
+            </div>
+        </div>
+        <div class="bg-gray-100">
+            <div
+                class="
+        container
+        mx-auto
+        py-4
+        px-5
+        flex flex-wrap flex-col
+        sm:flex-row
+      ">
+                <p class="text-gray-500 text-sm text-center sm:text-left">
+                    © 2021 Copyright:
+                    <a href="mailto:jorge.aguilar@grupoamlc.org" class="text-gray-600 ml-1" target="_blank">Powered by
+                        AMLC
+                    </a>
+                </p>
+                <span
+                    class="
+          inline-flex
+          sm:ml-auto sm:mt-0
+          mt-2
+          justify-center
+          sm:justify-start
+        ">
+                </span>
+            </div>
+        </div>
+    </footer>
 </x-app-layout>
