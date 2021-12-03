@@ -113,7 +113,7 @@
                         </td>
                         <td style="width:5%" title="Imprimir detalle">
                             <a class="btn btn-red" href="{{ route('download-pdf', $pep->id_register) }}">
-                                <i class="far fa-file-pdf"></i>
+                                <i class="fas fa-file-pdf"></i>
                             </a>
                         </td>
                         <td style="width:5%" title="Allegado">
