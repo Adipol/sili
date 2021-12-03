@@ -41,6 +41,15 @@ class UserSeeder extends Seeder
 
         $user2->assignRole('Cliente Honduras');
 
+        $user3 = User::Create([
+            'name' => 'adipol13',
+            'email' => 'adipol13@gmail.com',
+            'password' => bcrypt('cliente'),
+            'entity_id' => '1'
+        ]);
+
+        $user2->assignRole('Cliente');
+
         User::factory(15)->create();
     }
 }

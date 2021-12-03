@@ -79,10 +79,10 @@ class Incremental extends Component
         $control = Import::where('id', $id)->first();
 
         if ($control->link_xlsx) {
-            Storage::delete($control->link_xlsx);
+            Storage::disk('s3')->delete($control->link_xlsx);
         }
         if ($control->link_csv) {
-            Storage::delete($control->link_csv);
+            Storage::disk('s3')->delete($control->link_csv);
         }
         Import::destroy($id);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Client;
 
 use App\Models\HondurasImport;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class IncrementalDownloadHonduras extends Component
@@ -26,7 +27,8 @@ class IncrementalDownloadHonduras extends Component
         $import = HondurasImport::find($id);
         $this->import = $import;
         if ($this->import->link_xlsx) {
-            return  response()->download(storage_path('app/public/' . $this->import->link_xlsx));
+            return Storage::disk('s3')->download($this->import->link_xlsx);
+            //return  response()->download(storage_path('app/public/' . $this->import->link_xlsx));
         } else {
         }
     }
@@ -37,7 +39,8 @@ class IncrementalDownloadHonduras extends Component
         $import = HondurasImport::find($id);
         $this->import = $import;
         if ($this->import->link_csv) {
-            return  response()->download(storage_path('app/public/' . $this->import->link_csv));
+            return Storage::disk('s3')->download($this->import->link_csv);
+            //return  response()->download(storage_path('app/public/' . $this->import->link_csv));
         } else {
         }
     }

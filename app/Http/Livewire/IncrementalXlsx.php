@@ -23,8 +23,8 @@ class IncrementalXlsx extends Component
     {
 
         if ($this->file) {
-            Storage::delete($this->list->link_xlsx);
-            $this->list->link_xlsx = $this->file->store('resources');
+            Storage::disk('s3')->delete($this->list->link_xlsx);
+            $this->list->link_xlsx = $this->file->store('resources', 's3');
         }
         $this->list->save();
         $this->reset(['open', 'file']);
@@ -35,7 +35,8 @@ class IncrementalXlsx extends Component
 
     public function download_xlsx()
     {
-        return response()->download(storage_path('app/public/' . $this->list->link_xlsx));
+        return Storage::disk('s3')->download($this->list->link_xlsx);
+        //return response()->download(storage_path('app/public/' . $this->list->link_xlsx));
     }
 
     public function render()

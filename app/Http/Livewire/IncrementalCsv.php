@@ -26,8 +26,8 @@ class IncrementalCsv extends Component
     {
         //$this->validate();
         if ($this->file) {
-            Storage::delete($this->list->link_csv);
-            $this->list->link_csv = $this->file->store('resources');
+            Storage::disk('s3')->delete($this->list->link_csv);
+            $this->list->link_csv = $this->file->store('resources', 's3');
         }
         $this->list->save();
         $this->reset(['open', 'file']);
@@ -38,7 +38,8 @@ class IncrementalCsv extends Component
 
     public function download_csv()
     {
-        return response()->download(storage_path('app/public/' . $this->list->link_csv));
+        return Storage::disk('s3')->download($this->list->link_csv);
+        //return response()->download(storage_path('app/public/' . $this->list->link_csv));
     }
 
     public function render()

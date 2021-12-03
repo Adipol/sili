@@ -26,8 +26,8 @@ class AllResourcesHonduras extends Component
 
         $list = HondurasWhole::first();
         if ($list) {
-            Storage::delete($list->link_xlsx);
-            Storage::delete($list->link_csv);
+            Storage::disk('s3')->delete($list->link_xlsx);
+            Storage::disk('s3')->delete($list->link_csv);
             HondurasWhole::where("id", 1)->update([
                 'date' => $this->fecha_carga,
                 'link_xlsx' => null,

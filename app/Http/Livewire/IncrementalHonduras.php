@@ -79,10 +79,10 @@ class IncrementalHonduras extends Component
         $control = HondurasImport::where('id', $id)->first();
 
         if ($control->link_xlsx) {
-            Storage::delete($control->link_xlsx);
+            Storage::disk('s3')->delete($control->link_xlsx);
         }
         if ($control->link_csv) {
-            Storage::delete($control->link_csv);
+            Storage::disk('s3')->delete($control->link_csv);
         }
         HondurasImport::destroy($id);
     }

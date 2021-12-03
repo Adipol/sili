@@ -28,8 +28,8 @@ class AllResources extends Component
 
         $list = whole::first();
         if ($list) {
-            Storage::delete($list->link_xlsx);
-            Storage::delete($list->link_csv);
+            Storage::disk('s3')->delete($list->link_xlsx);
+            Storage::disk('s3')->delete($list->link_csv);
             Whole::where("id", 1)->update([
                 'date' => $this->fecha_carga,
                 'link_xlsx' => null,
