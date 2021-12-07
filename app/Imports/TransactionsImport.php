@@ -5,10 +5,11 @@ namespace App\Imports;
 use App\Models\Control;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, WithHeadingRow
+class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, WithHeadingRow, WithChunkReading
 {
     /**
      * @param array $row
@@ -56,6 +57,10 @@ class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, With
         return 200;
     }
 
+    public function chunkSize(): int
+    {
+        return 7000;
+    }
 
     public function uniqueBy()
     {
