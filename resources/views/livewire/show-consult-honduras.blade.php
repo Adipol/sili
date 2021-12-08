@@ -108,11 +108,10 @@
                             {{ $pep->management }}
                         </td>
                         <td title="Detalle de la persona" style="width:5%">
-
                             @livewire('show-pep-honduras',['pep' => $pep], key('consul-profile-one-'.$pep->id_register))
                         </td>
                         <td style="width:5%" title="Imprimir detalle">
-                            <a class="btn btn-red" href="{{ route('download-pdf', $pep->id_register) }}">
+                            <a class="btn btn-red" href="{{ route('download-honduras-pdf', $pep->id_register) }}">
                                 <i class="fas fa-file-pdf"></i>
                             </a>
                         </td>
