@@ -9,7 +9,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, WithHeadingRow, WithChunkReading
+class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, WithHeadingRow
 {
     /**
      * @param array $row
@@ -55,11 +55,6 @@ class TransactionsImport implements ToModel, WithBatchInserts, WithUpserts, With
     public function batchSize(): int
     {
         return 200;
-    }
-
-    public function chunkSize(): int
-    {
-        return 7000;
     }
 
     public function uniqueBy()
