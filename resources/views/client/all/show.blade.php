@@ -31,7 +31,7 @@
                     Información
                 </p>
             </div>
-            <div class="border-t border-gray-200">
+            <div class="border-t border-gray-500">
                 <dl>
                     <div class="px-4 py-5 bg-gray-50 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                         <dt class="text-sm font-medium text-gray-500">
@@ -93,6 +93,13 @@
             </div>
         </div>
     </div>
+
+    <div class="flex flex-row-reverse px-4 py-1 mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <a class="btn btn-green" href="{{ route('allegado-pdf', $pep->id_register) }}">
+            <i class="fas fa-file-pdf"></i> Imprimir
+        </a>
+    </div>
+
     <div class="flex flex-col px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
