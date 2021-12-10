@@ -3,25 +3,23 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AllegadoPdfController extends Controller
 {
     public function downloadPDF($id)
     {
-        $pep = Control::where('id_register', $id)->first();
+        $pep = DB::table('controls')->where('id_pep', $id)->first();
+        $all = DB::table('controls')->where('id_pep', $id)
+            ->where('type_pep', 'ALL')->get();
+
         $date = Carbon::now();
 
-        $pdf = PDF::loadView('client.pdf', compact('pep', 'date'));
+        $pdf = PDF::loadView('client.allegado-pdf', compact('pep', 'date', 'all'));
 
-        return $pdf->stream('AMLC_Pep.pdf');
-    }
-
-    public function getAllpep($id)
-    {
-        $pep = Control::where('id_register', $id)->first();
-        $date = Carbon::now();
-
-        return view('client.pdf', compact('pep', 'date'));
+        return $pdf->stream('AMLC_Pep_allegado.pdf');
     }
 }
