@@ -95,7 +95,7 @@
     </div>
 
     <div class="flex flex-row-reverse px-4 py-1 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <a class="btn btn-green" href="{{ route('allegado-pdf', $pep->id_register) }}">
+        <a class="btn btn-green" href="{{ route('allegado-pdf', $pep->id_pep) }}">
             <i class="fas fa-file-pdf"></i> Imprimir
         </a>
     </div>

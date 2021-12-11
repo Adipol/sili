@@ -20,6 +20,6 @@ class AllegadoPdfController extends Controller
 
         $pdf = PDF::loadView('client.allegado-pdf', compact('pep', 'date', 'all'));
 
-        return $pdf->stream('AMLC_Pep_allegado.pdf');
+        return $pdf->download('AMLC_Pep_allegado.pdf');
     }
 }
