@@ -10,6 +10,7 @@ use App\Models\Control;
 use App\Exports\TransactionsExport;
 use App\Models\Detail;
 use App\Models\Expense;
+use Illuminate\Support\Facades\Redirect;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends Controller
@@ -35,8 +36,6 @@ class ImportController extends Controller
 
         Excel::import(new TransactionsImport, $request->import_file);
 
-        \Session::put('success', 'Your file is imported successfully in database.');
-
-        return back();
+        return Redirect::route('import.honduras.index')->withSuccess('El archivo se cargo satisfactoriamente!');
     }
 }

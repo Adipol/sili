@@ -1,7 +1,27 @@
 {{-- es el archivo para cargar el csv no tocar --}}
 <x-import-layout>
     <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-
+        @if (Session::has('success'))
+            <div class="
+    my-3
+    block
+    text-sm text-left text-white
+    bg-green-500
+    h-12
+    flex
+    items-center
+    p-4
+    rounded-md
+  "
+                role="alert">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    class="w-6 h-6 mx-2 stroke-current">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                {{ Session::get('success') }}
+            </div>
+        @endif
         <div class="md:grid md:grid-cols-3 md:gap-6">
             <div class="px-4 py-6 mx-auto overflow-hidden bg-white shadow sm:rounded-lg max-w-7xl sm:px-6 lg:px-8">
                 <div class="px-4 py-5 sm:px-6">
