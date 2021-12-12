@@ -53,12 +53,16 @@
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                        Fecha de carga
+                                        Fecha de registro
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                        Archivo XLSX
+                                        Fecha de carga
                                     </th>
+                                    {{-- <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Archivo XLSX
+                                    </th> --}}
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Archivo CSV
@@ -69,11 +73,14 @@
                                 @foreach ($lists as $list)
                                     <tr>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $list->updated_at->isoFormat('lll') }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $list->date->isoFormat('ll') }}
                                         </td>
-                                        <td class="flex px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        {{-- <td class="flex px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @livewire('incremental-xlsx-honduras',['list'=>$list],key('user-profile-one-'.$list->id))
-                                        </td>
+                                        </td> --}}
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @livewire('incremental-csv-honduras',['list'=>$list],key('user-profile-two-'.$list->id))
                                         </td>

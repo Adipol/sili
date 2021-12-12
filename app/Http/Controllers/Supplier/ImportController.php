@@ -36,6 +36,6 @@ class ImportController extends Controller
 
         Excel::import(new TransactionsImport, $request->import_file);
 
-        return Redirect::route('import.honduras.index')->withSuccess('El archivo se cargo satisfactoriamente!');
+        return Redirect::route('import.index')->withSuccess('El archivo se cargo satisfactoriamente!');
     }
 }

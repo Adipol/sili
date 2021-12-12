@@ -7,7 +7,7 @@
         <div class="text-sm text-justify text-gray-500 card-body bh-gray-100">
             <p>Estimado Usuario</p>
             <p>Bienvenido al sitio de Listas de Control</p>
-            <p>Usted puede descargar las listas de control incremental en formato Excel o Csv (archivo plano)</p>
+            <p>Usted puede descargar las listas de control incremental en formato Csv (archivo plano)</p>
         </div>
     </article>
 

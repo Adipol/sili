@@ -252,16 +252,20 @@
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Fecha de registro
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Fecha de inicio
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Fecha de finalización
                                     </th>
-                                    <th scope="col"
+                                    {{-- <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Archivo Xlsx
-                                    </th>
+                                    </th> --}}
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Archivo Csv
@@ -276,14 +280,17 @@
                                 @foreach ($controls as $control)
                                     <tr>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $control->updated_at->isoFormat('lll') }}
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $control->description_beginning->isoFormat('ll') }}
                                         </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $control->description_final->isoFormat('ll') }}
                                         </td>
-                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        {{-- <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @livewire('incremental-original-xlsx',['control'=>$control],key('control-profile-one-'.$control->id))
-                                        </td>
+                                        </td> --}}
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             @livewire('incremental-original-csv',['control'=>$control],key('contro-profile-two-'.$control->id))
                                         </td>

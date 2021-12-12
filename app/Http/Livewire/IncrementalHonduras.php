@@ -29,7 +29,7 @@ class IncrementalHonduras extends Component
 
     public function render()
     {
-        $controls = HondurasImport::select('id', 'description_beginning', 'description_final', 'link_xlsx', 'link_csv')->get();
+        $controls = HondurasImport::all();
 
         return view('livewire.incremental-honduras', compact('controls'));
     }

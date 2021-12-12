@@ -129,6 +129,10 @@
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                        Fecha de registro
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
                                         Fecha de carga
                                     </th>
                                     <th scope="col"
@@ -142,6 +146,9 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($expenses as $expense)
                                     <tr>
+                                        <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                            {{ $expense->updated_at->isoFormat('lll') }}
+                                        </td>
                                         <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">
                                             {{ $expense->date->isoFormat('ll') }}
                                         </td>

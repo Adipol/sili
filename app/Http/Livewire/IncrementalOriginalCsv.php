@@ -11,7 +11,8 @@ class IncrementalOriginalCsv extends Component
 {
     use WithFileUploads;
 
-    public $control, $open = false, $file, $identificador;
+    public $control;
+    public $open = false, $file, $identificador;
 
     protected $rules = [
         'control.aso_pep_new' => 'required',

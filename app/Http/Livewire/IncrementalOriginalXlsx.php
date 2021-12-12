@@ -11,7 +11,8 @@ class IncrementalOriginalXlsx extends Component
 {
     use WithFileUploads;
 
-    public $control, $open = false, $file, $identificador;
+    public Import $control;
+    public $open = false, $file, $identificador;
 
     protected $rules = [
         'control.aso_pep_new' => 'required',
