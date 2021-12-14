@@ -92,17 +92,17 @@ $nav_links = [
 
                     <!-- Profile dropdown -->
                     <div class="relative inline ml-3 display:inline" x-data="{open: false}">
-                        <div>
-                            <button x-on:click=" open=true " type="button"
-                                class="flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                id="user-menu" aria-expanded="false" aria-haspopup="true">
-                                <span class="sr-only">Open user menu</span>
-                                <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
-                            </button>
-                        </div>
+
+                        <button x-on:click=" open=true " type="button"
+                            class="z-0 flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                            id="user-menu" aria-expanded="false" aria-haspopup="true">
+                            <span class="sr-only">Open user menu</span>
+                            <img class="w-8 h-8 rounded-full" src="{{ auth()->user()->profile_photo_url }}" alt="">
+                        </button>
+
 
                         <div x-show="open" x-on:click.away="open=false"
-                            class="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                            class=" z-20 absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                             <a href="{{ route('profile.show') }}"
                                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Tu
@@ -119,7 +119,7 @@ $nav_links = [
                                 <a href="{{ route('logout') }}"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem"
                                     onclick="event.preventDefault();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        this.closest('form').submit();">Salir</a>
                             </form>
                         </div>
                     </div>
